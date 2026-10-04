@@ -1,0 +1,14 @@
+# RECOM.ai - Project Dependencies
+
+# Data Manipulation & Analysis
+pandas>=2.0.0          # Data structures (DataFrames) and CSV data loading
+
+# Numerical Computing
+numpy>=1.24.0           # Array operations and mathematical calculations
+
+# Machine Learning & Recommendation Algorithms
+scikit-learn>=1.3.0    # TF-IDF Vectorization, Cosine Similarity, and Truncated SVD
+
+# Web Application UI Framework
+streamlit>=1.28.0       # Interactive web interface and dashboard components
+

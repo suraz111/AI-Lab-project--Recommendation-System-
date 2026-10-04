@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RECOM.ai — Sign In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #F4F4F6;
+      --card-bg: #FFFFFF;
+      --border-color: #000000;
+      --text-main: #000000;
+      --text-muted: #666666;
+      --accent-color: #000000;
+      --shadow-offset: 6px 6px 0px #000000;
+      --shadow-offset-hover: 8px 8px 0px #000000;
+      --shadow-offset-btn: 3px 3px 0px #000000;
+      --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+      min-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0.2rem 0.5rem 1rem;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Main Stark Card Container */
+    .stark-card {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      background: var(--card-bg);
+      border: 2.5px solid var(--border-color);
+      box-shadow: var(--shadow-offset);
+      padding: 2.2rem 2rem 1.8rem;
+      transition: box-shadow var(--transition-fast);
+    }
+
+    /* Brand Header with Site Name & Logo */
+    .brand-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.15rem;
+      padding-bottom: 1rem;
+      border-bottom: 2.5px solid var(--border-color);
+    }
+
+    .brand-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .square-logo {
+      width: 32px;
+      height: 32px;
+      background: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .square-logo-inner {
+      width: 12px;
+      height: 12px;
+      background: #FFFFFF;
+    }
+
+    .brand-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #000000;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .brand-tagline {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* Title & Subtitle */
+    .card-title {
+      font-size: 1.65rem;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+      color: #000000;
+    }
+
+    .card-subtitle {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* =========================================================================
+       SEGMENTED CONTROL WITH SLIDING THUMB (ACCESSIBLE TABLIST)
+       ========================================================================= */
+    .segmented-control-wrapper {
+      position: relative;
+      margin-bottom: 1.4rem;
+    }
+
+    .segmented-control {
+      position: relative;
+      display: flex;
+      border: 2.5px solid #000000;
+      background: #FFFFFF;
+      padding: 3px;
+      user-select: none;
+    }
+
+    /* Sliding Thumb Pill */
+    .segmented-thumb {
+      position: absolute;
+      top: 3px;
+      bottom: 3px;
+      left: 3px;
+      width: calc(50% - 3px);
+      background: #000000;
+      transition: transform var(--transition-smooth);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .segmented-tab {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 0.6rem 0.5rem;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #000000;
+      cursor: pointer;
+      text-align: center;
+      transition: color 0.25s ease;
+      outline: none;
+    }
+
+    .segmented-tab[aria-selected="true"] {
+      color: #FFFFFF;
+    }
+
+    .segmented-tab:focus-visible {
+      outline: 2px dashed #000000;
+      outline-offset: 2px;
+    }
+
+    /* =========================================================================
+       DIRECTIONAL SLIDING PANELS VIEWPORT & TRACK
+       ========================================================================= */
+    .panels-viewport {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      min-height: 310px;
+    }
+
+    .panels-track {
+      display: flex;
+      width: 200%;
+      transition: transform var(--transition-smooth);
+      transform: translateX(0%);
+    }
+
+    .panel {
+      width: 50%;
+      flex-shrink: 0;
+      padding: 0.2rem 0.1rem;
+      box-sizing: border-box;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .panel[hidden] {
+      display: block; /* Kept for continuous track sliding animation */
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    .panel:not([hidden]) {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Form Controls */
+    .form-group {
+      margin-bottom: 1.15rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #000000;
+      margin-bottom: 0.45rem;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-input {
+      width: 100%;
+      height: 42px;
+      background: #FFFFFF;
+      border: 2px solid #000000;
+      padding: 0 0.85rem;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #000000;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .form-input::placeholder {
+      color: #999999;
+      font-weight: 400;
+    }
+
+    .form-input:focus {
+      border-color: #000000;
+      box-shadow: 2px 2px 0px #000000;
+    }
+
+    /* Password Input with Attached SHOW Button */
+    .form-input.has-button {
+      padding-right: 65px;
+    }
+
+    .show-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 60px;
+      background: #000000;
+      color: #FFFFFF;
+      border: 2px solid #000000;
+      font-family: inherit;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition-fast);
+    }
+
+    .show-btn:hover {
+      background: #333333;
+    }
+
+    .show-btn:focus-visible {
+      outline: 2px dashed #000000;
+    }
+
+    /* Options Row (Remember me & Forgot Password) */
+    .form-options-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.25rem;
+    }
+
+    .checkbox-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      border: 2px solid #000000;
+      accent-color: #000000;
+      cursor: pointer;
+    }
+
+    .forgot-link {
+      color: #000000;
+      text-decoration: none;
+      border-bottom: 1px solid #000000;
+      cursor: pointer;
+    }
+
+    .forgot-link:hover {
+      background: #000000;
+      color: #FFFFFF;
+    }
+
+    /* Primary Stark Button (Solid Black) */
+    .btn-primary-stark {
+      width: 100%;
+      height: 44px;
+      background: #000000;
+      color: #FFFFFF;
+      border: 2.5px solid #000000;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all var(--transition-fast);
+      outline: none;
+    }
+
+    .btn-primary-stark:hover {
+      background: #FFFFFF;
+      color: #000000;
+      box-shadow: var(--shadow-offset-btn);
+    }
+
+    .btn-primary-stark:active {
+      transform: translate(2px, 2px);
+      box-shadow: none;
+    }
+
+    .btn-primary-stark:focus-visible {
+      outline: 2px dashed #000000;
+      outline-offset: 3px;
+    }
+
+    /* Divider (——— OR ———) */
+    .divider-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 1.2rem 0;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .divider-row::before,
+    .divider-row::after {
+      content: "";
+      flex: 1;
+      height: 1.5px;
+      background: #000000;
+    }
+
+    /* Demo Access Button */
+    .btn-secondary-stark {
+      width: 100%;
+      height: 40px;
+      background: #FFFFFF;
+      color: #000000;
+      border: 2px solid #000000;
+      font-family: inherit;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+      transition: all var(--transition-fast);
+      outline: none;
+    }
+
+    .btn-secondary-stark:hover {
+      background: #000000;
+      color: #FFFFFF;
+    }
+
+    .btn-secondary-stark:focus-visible {
+      outline: 2px dashed #000000;
+    }
+
+    /* Jump Link at Bottom (REQUIREMENT: JUMP & FOCUS FIRST FIELD) */
+    .jump-link-wrapper {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    .jump-btn-link {
+      background: transparent;
+      border: none;
+      color: #000000;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      padding: 0.1rem 0.2rem;
+      margin-left: 0.2rem;
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .jump-btn-link:hover {
+      background: #000000;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    .jump-btn-link:focus-visible {
+      outline: 2px dashed #000000;
+    }
+
+    /* Alert Banner */
+    .alert-banner {
+      display: none;
+      padding: 0.6rem 0.85rem;
+      border: 2px solid #000000;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .alert-banner.error {
+      background: #000000;
+      color: #FFFFFF;
+    }
+
+    .alert-banner.success {
+      background: #FFFFFF;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Stark Card Container -->
+  <main class="stark-card" id="app-card">
+
+    <!-- Site Brand Header -->
+    <div class="brand-header">
+      <div class="brand-badge-row">
+        <div class="square-logo" aria-hidden="true">
+          <div class="square-logo-inner"></div>
+        </div>
+        <span class="brand-title">RECOM.ai</span>
+      </div>
+      <div class="brand-tagline">Cross-Domain Intelligence System</div>
+    </div>
+
+    <!-- Title & Subtitle -->
+    <h1 class="card-title" id="card-main-title">SIGN IN</h1>
+    <p class="card-subtitle" id="card-sub-title">ENTER YOUR CREDENTIALS</p>
+
+    <!-- Alert Notification Banner -->
+    <div id="alert-banner" class="alert-banner" role="alert" aria-live="assertive">
+      <span id="alert-message">Alert message</span>
+    </div>
+
+    <!-- Segmented Control with Sliding Thumb (Role: tablist) -->
+    <nav class="segmented-control-wrapper">
+      <div 
+        class="segmented-control" 
+        role="tablist" 
+        aria-label="Account Access Mode"
+        id="auth-tablist"
+      >
+        <!-- Physical Sliding Thumb Pill -->
+        <span class="segmented-thumb" id="sliding-thumb" aria-hidden="true"></span>
+
+        <!-- Tab 1: SIGN IN -->
+        <button 
+          type="button"
+          class="segmented-tab" 
+          role="tab" 
+          id="tab-login"
+          aria-selected="true" 
+          aria-controls="panel-login" 
+          tabindex="0"
+        >
+          SIGN IN
+        </button>
+
+        <!-- Tab 2: CREATE ACCOUNT -->
+        <button 
+          type="button"
+          class="segmented-tab" 
+          role="tab" 
+          id="tab-signup"
+          aria-selected="false" 
+          aria-controls="panel-signup" 
+          tabindex="-1"
+        >
+          SIGN UP
+        </button>
+      </div>
+    </nav>
+
+    <!-- Directional Sliding Panels Viewport & Track -->
+    <div class="panels-viewport" id="panels-viewport">
+      <div class="panels-track" id="panels-track">
+
+        <!-- ===============================================================
+             PANEL 1: LOG IN FORM
+             =============================================================== -->
+        <section 
+          class="panel" 
+          id="panel-login" 
+          role="tabpanel" 
+          aria-labelledby="tab-login" 
+          tabindex="0"
+        >
+          <form id="form-login" onsubmit="handleLoginSubmit(event)" novalidate>
+            
+            <!-- Email / Username Input -->
+            <div class="form-group">
+              <label for="login-username" class="form-label">EMAIL</label>
+              <div class="input-wrapper">
+                <input 
+                  type="text" 
+                  id="login-username" 
+                  name="username"
+                  class="form-input" 
+                  placeholder="name@example.com" 
+                  autocomplete="username" 
+                  required
+                >
+              </div>
+            </div>
+
+            <!-- Password Input with Attached SHOW Button -->
+            <div class="form-group">
+              <label for="login-password" class="form-label">PASSWORD</label>
+              <div class="input-wrapper">
+                <input 
+                  type="password" 
+                  id="login-password" 
+                  name="password"
+                  class="form-input has-button" 
+                  placeholder="••••••••••••" 
+                  autocomplete="current-password" 
+                  required
+                >
+                <button 
+                  type="button" 
+                  class="show-btn" 
+                  id="toggle-login-pass" 
+                  aria-label="Toggle password visibility"
+                  onclick="togglePasswordVisibility('login-password', 'toggle-login-pass')"
+                >
+                  SHOW
+                </button>
+              </div>
+            </div>
+
+            <!-- Options Row (Remember me & Forgot Password) -->
+            <div class="form-options-row">
+              <label class="checkbox-label">
+                <input type="checkbox" id="login-remember" checked>
+                <span>Remember me</span>
+              </label>
+              <span class="forgot-link" onclick="handleDemoLogin()">FORGOT PASSWORD?</span>
+            </div>
+
+            <!-- Primary Action Button -->
+            <button type="submit" class="btn-primary-stark" id="btn-submit-login">
+              SIGN IN
+            </button>
+
+            <!-- Divider -->
+            <div class="divider-row">OR</div>
+
+            <!-- Demo Access Button -->
+            <button type="button" class="btn-secondary-stark" onclick="handleDemoLogin()">
+              ⚡ DEMO LOGIN
+            </button>
+
+            <!-- Jump Link: Switches to Sign Up and Focuses First Field -->
+            <p class="jump-link-wrapper">
+              No account? 
+              <button 
+                type="button" 
+                class="jump-btn-link" 
+                id="link-jump-signup"
+                onclick="switchToTab('signup', true)"
+              >
+                CREATE ONE
+              </button>
+            </p>
+
+          </form>
+        </section>
+
+        <!-- ===============================================================
+             PANEL 2: SIGN UP FORM
+             =============================================================== -->
+        <section 
+          class="panel" 
+          id="panel-signup" 
+          role="tabpanel" 
+          aria-labelledby="tab-signup" 
+          tabindex="0"
+          hidden
+        >
+          <form id="form-signup" onsubmit="handleSignupSubmit(event)" novalidate>
+            
+            <!-- Email / Username Input -->
+            <div class="form-group">
+              <label for="signup-username" class="form-label">EMAIL / USERNAME</label>
+              <div class="input-wrapper">
+                <input 
+                  type="text" 
+                  id="signup-username" 
+                  name="username"
+                  class="form-input" 
+                  placeholder="name@example.com" 
+                  autocomplete="username" 
+                  required
+                >
+              </div>
+            </div>
+
+            <!-- Password Input with Attached SHOW Button -->
+            <div class="form-group">
+              <label for="signup-password" class="form-label">CREATE PASSWORD</label>
+              <div class="input-wrapper">
+                <input 
+                  type="password" 
+                  id="signup-password" 
+                  name="password"
+                  class="form-input has-button" 
+                  placeholder="At least 6 chars" 
+                  autocomplete="new-password" 
+                  required
+                >
+                <button 
+                  type="button" 
+                  class="show-btn" 
+                  id="toggle-signup-pass" 
+                  aria-label="Toggle password visibility"
+                  onclick="togglePasswordVisibility('signup-password', 'toggle-signup-pass')"
+                >
+                  SHOW
+                </button>
+              </div>
+            </div>
+
+            <!-- Primary Action Button -->
+            <button type="submit" class="btn-primary-stark" id="btn-submit-signup">
+              CREATE ACCOUNT
+            </button>
+
+            <!-- Divider -->
+            <div class="divider-row">OR</div>
+
+            <!-- Demo Access Button -->
+            <button type="button" class="btn-secondary-stark" onclick="handleDemoLogin()">
+              ⚡ DEMO LOGIN
+            </button>
+
+            <!-- Jump Link: Switches to Log In and Focuses First Field -->
+            <p class="jump-link-wrapper">
+              Already have an account? 
+              <button 
+                type="button" 
+                class="jump-btn-link" 
+                id="link-jump-login"
+                onclick="switchToTab('login', true)"
+              >
+                SIGN IN
+              </button>
+            </p>
+
+          </form>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // =========================================================================
+    // STATE & DOM REFERENCES
+    // =========================================================================
+    let currentActiveTab = "login"; // 'login' or 'signup'
+    
+    const tabLogin = document.getElementById("tab-login");
+    const tabSignup = document.getElementById("tab-signup");
+    const tabs = [tabLogin, tabSignup];
+
+    const panelLogin = document.getElementById("panel-login");
+    const panelSignup = document.getElementById("panel-signup");
+    
+    const slidingThumb = document.getElementById("sliding-thumb");
+    const panelsTrack = document.getElementById("panels-track");
+    const cardMainTitle = document.getElementById("card-main-title");
+    const cardSubTitle = document.getElementById("card-sub-title");
+    const alertBanner = document.getElementById("alert-banner");
+    const alertMessage = document.getElementById("alert-message");
+
+    // =========================================================================
+    // STREAMLIT COMPONENT PROTOCOL & SIZING
+    // =========================================================================
+    function sendStreamlitMessage(type, payload = {}) {
+      window.parent.postMessage({
+        isStreamlitMessage: true,
+        type: type,
+        ...payload
+      }, "*");
+    }
+
+    function notifyFrameHeight() {
+      const cardHeight = document.getElementById("app-card").offsetHeight;
+      const totalHeight = cardHeight + 40;
+      sendStreamlitMessage("streamlit:setFrameHeight", { height: Math.max(totalHeight, 590) });
+    }
+
+    sendStreamlitMessage("streamlit:componentReady", { apiVersion: 1 });
+
+    window.addEventListener("message", (event) => {
+      if (event.data && event.data.type === "streamlit:render") {
+        const args = event.data.args || {};
+        if (args.error) {
+          showAlert(args.error, "error");
+        } else if (args.success) {
+          showAlert(args.success, "success");
+        }
+        notifyFrameHeight();
+      }
+    });
+
+    const resizeObserver = new ResizeObserver(() => {
+      notifyFrameHeight();
+    });
+    resizeObserver.observe(document.getElementById("app-card"));
+
+    // =========================================================================
+    // SLIDING THUMB & DIRECTIONAL PANEL TRANSITION
+    // =========================================================================
+    function switchToTab(targetTab, shouldFocusFirstField = false) {
+      if (targetTab === currentActiveTab && !shouldFocusFirstField) return;
+
+      currentActiveTab = targetTab;
+
+      if (targetTab === "login") {
+        tabLogin.setAttribute("aria-selected", "true");
+        tabLogin.setAttribute("tabindex", "0");
+        tabSignup.setAttribute("aria-selected", "false");
+        tabSignup.setAttribute("tabindex", "-1");
+
+        // Slide thumb to Left (0%)
+        slidingThumb.style.transform = "translateX(0%)";
+
+        // Slide track to 0% (Login panel enters from left)
+        panelLogin.removeAttribute("hidden");
+        panelsTrack.style.transform = "translateX(0%)";
+
+        cardMainTitle.textContent = "SIGN IN";
+        cardSubTitle.textContent = "ENTER YOUR CREDENTIALS";
+
+        setTimeout(() => {
+          if (currentActiveTab === "login") {
+            panelSignup.setAttribute("hidden", "true");
+            notifyFrameHeight();
+          }
+        }, 360);
+
+        if (shouldFocusFirstField) {
+          setTimeout(() => {
+            const firstField = document.getElementById("login-username");
+            if (firstField) firstField.focus();
+          }, 180);
+        }
+
+      } else {
+        // Target: signup
+        tabSignup.setAttribute("aria-selected", "true");
+        tabSignup.setAttribute("tabindex", "0");
+        tabLogin.setAttribute("aria-selected", "false");
+        tabLogin.setAttribute("tabindex", "-1");
+
+        // Slide thumb to Right (100%)
+        slidingThumb.style.transform = "translateX(100%)";
+
+        // Slide track to -50% (Signup panel enters from right)
+        panelSignup.removeAttribute("hidden");
+        panelsTrack.style.transform = "translateX(-50%)";
+
+        cardMainTitle.textContent = "CREATE ACCOUNT";
+        cardSubTitle.textContent = "ENTER YOUR DETAILS";
+
+        setTimeout(() => {
+          if (currentActiveTab === "signup") {
+            panelLogin.setAttribute("hidden", "true");
+            notifyFrameHeight();
+          }
+        }, 360);
+
+        if (shouldFocusFirstField) {
+          setTimeout(() => {
+            const firstField = document.getElementById("signup-username");
+            if (firstField) firstField.focus();
+          }, 180);
+        }
+      }
+
+      notifyFrameHeight();
+    }
+
+    // =========================================================================
+    // ACCESSIBLE TABLIST KEYBOARD NAVIGATION (ARROW KEYS, HOME, END)
+    // =========================================================================
+    tabLogin.addEventListener("click", () => switchToTab("login", false));
+    tabSignup.addEventListener("click", () => switchToTab("signup", false));
+
+    const authTablist = document.getElementById("auth-tablist");
+    authTablist.addEventListener("keydown", (e) => {
+      const activeIdx = tabs.indexOf(document.activeElement);
+      if (activeIdx === -1) return;
+
+      let newIdx = null;
+
+      switch (e.key) {
+        case "ArrowRight":
+        case "ArrowDown":
+          e.preventDefault();
+          newIdx = (activeIdx + 1) % tabs.length;
+          break;
+
+        case "ArrowLeft":
+        case "ArrowUp":
+          e.preventDefault();
+          newIdx = (activeIdx - 1 + tabs.length) % tabs.length;
+          break;
+
+        case "Home":
+          e.preventDefault();
+          newIdx = 0;
+          break;
+
+        case "End":
+          e.preventDefault();
+          newIdx = tabs.length - 1;
+          break;
+
+        default:
+          return;
+      }
+
+      if (newIdx !== null) {
+        const targetTabElement = tabs[newIdx];
+        targetTabElement.focus();
+        const targetMode = targetTabElement.id === "tab-login" ? "login" : "signup";
+        switchToTab(targetMode, false);
+      }
+    });
+
+    // =========================================================================
+    // PASSWORD SHOW/HIDE TOGGLE
+    // =========================================================================
+    function togglePasswordVisibility(inputId, toggleBtnId) {
+      const input = document.getElementById(inputId);
+      const btn = document.getElementById(toggleBtnId);
+      if (!input || !btn) return;
+
+      if (input.type === "password") {
+        input.type = "text";
+        btn.textContent = "HIDE";
+        btn.setAttribute("aria-label", "Hide password");
+      } else {
+        input.type = "password";
+        btn.textContent = "SHOW";
+        btn.setAttribute("aria-label", "Show password");
+      }
+    }
+
+    // =========================================================================
+    // ALERTS & NOTIFICATIONS
+    // =========================================================================
+    function showAlert(msg, type = "error") {
+      alertMessage.textContent = msg;
+      alertBanner.className = "alert-banner " + type;
+      alertBanner.style.display = "block";
+      notifyFrameHeight();
+    }
+
+    function hideAlert() {
+      alertBanner.style.display = "none";
+      notifyFrameHeight();
+    }
+
+    // =========================================================================
+    // FORM SUBMISSIONS & STREAMLIT COMMUNICATION
+    // =========================================================================
+    function handleLoginSubmit(event) {
+      event.preventDefault();
+      hideAlert();
+
+      const username = document.getElementById("login-username").value.trim();
+      const password = document.getElementById("login-password").value;
+
+      if (!username || !password) {
+        showAlert("Please fill in both email/username and password.", "error");
+        return;
+      }
+
+      sendStreamlitMessage("streamlit:setComponentValue", {
+        value: {
+          action: "login",
+          username: username,
+          password: password,
+          timestamp: Date.now()
+        }
+      });
+    }
+
+    function handleSignupSubmit(event) {
+      event.preventDefault();
+      hideAlert();
+
+      const username = document.getElementById("signup-username").value.trim();
+      const password = document.getElementById("signup-password").value;
+
+      if (!username || !password) {
+        showAlert("Please choose a username and password.", "error");
+        return;
+      }
+
+      sendStreamlitMessage("streamlit:setComponentValue", {
+        value: {
+          action: "signup",
+          username: username,
+          password: password,
+          timestamp: Date.now()
+        }
+      });
+    }
+
+    function handleDemoLogin() {
+      hideAlert();
+      sendStreamlitMessage("streamlit:setComponentValue", {
+        value: {
+          action: "demo",
+          timestamp: Date.now()
+        }
+      });
+    }
+
+    window.addEventListener("load", () => {
+      notifyFrameHeight();
+    });
+  </script>
+</body>
+</html>
