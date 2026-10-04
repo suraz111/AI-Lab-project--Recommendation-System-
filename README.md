@@ -66,16 +66,29 @@ Recommendation-System/
 
 ## ⚡ Quick Start
 
-### Prerequisites
+### Option A: Run in GitHub Codespaces (One-Click)
 
-- **Python 3.9+** (tested on Python 3.14)
+Click the button below to open this project directly in a cloud environment where all dependencies are pre-installed:
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/suraz111/AI-Lab-project--Recommendation-System-)
+
+Once the Codespace loads, simply run:
+```bash
+streamlit run app.py
+```
+
+---
+
+### Option B: Local Setup
+
+#### Prerequisites
+- **Python 3.9+** (tested on Python 3.11 & 3.14)
 - **pip** (Python package manager)
 
-### 1. Clone the Repository
-
+#### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/Recommendation-System.git
-cd Recommendation-System
+git clone https://github.com/suraz111/AI-Lab-project--Recommendation-System-.git
+cd AI-Lab-project--Recommendation-System-
 ```
 
 ### 2. Install Dependencies
