@@ -72,9 +72,10 @@ Click the button below to open this project directly in a cloud environment wher
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/suraz111/AI-Lab-project--Recommendation-System-)
 
-Once the Codespace loads, simply run:
+Once the Codespace loads, run:
 ```bash
-streamlit run app.py
+pip install -r requirements.txt
+python -m streamlit run app.py
 ```
 
 ---
