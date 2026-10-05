@@ -584,11 +584,11 @@ st.markdown("""
     }
 
     /* =========================================================================
-       SAFFRON ORANGE & BALANCING TEAL (PRODUCTS & LIFESTYLE DOMAIN)
-       Saffron orange drives shopping intent and warmth; Teal balances the CTA
+       MINIMAL LIGHT GRAY & BALANCING TEAL (PRODUCTS & LIFESTYLE DOMAIN)
+       Sleek light gray structure with vibrant Balancing Teal Buy CTA
        ========================================================================= */
     .product-marquis {
-        background: linear-gradient(135deg, #FF7A00 0%, #E65100 100%) !important;
+        background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%) !important;
         border: 2.5px solid #000000 !important;
         box-shadow: 4px 4px 0px #000000 !important;
         padding: 14px 20px !important;
@@ -611,7 +611,7 @@ st.markdown("""
     .product-card {
         background: #FFFFFF !important;
         border: 2px solid #000000 !important;
-        border-top: 5px solid #FF7A00 !important;
+        border-top: 5px solid #9CA3AF !important;
         box-shadow: 4px 4px 0px #000000 !important;
         border-radius: 0px !important;
         padding: 1.15rem 1.35rem !important;
@@ -622,7 +622,7 @@ st.markdown("""
 
     .product-card:hover {
         transform: translate(-2px, -2px) !important;
-        box-shadow: 6px 6px 0px #FF7A00 !important;
+        box-shadow: 6px 6px 0px #0D9488 !important;
     }
 
     .product-title {
@@ -637,13 +637,13 @@ st.markdown("""
     .product-title a {
         color: #000000 !important;
         text-decoration: underline !important;
-        text-decoration-color: #FF7A00 !important;
+        text-decoration-color: #9CA3AF !important;
         text-decoration-thickness: 2px !important;
         transition: color 0.15s ease, text-decoration-color 0.15s ease !important;
     }
 
     .product-title a:hover {
-        color: #E65100 !important;
+        color: #0D9488 !important;
         text-decoration-color: #0D9488 !important;
     }
 
@@ -652,8 +652,8 @@ st.markdown("""
         font-family: 'Space Grotesk', sans-serif !important;
         font-size: 0.8rem !important;
         font-weight: 900 !important;
-        color: #FFFFFF !important;
-        background: linear-gradient(135deg, #FF7A00 0%, #E65100 100%) !important;
+        color: #111827 !important;
+        background: #E5E7EB !important;
         padding: 0.25rem 0.7rem !important;
         border-radius: 0px !important;
         border: 1.5px solid #000000 !important;
@@ -669,9 +669,9 @@ st.markdown("""
         font-weight: 800 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.04em !important;
-        background: #FFF3E0 !important;
-        color: #D84315 !important;
-        border: 1.5px solid #FF7A00 !important;
+        background: #F3F4F6 !important;
+        color: #1F2937 !important;
+        border: 1.5px solid #9CA3AF !important;
         margin-right: 0.35rem !important;
         margin-bottom: 0.3rem !important;
     }
@@ -683,9 +683,9 @@ st.markdown("""
         font-weight: 700 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.04em !important;
-        background: #F3F4F6 !important;
-        color: #1F2937 !important;
-        border: 1.5px solid #000000 !important;
+        background: #FFFFFF !important;
+        color: #4B5563 !important;
+        border: 1.5px solid #D1D5DB !important;
         margin-right: 0.35rem !important;
         margin-bottom: 0.3rem !important;
     }
@@ -694,20 +694,20 @@ st.markdown("""
         font-family: 'Space Grotesk', sans-serif !important;
         font-size: 1.05rem !important;
         font-weight: 900 !important;
-        color: #E65100 !important;
+        color: #111827 !important;
         letter-spacing: -0.01em !important;
         margin-left: 0.4rem !important;
     }
 
     .product-reason-box {
-        background: #FFFDF9 !important;
+        background: #F9FAFB !important;
         border: 1.5px solid #000000 !important;
-        border-left: 5px solid #FF7A00 !important;
+        border-left: 5px solid #9CA3AF !important;
         padding: 0.7rem 0.9rem !important;
         margin-top: 0.75rem !important;
         font-size: 0.84rem !important;
         font-weight: 500 !important;
-        color: #2D2319 !important;
+        color: #1F2937 !important;
         line-height: 1.45 !important;
     }
 
@@ -735,7 +735,7 @@ st.markdown("""
         background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%) !important;
         color: #FFFFFF !important;
         transform: translate(-1px, -1px) !important;
-        box-shadow: 4px 4px 0px #FF7A00 !important;
+        box-shadow: 4px 4px 0px #000000 !important;
     }
 
     /* Product Category Selection Bar (btn_pcat_) */
@@ -750,8 +750,8 @@ st.markdown("""
     }
 
     div[class*="st-key-btn_pcat_"] button[kind="primary"] {
-        background: linear-gradient(135deg, #FF7A00 0%, #E65100 100%) !important;
-        color: #FFFFFF !important;
+        background: #E5E7EB !important;
+        color: #111827 !important;
         border: 2px solid #000000 !important;
         box-shadow: 3.5px 3.5px 0px #000000 !important;
         font-weight: 900 !important;
@@ -766,9 +766,9 @@ st.markdown("""
     }
 
     div[class*="st-key-btn_pcat_"] button[kind="secondary"]:hover {
-        background: #FFF3E0 !important;
-        color: #E65100 !important;
-        border-color: #FF7A00 !important;
+        background: #F3F4F6 !important;
+        color: #111827 !important;
+        border-color: #000000 !important;
         box-shadow: 3px 3px 0px #000000 !important;
     }
 
@@ -786,9 +786,9 @@ st.markdown("""
 
     div[class*="st-key-s_p_"] button:hover,
     div[class*="st-key-l_p_"] button:hover {
-        background: #FFF3E0 !important;
-        border-color: #FF7A00 !important;
-        color: #E65100 !important;
+        background: #F3F4F6 !important;
+        border-color: #000000 !important;
+        color: #0D9488 !important;
         box-shadow: 3px 3px 0px #0D9488 !important;
     }
 
@@ -798,7 +798,7 @@ st.markdown("""
     div[class*="st-key-input_product_query"] label,
     div[class*="st-key-p_budget"] label,
     div[class*="st-key-p_s"] label {
-        color: #E65100 !important;
+        color: #374151 !important;
         font-family: 'Space Grotesk', sans-serif !important;
         font-weight: 800 !important;
         font-size: 0.82rem !important;
@@ -821,29 +821,29 @@ st.markdown("""
     div[class*="st-key-input_product_query"] input:focus,
     div[class*="st-key-sb_product_category"] [data-baseweb="select"] > div:focus-within,
     div[class*="st-key-sb_product_brand"] [data-baseweb="select"] > div:focus-within {
-        border-color: #FF7A00 !important;
+        border-color: #0D9488 !important;
         box-shadow: 2.5px 2.5px 0px #0D9488 !important;
     }
 
     div[class*="st-key-p_budget"] [data-baseweb="slider"] div[role="slider"],
     div[class*="st-key-p_s"] [data-baseweb="slider"] div[role="slider"] {
         background-color: #FFFFFF !important;
-        border: 2.5px solid #FF7A00 !important;
-        box-shadow: 2px 2px 0px #0D9488 !important;
+        border: 2.5px solid #0D9488 !important;
+        box-shadow: 2px 2px 0px #000000 !important;
     }
 
     div[class*="st-key-p_budget"] [data-testid="stThumbValue"],
     div[class*="st-key-p_s"] [data-testid="stThumbValue"] {
-        color: #E65100 !important;
+        color: #0D9488 !important;
         font-weight: 900 !important;
         font-family: 'Space Grotesk', sans-serif !important;
     }
 
     /* Product Reset Button */
     div[class*="st-key-btn_reset_p_filters"] button {
-        background: #FFF3E0 !important;
-        color: #E65100 !important;
-        border: 2px solid #FF7A00 !important;
+        background: #F3F4F6 !important;
+        color: #111827 !important;
+        border: 2px solid #000000 !important;
         box-shadow: 2.5px 2.5px 0px #000000 !important;
         font-weight: 800 !important;
         font-size: 0.78rem !important;
@@ -855,21 +855,21 @@ st.markdown("""
     }
 
     div[class*="st-key-btn_reset_p_filters"] button:hover {
-        background: #FF7A00 !important;
-        color: #FFFFFF !important;
+        background: #E5E7EB !important;
+        color: #000000 !important;
         border-color: #000000 !important;
         box-shadow: 3.5px 3.5px 0px #0D9488 !important;
     }
 
     div[class*="st-key-btn_reset_p_filters"] button:hover * {
-        color: #FFFFFF !important;
+        color: #000000 !important;
     }
 
     /* Quick Feature Chips in Product Filter */
     div[class*="st-key-pchip_"] button {
-        background: #FFFDF9 !important;
-        color: #000000 !important;
-        border: 1.5px solid #FF7A00 !important;
+        background: #FFFFFF !important;
+        color: #111827 !important;
+        border: 1.5px solid #9CA3AF !important;
         font-size: 0.76rem !important;
         font-weight: 700 !important;
         padding: 0.3rem 0.5rem !important;
@@ -900,14 +900,14 @@ st.markdown("""
     }
 
     div[class*="st-key-pchip_"] button:hover {
-        background: #FF7A00 !important;
-        color: #FFFFFF !important;
+        background: #E5E7EB !important;
+        color: #111827 !important;
         border-color: #000000 !important;
         box-shadow: 3px 3px 0px #0D9488 !important;
     }
 
     div[class*="st-key-pchip_"] button:hover * {
-        color: #FFFFFF !important;
+        color: #111827 !important;
     }
 
     /* =========================================================================
@@ -2028,7 +2028,7 @@ with tabs[0]:
     st.markdown("""
     <div class="product-card" style="margin-bottom:1.2rem;">
         <span class="tag-product-match">96.8% MATCH</span>
-        <div style="font-size:0.75rem; color:#E65100; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🎧 AUDIO PICK</div>
+        <div style="font-size:0.75rem; color:#4B5563; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🎧 AUDIO PICK</div>
         <div class="product-title"><a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank">boAt Nirvana Ion ANC ↗</a></div>
         <div style="margin:0.4rem 0 0.5rem 0;">
             <span class="tag-product-brand">boAt</span>
@@ -2045,7 +2045,7 @@ with tabs[0]:
     st.markdown("""
     <div class="product-card" style="margin-bottom:1.2rem;">
         <span class="tag-product-match">97.4% MATCH</span>
-        <div style="font-size:0.75rem; color:#E65100; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">⌚ WATCH PICK</div>
+        <div style="font-size:0.75rem; color:#4B5563; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">⌚ WATCH PICK</div>
         <div class="product-title"><a href="https://www.titan.co.in/shop/watches" target="_blank">Titan Octane Mechanical Automatic Watch ↗</a></div>
         <div style="margin:0.4rem 0 0.5rem 0;">
             <span class="tag-product-brand">Titan</span>
@@ -2062,7 +2062,7 @@ with tabs[0]:
     st.markdown("""
     <div class="product-card" style="margin-bottom:1.2rem;">
         <span class="tag-product-match">96.5% MATCH</span>
-        <div style="font-size:0.75rem; color:#E65100; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🌸 FRAGRANCE PICK</div>
+        <div style="font-size:0.75rem; color:#4B5563; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🌸 FRAGRANCE PICK</div>
         <div class="product-title"><a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank">Titan Skinn Raw Eau De Parfum (100ml) ↗</a></div>
         <div style="margin:0.4rem 0 0.5rem 0;">
             <span class="tag-product-brand">Titan Skinn</span>
@@ -2401,9 +2401,9 @@ with tabs[2]:
         f_top1, f_top2 = st.columns([4, 1.2])
         with f_top1:
             st.markdown(f"""
-            <div style="background:linear-gradient(135deg, #FFF8F0 0%, #FFF3E0 100%); border:2.5px solid #000000; border-left:8px solid #FF7A00; box-shadow:4px 4px 0px #000000; padding:10px 16px; margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center;">
+            <div style="background:linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%); border:2.5px solid #000000; border-left:8px solid #9CA3AF; box-shadow:4px 4px 0px #000000; padding:10px 16px; margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center;">
                 <div>
-                    <span style="background:#FF7A00; color:#FFFFFF; font-size:0.65rem; font-weight:900; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1px solid #000000;">📌 SAVED PRODUCT IN FOCUS</span>
+                    <span style="background:#E5E7EB; color:#111827; font-size:0.65rem; font-weight:900; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1px solid #000000;">📌 SAVED PRODUCT IN FOCUS</span>
                     <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">{focused['title']}</span>
                 </div>
                 <div>
@@ -2415,7 +2415,7 @@ with tabs[2]:
             st.button("Clear Focus ✕", key="clr_focus_p", width="stretch", on_click=clear_product_focus)
 
     # Quick Product Category Bar
-    st.markdown("<div style='font-size:0.8rem; font-weight:800; font-family:\"Space Grotesk\"; color:#E65100; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;'>🛍️ SELECT PRODUCT CATEGORY</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size:0.8rem; font-weight:800; font-family:\"Space Grotesk\"; color:#4B5563; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;'>🛍️ SELECT PRODUCT CATEGORY</div>", unsafe_allow_html=True)
     all_categories = product_engine.get_categories()
     
     current_cat = st.session_state.get("selected_product_category", "All")
@@ -2450,12 +2450,12 @@ with tabs[2]:
 
     with p_f_col:
         st.markdown("""
-        <div style="background:linear-gradient(135deg, #FF7A00 0%, #E65100 100%); border:2px solid #000000; box-shadow:3px 3px 0px #000000; padding:10px 14px; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
+        <div style="background:linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%); border:2px solid #000000; box-shadow:3px 3px 0px #000000; padding:10px 14px; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
             <div>
-                <div style="font-family:'Space Grotesk'; font-size:0.95rem; font-weight:900; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.06em;">
+                <div style="font-family:'Space Grotesk'; font-size:0.95rem; font-weight:900; color:#111827; text-transform:uppercase; letter-spacing:0.06em;">
                     🛍️ PRODUCT FILTERS
                 </div>
-                <div style="font-size:0.68rem; font-weight:800; color:#FFE8D6; text-transform:uppercase; letter-spacing:0.08em;">
+                <div style="font-size:0.68rem; font-weight:800; color:#4B5563; text-transform:uppercase; letter-spacing:0.08em;">
                     CURATION ENGINE
                 </div>
             </div>
@@ -2484,7 +2484,7 @@ with tabs[2]:
         p_query = st.text_input("Feature Search", placeholder="e.g. ceramic slim, mechanical, oud, noise cancellation", key="input_product_query")
 
         # Quick feature inspiration tags
-        st.markdown("<div style='font-size:0.75rem; font-weight:800; font-family:\"Space Grotesk\"; color:#E65100; text-transform:uppercase; letter-spacing:0.06em; margin-top:0.6rem; margin-bottom:0.35rem;'>⚡ POPULAR FEATURES</div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size:0.75rem; font-weight:800; font-family:\"Space Grotesk\"; color:#4B5563; text-transform:uppercase; letter-spacing:0.06em; margin-top:0.6rem; margin-bottom:0.35rem;'>⚡ POPULAR FEATURES</div>", unsafe_allow_html=True)
         feat_chips = ["Ceramic Slim", "Automatic", "Oud Wood", "Noise Cancelling", "Ergonomic", "Waterproof"]
         fc_cols = st.columns(2)
         for i, f_txt in enumerate(feat_chips):
@@ -2498,10 +2498,10 @@ with tabs[2]:
     with p_r_col:
         if chosen_cat == "Watches":
             st.markdown("""
-            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #FF7A00; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #9CA3AF; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#FF7A00; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">⌚ WATCHES</span>
+                        <span style="background:#E5E7EB; color:#111827; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">⌚ WATCHES</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Iconic Horology & Modern Smartwatches</span>
                     </div>
                     <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">11 Titles</span>
@@ -2513,10 +2513,10 @@ with tabs[2]:
             """, unsafe_allow_html=True)
         elif chosen_cat == "Fragrance":
             st.markdown("""
-            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #FF7A00; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #9CA3AF; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#FF7A00; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🌸 FRAGRANCES</span>
+                        <span style="background:#E5E7EB; color:#111827; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🌸 FRAGRANCES</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Luxury Perfumes, Mists & Natural Attars</span>
                     </div>
                     <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">10 Titles</span>
@@ -2528,10 +2528,10 @@ with tabs[2]:
             """, unsafe_allow_html=True)
         elif chosen_cat == "Audio":
             st.markdown("""
-            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #FF7A00; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #9CA3AF; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#FF7A00; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🎧 AUDIO</span>
+                        <span style="background:#E5E7EB; color:#111827; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🎧 AUDIO</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">High-Fidelity Audio & Wireless ANC</span>
                     </div>
                     <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">Premium Picks</span>
@@ -2543,10 +2543,10 @@ with tabs[2]:
             """, unsafe_allow_html=True)
         elif chosen_cat == "Wearables":
             st.markdown("""
-            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #FF7A00; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #9CA3AF; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#FF7A00; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">📱 WEARABLES</span>
+                        <span style="background:#E5E7EB; color:#111827; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">📱 WEARABLES</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">AMOLED Smartwatches & Fitness Trackers</span>
                     </div>
                     <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">Top Tech</span>
@@ -2558,10 +2558,10 @@ with tabs[2]:
             """, unsafe_allow_html=True)
         elif chosen_cat == "Desk Setup":
             st.markdown("""
-            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #FF7A00; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #9CA3AF; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#FF7A00; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🖥️ DESK SETUP</span>
+                        <span style="background:#E5E7EB; color:#111827; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🖥️ DESK SETUP</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Productivity Essentials & Minimalist Workspace</span>
                     </div>
                     <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">Curated</span>
@@ -2580,7 +2580,7 @@ with tabs[2]:
             top_n=top_n_p
         )
 
-        st.markdown(f"<div style='font-size:0.85rem; font-weight:800; text-transform:uppercase; color:#E65100; letter-spacing:0.05em; margin-bottom:0.8rem;'>Showing Top {len(p_recs)} results in {chosen_cat}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='font-size:0.85rem; font-weight:800; text-transform:uppercase; color:#4B5563; letter-spacing:0.05em; margin-bottom:0.8rem;'>Showing Top {len(p_recs)} results in {chosen_cat}</div>", unsafe_allow_html=True)
 
         for p in p_recs:
             p_url = p.get("url") or f"https://www.amazon.in/s?k={urllib.parse.quote_plus(str(p.get('name', '')))}"
