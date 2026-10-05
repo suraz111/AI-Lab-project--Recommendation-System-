@@ -13,28 +13,24 @@
 
 ## 2. Design Aesthetics & Visual Tokens 🎨
 
-### Color System (Modern Dark Glassmorphism)
+### Domain-Specific Color Systems
 
-| Token Name | Hex Code | Visual Purpose |
-| :--- | :--- | :--- |
-| **Background Dark** | `#0F172A` | Deep Slate 900 canvas for high-contrast presentation |
-| **Surface Card** | `rgba(30, 41, 59, 0.7)` | Translucent glassmorphic card backdrop |
-| **Primary Gradient** | `#FF9933` → `#138808` → `#6366F1` | Brand header gradient (Saffron - Emerald - Electric Indigo) |
-| **Match Score Emerald** | `#10B981` | Highlights Top-N match percentage badge |
-| **Star Rating Gold** | `#F59E0B` | Rating stars & community score emphasis |
-| **Indian Brand Badge** | `#FEF3C7` / `#D97706` | Saffron-gold pill badge for Indian products & cinema industries |
-| **Category Pill** | `#EEF2FF` / `#4F46E5` | Soft indigo badge for genres & product categories |
+| Domain | Primary Accent | Secondary / Balance Accent | Design Intent |
+| :--- | :--- | :--- | :--- |
+| 🎬 **Movies & Cinema** | **Velvet Crimson** (`#7A0C24`) | **Antique Gold & Brass** (`#C5A059`) | Classic heritage theatre ambience, cinematic dignity |
+| 🛍️ **Products & Lifestyle** | **Saffron Orange** (`#FF7A00` / `#E65100`) | **Balancing Teal** (`#0D9488` / `#0F766E`) | Saffron warmth stimulates Indian shopping intent and discovery; Teal on the Buy CTA provides cooling harmony so the page never feels overheated |
+| 🎓 **Courses & Career** | **Electric Cobalt** (`#2563EB`) | **Amber Mint** (`#10B981`) | Academic focus, skill progression, clarity |
 
 ### Typography & Component Layout
 
-* **Main Header:** 2.4rem bold gradient text with sub-headline context.
+* **Paper Canvas Base:** High-contrast `#FDFBF7` canvas with stark black ink borders (`2px solid #000000`) and offset box shadows (`4px 4px 0px #000000`).
 * **Navigation:** Custom styled Streamlit Tabs with custom active indicator line.
-* **Item Cards:** 
-  * Border: `1px solid rgba(255, 255, 255, 0.1)`
-  * Border Radius: `14px`
-  * Padding: `1.25rem`
-  * Hover state: Soft border glow and 2px lift transition.
-* **Explanation Box:** Accent box with left border `4px solid #10B981` explaining *Why Recommended*.
+* **Product Cards (`.product-card`):**
+  * Border: `2px solid #000000` with `5px solid #FF7A00` Saffron top accent.
+  * Padding: `1.15rem 1.35rem`
+  * Hover state: `6px 6px 0px #FF7A00` Saffron glow with 2px lift transition.
+* **Buy CTA (`.product-buy-btn`):** Deep Balancing Teal gradient (`#0D9488` → `#0F766E`) with white text and black ink border, casting a warm Saffron shadow on hover.
+* **Explanation Box (`.product-reason-box`):** Warm ivory box with `5px solid #FF7A00` left border explaining recommendation context and AI rationale.
 
 ---
 
