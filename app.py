@@ -12,6 +12,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import urllib.parse
+import html
 
 from models import MovieRecommender, ProductRecommender, CourseRecommender
 import database as db
@@ -23,7 +24,7 @@ st.set_page_config(
     page_title="RECOM.ai — Intelligence Engine",
     page_icon="⚡",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
 # Stark High-Contrast Brutalist Theme
@@ -35,16 +36,73 @@ st.markdown("""
         font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Core Palette: High-Contrast Stark Monochrome (#F4F4F6 Canvas, #FFFFFF Cards, #000000 Borders & Accents) */
+    /* Core Palette: Paper and Signal (#FDFBF7 Warm Paper Canvas, #FFFFFF Cards, #000000 Borders & Ink) */
     .stApp {
-        background-color: #F4F4F6 !important;
+        background-color: #FDFBF7 !important;
         color: #000000 !important;
     }
 
-    /* Main Container Padding */
-    .main .block-container {
-        padding-top: 1.8rem !important;
-        max-width: 1200px !important;
+    /* Header background transparency while preserving sidebar controls */
+    header[data-testid="stHeader"],
+    div[data-testid="stHeader"],
+    .stAppHeader {
+        background: transparent !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    /* Ensure sidebar collapse & expand buttons remain visible and clickable */
+    [data-testid="stSidebarCollapseButton"],
+    [data-testid="stSidebarCollapsedControl"],
+    [data-testid="stSidebarCollapsedControl"] button,
+    [data-testid="stSidebarHeader"] button {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 999999 !important;
+    }
+
+    .main, section.main, .stMain {
+        padding-top: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    /* Main Container Padding - Placed cleanly at the top of the browser window */
+    .main .block-container,
+    div[data-testid="stMainBlockContainer"],
+    [data-testid="block-container"],
+    .block-container {
+        padding-top: 1.2rem !important;
+        margin-top: 0rem !important;
+        max-width: 1240px !important;
+    }
+
+    /* Top Header Logout Button Accent */
+    div[class*="st-key-top_logout_btn"] button {
+        background: linear-gradient(135deg, #E11D48 0%, #991B1B 100%) !important;
+        color: #FFFFFF !important;
+        border: 2px solid #000000 !important;
+        box-shadow: 3.5px 3.5px 0px #000000 !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 800 !important;
+        font-size: 0.78rem !important;
+        letter-spacing: 0.05em !important;
+        text-transform: uppercase !important;
+        padding: 0.5rem 0.5rem !important;
+        min-height: auto !important;
+        transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+    }
+
+    div[class*="st-key-top_logout_btn"] button * {
+        color: #FFFFFF !important;
+        font-weight: 800 !important;
+    }
+
+    div[class*="st-key-top_logout_btn"] button:hover {
+        background: linear-gradient(135deg, #F43F5E 0%, #E11D48 100%) !important;
+        transform: translate(-1px, -1px) !important;
+        box-shadow: 4.5px 4.5px 0px #000000 !important;
     }
 
     /* Top Header Portal Navigation Bar */
@@ -53,9 +111,9 @@ st.markdown("""
         justify-content: space-between;
         align-items: center;
         padding: 0.95rem 1.6rem;
-        background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-        border: 2.5px solid #000000;
-        box-shadow: 5px 5px 0px #000000;
+        background: #FFFFFF !important;
+        border: 2.5px solid #000000 !important;
+        box-shadow: 4px 4px 0px #000000 !important;
         border-radius: 0px;
         margin-bottom: 1.6rem;
     }
@@ -63,9 +121,7 @@ st.markdown("""
     .portal-brand {
         font-size: 1.25rem;
         font-weight: 800;
-        background: linear-gradient(90deg, #38BDF8 0%, #818CF8 50%, #C084FC 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #000000 !important;
         text-transform: uppercase;
         letter-spacing: 0.06em;
     }
@@ -74,7 +130,7 @@ st.markdown("""
         font-size: 0.82rem;
         font-weight: 800;
         color: #FFFFFF !important;
-        background: linear-gradient(90deg, #38BDF8 0%, #6366F1 100%);
+        background: #000000 !important;
         padding: 0.35rem 0.85rem;
         border-radius: 0px;
         border: 2px solid #000000;
@@ -168,11 +224,372 @@ st.markdown("""
     }
 
     /* =========================================================================
+       VELVET & BRASS THEATRE THEME (MOVIES & CINEMA DOMAIN)
+       ========================================================================= */
+    .cinema-marquis {
+        background: linear-gradient(135deg, #7A0C24 0%, #4D0717 100%);
+        border: 2.5px solid #C5A059;
+        box-shadow: 4px 4px 0px #1A050B;
+        padding: 14px 20px;
+        margin-bottom: 1.3rem;
+    }
+
+    .cinema-card {
+        background-color: #FFFFFF !important;
+        border: 2px solid #1A050B !important;
+        border-top: 5px solid #7A0C24 !important;
+        box-shadow: 4px 4px 0px #1A050B !important;
+        border-radius: 0px !important;
+        padding: 1.15rem 1.25rem !important;
+        margin-bottom: 0.65rem !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    .cinema-card:hover {
+        transform: translate(-2px, -2px) !important;
+        box-shadow: 6px 6px 0px #C5A059 !important;
+    }
+
+    /* Velvet & Brass: Movie Card Poster Layout */
+    .cinema-card-body {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 1.25rem !important;
+        align-items: stretch !important;
+    }
+
+    .cinema-poster-frame {
+        flex-shrink: 0 !important;
+        width: 120px !important;
+        height: 180px !important;
+        aspect-ratio: 2 / 3 !important;
+        background: linear-gradient(135deg, #7A0C24 0%, #3B0511 100%) !important;
+        border: 2px solid #1A050B !important;
+        box-shadow: 3px 3px 0px #C5A059 !important;
+        overflow: hidden !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .cinema-poster-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        display: block !important;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .cinema-card:hover .cinema-poster-img {
+        transform: scale(1.05) !important;
+    }
+
+    .cinema-info-col {
+        flex-grow: 1 !important;
+        min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
+    @media (max-width: 680px) {
+        .cinema-card-body {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+        }
+        .cinema-poster-frame {
+            width: 140px !important;
+            height: 210px !important;
+            margin-bottom: 0.75rem !important;
+        }
+        .cinema-info-col {
+            width: 100% !important;
+        }
+    }
+
+    .tag-cinema-industry {
+        display: inline-block;
+        padding: 0.2rem 0.65rem;
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        background: #7A0C24;
+        color: #FAF5E8;
+        border: 1.5px solid #1A050B;
+        margin-right: 0.35rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .tag-cinema-genre {
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        background: #FAF6EE;
+        color: #1A050B;
+        border: 1.5px solid #1A050B;
+        margin-right: 0.35rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .tag-cinema-match {
+        float: right;
+        font-size: 0.82rem;
+        font-weight: 900;
+        color: #1A050B;
+        background: #C5A059;
+        padding: 0.25rem 0.7rem;
+        border-radius: 0px;
+        border: 1.5px solid #1A050B;
+        box-shadow: 2px 2px 0px #1A050B;
+        letter-spacing: 0.04em;
+    }
+
+    .cinema-reason-box {
+        background: #FAF6EE;
+        border: 1.5px solid #1A050B;
+        border-left: 5px solid #7A0C24;
+        padding: 0.7rem 0.9rem;
+        margin-top: 0.75rem;
+        font-size: 0.84rem;
+        font-weight: 500;
+        color: #1A050B;
+        line-height: 1.45;
+    }
+
+    .cinema-buy-btn {
+        display: inline-block !important;
+        width: 100% !important;
+        text-align: center !important;
+        background: linear-gradient(135deg, #7A0C24 0%, #540919 100%) !important;
+        color: #FAF5E8 !important;
+        border: 2px solid #C5A059 !important;
+        padding: 0.4rem 0.65rem !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-size: 0.78rem !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        text-decoration: none !important;
+        box-shadow: 3px 3px 0px #1A050B !important;
+        transition: all 0.2s ease !important;
+        cursor: pointer !important;
+    }
+
+    .cinema-buy-btn:hover {
+        background: #C5A059 !important;
+        color: #1A050B !important;
+        border-color: #1A050B !important;
+        box-shadow: 4px 4px 0px #1A050B !important;
+    }
+
+    /* Velvet & Brass: Active Cinema Industry Filter Buttons */
+    div[class*="st-key-btn_cat_"] button[kind="primary"],
+    div[class*="st-key-btn_cat_"] button[data-testid="stBaseButton-primary"] {
+        background: linear-gradient(135deg, #7A0C24 0%, #540919 100%) !important;
+        color: #FAF5E8 !important;
+        border: 2px solid #C5A059 !important;
+        box-shadow: 3.5px 3.5px 0px #1A050B !important;
+        font-weight: 800 !important;
+    }
+
+    div[class*="st-key-btn_cat_"] button[kind="primary"] * {
+        color: #FAF5E8 !important;
+        font-weight: 800 !important;
+    }
+
+    div[class*="st-key-btn_cat_"] button[kind="secondary"],
+    div[class*="st-key-btn_cat_"] button[data-testid="stBaseButton-secondary"] {
+        background: #FFFFFF !important;
+        color: #1A050B !important;
+        border: 2px solid #1A050B !important;
+        box-shadow: 2px 2px 0px #1A050B !important;
+        font-weight: 700 !important;
+    }
+
+    div[class*="st-key-btn_cat_"] button[kind="secondary"]:hover {
+        background: #FAF6EE !important;
+        color: #7A0C24 !important;
+        border-color: #C5A059 !important;
+    }
+
+    /* Velvet & Brass: Cinema Card Action Buttons */
+    div[class*="st-key-s_m_"] button,
+    div[class*="st-key-l_m_"] button {
+        background: #FFFFFF !important;
+        color: #1A050B !important;
+        border: 2px solid #1A050B !important;
+        box-shadow: 2px 2px 0px #1A050B !important;
+        font-weight: 800 !important;
+        font-size: 0.78rem !important;
+        padding: 0.35rem 0.5rem !important;
+    }
+
+    div[class*="st-key-s_m_"] button:hover,
+    div[class*="st-key-l_m_"] button:hover {
+        background: #FAF6EE !important;
+        border-color: #C5A059 !important;
+        color: #7A0C24 !important;
+    }
+
+    /* Velvet & Brass: Cinema Filter Box Office Console & Widgets */
+    div[class*="st-key-sb_movie_industry"] label,
+    div[class*="st-key-m_genres"] label,
+    div[class*="st-key-input_movie_query"] label,
+    div[class*="st-key-m_s"] label,
+    div[class*="st-key-m_alpha"] label {
+        color: #7A0C24 !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 800 !important;
+        font-size: 0.82rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+    }
+
+    /* Velvet Multiselect Chips / Tags in Cinema Tab */
+    div[class*="st-key-m_genres"] div[data-baseweb="tag"],
+    div[class*="st-key-m_genres"] span[data-baseweb="tag"] {
+        background: linear-gradient(135deg, #7A0C24 0%, #5A0819 100%) !important;
+        color: #FAF5E8 !important;
+        border: 1.5px solid #C5A059 !important;
+        border-radius: 0px !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 0.74rem !important;
+        letter-spacing: 0.03em !important;
+        padding: 2px 6px !important;
+        box-shadow: 1.5px 1.5px 0px #1A050B !important;
+    }
+
+    div[class*="st-key-m_genres"] div[data-baseweb="tag"] span,
+    div[class*="st-key-m_genres"] div[data-baseweb="tag"] div {
+        color: #FAF5E8 !important;
+    }
+
+    div[class*="st-key-m_genres"] div[data-baseweb="tag"] svg {
+        fill: #FAF5E8 !important;
+        color: #FAF5E8 !important;
+    }
+
+    /* Cinema Inputs and Selects border focus */
+    div[class*="st-key-sb_movie_industry"] [data-baseweb="select"] > div,
+    div[class*="st-key-m_genres"] [data-baseweb="select"] > div,
+    div[class*="st-key-input_movie_query"] input {
+        background-color: #FFFFFF !important;
+        border: 2px solid #1A050B !important;
+        border-radius: 0px !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 700 !important;
+        color: #1A050B !important;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+    }
+
+    div[class*="st-key-sb_movie_industry"] [data-baseweb="select"] > div:focus-within,
+    div[class*="st-key-m_genres"] [data-baseweb="select"] > div:focus-within,
+    div[class*="st-key-input_movie_query"] input:focus {
+        border-color: #7A0C24 !important;
+        box-shadow: 2.5px 2.5px 0px #C5A059 !important;
+    }
+
+    /* Velvet Sliders Track and Thumb */
+    div[class*="st-key-m_s"] [data-baseweb="slider"] div[role="slider"],
+    div[class*="st-key-m_alpha"] [data-baseweb="slider"] div[role="slider"] {
+        background-color: #FAF5E8 !important;
+        border: 2.5px solid #7A0C24 !important;
+        box-shadow: 2px 2px 0px #C5A059 !important;
+    }
+
+    div[class*="st-key-m_s"] [data-testid="stThumbValue"],
+    div[class*="st-key-m_alpha"] [data-testid="stThumbValue"] {
+        color: #7A0C24 !important;
+        font-weight: 900 !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+    }
+
+    /* Cinema Reset Button */
+    div[class*="st-key-btn_reset_m_filters"] button {
+        background: #FAF6EE !important;
+        color: #7A0C24 !important;
+        border: 2px solid #7A0C24 !important;
+        box-shadow: 2.5px 2.5px 0px #1A050B !important;
+        font-weight: 800 !important;
+        font-size: 0.78rem !important;
+        letter-spacing: 0.05em !important;
+        text-transform: uppercase !important;
+        padding: 0.4rem 0.6rem !important;
+        margin-top: 0.5rem !important;
+        transition: all 0.2s ease !important;
+    }
+
+    div[class*="st-key-btn_reset_m_filters"] button:hover {
+        background: #7A0C24 !important;
+        color: #FAF5E8 !important;
+        border-color: #1A050B !important;
+        box-shadow: 3.5px 3.5px 0px #C5A059 !important;
+    }
+
+    div[class*="st-key-btn_reset_m_filters"] button:hover * {
+        color: #FAF5E8 !important;
+    }
+
+    /* Quick Keyword Chips in Cinema Filter */
+    div[class*="st-key-mchip_"] button {
+        background: #FAF6EE !important;
+        color: #1A050B !important;
+        border: 1.5px solid #C5A059 !important;
+        font-size: 0.76rem !important;
+        font-weight: 700 !important;
+        padding: 0.3rem 0.5rem !important;
+        border-radius: 0px !important;
+        box-shadow: 2px 2px 0px #1A050B !important;
+        letter-spacing: 0.02em !important;
+        min-height: 32px !important;
+        line-height: 1.25 !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    div[class*="st-key-mchip_"] button *,
+    div[class*="st-key-mchip_"] button p,
+    div[class*="st-key-mchip_"] button span {
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        word-break: keep-all !important;
+        font-size: 0.76rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    div[class*="st-key-mchip_"] button:hover {
+        background: #7A0C24 !important;
+        color: #FAF5E8 !important;
+        border-color: #1A050B !important;
+        box-shadow: 3px 3px 0px #C5A059 !important;
+    }
+
+    div[class*="st-key-mchip_"] button:hover * {
+        color: #FAF5E8 !important;
+    }
+
+    /* =========================================================================
        HIGH-CONTRAST STARK NAVIGATION TAB BAR (REACT-ARIA & BASEWEB COMPATIBLE)
        ========================================================================= */
     div[data-testid="stTabs"],
     .stTabs {
         width: 100% !important;
+        margin-top: 1.2rem !important;
         margin-bottom: 1.5rem !important;
     }
 
@@ -513,7 +930,7 @@ st.markdown("""
 
     /* High-Contrast Sidebar Styling */
     section[data-testid="stSidebar"] {
-        background-color: #FFFFFF !important;
+        background-color: #FDFBF7 !important;
         border-right: 3px solid #000000 !important;
         box-shadow: 5px 0px 0px #000000 !important;
     }
@@ -748,10 +1165,22 @@ if "focused_saved_item" not in st.session_state:
     st.session_state.focused_saved_item = None
 if "input_movie_query" not in st.session_state:
     st.session_state["input_movie_query"] = ""
+if "selected_movie_industry" not in st.session_state:
+    st.session_state["selected_movie_industry"] = "All"
+if "sb_movie_industry" not in st.session_state:
+    st.session_state["sb_movie_industry"] = "All"
+if "m_genres" not in st.session_state:
+    st.session_state["m_genres"] = []
+if "m_s" not in st.session_state:
+    st.session_state["m_s"] = 5
+if "m_alpha" not in st.session_state:
+    st.session_state["m_alpha"] = 0.6
 if "input_product_query" not in st.session_state:
     st.session_state["input_product_query"] = ""
 if "input_course_query" not in st.session_state:
     st.session_state["input_course_query"] = ""
+if "overview_domain_selectbox" not in st.session_state:
+    st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
 
 TAB_OPTIONS = [
     "🏠 Overview",
@@ -773,10 +1202,13 @@ CATEGORY_TAB_MAP = {
     "Courses": "🎓 Courses & Skills",
 }
 
-# Model Loader (Auto-invalidates cache when clean CSV files are updated)
+# Model Loader (Auto-invalidates cache when clean CSV files or model codes are updated)
 @st.cache_resource
-def get_engines_v2(movies_mtime, products_mtime, courses_mtime):
-    m = MovieRecommender()
+def get_engines_v3(movies_mtime, products_mtime, courses_mtime, code_mtime):
+    import importlib
+    import models.movie_rec
+    importlib.reload(models.movie_rec)
+    m = models.movie_rec.MovieRecommender()
     p = ProductRecommender()
     c = CourseRecommender()
     return m, p, c
@@ -929,24 +1361,42 @@ if st.session_state.user_id is None:
 m_csv = "data/cleaned/movies_clean.csv"
 p_csv = "data/cleaned/products_clean.csv"
 c_csv = "data/cleaned/courses_clean.csv"
-movie_engine, product_engine, course_engine = get_engines_v2(
+rec_code = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models", "movie_rec.py")
+movie_engine, product_engine, course_engine = get_engines_v3(
     os.path.getmtime(m_csv) if os.path.exists(m_csv) else 0,
     os.path.getmtime(p_csv) if os.path.exists(p_csv) else 0,
     os.path.getmtime(c_csv) if os.path.exists(c_csv) else 0,
+    os.path.getmtime(rec_code) if os.path.exists(rec_code) else 0,
 )
 
-# Top Navigation Bar
-nav_col1, nav_col2, nav_col3 = st.columns([3, 1.2, 0.8])
-with nav_col1:
-    st.markdown('<div class="portal-nav"><span class="portal-brand">⚡ RECOM.AI</span> <span style="color:#94A3B8; font-weight:700; font-size:0.8rem; margin-left:0.6rem; text-transform:uppercase; letter-spacing:0.05em;">• MULTI-DOMAIN INTELLIGENCE</span></div>', unsafe_allow_html=True)
-with nav_col2:
-    st.markdown(f'<div style="text-align:right; margin-top:0.4rem;"><span class="portal-user-tag">👤 @{st.session_state.username}</span></div>', unsafe_allow_html=True)
-with nav_col3:
-    if st.button("LOG OUT", width="stretch"):
-        st.session_state.user_id = None
-        st.session_state.username = None
-        st.session_state["portal_tabs"] = "🏠 Overview"
-        st.rerun()
+# Top Header Navigation Bar (Placed at the very top edge with vibrant color palette)
+header_col1, header_col2 = st.columns([2.5, 1.5], gap="small")
+with header_col1:
+    st.markdown('''
+        <div style="display:flex; align-items:center; gap:12px; background:linear-gradient(135deg, #0F172A 0%, #1E1B4B 100%); border:2.5px solid #000000; box-shadow:4px 4px 0px #000000; padding:10px 18px; margin-bottom:1.2rem;">
+            <span style="font-weight:900; font-size:1.35rem; letter-spacing:0.08em; background:linear-gradient(90deg, #FF2E93 0%, #FF8A00 50%, #FFD600 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-family:'Space Grotesk';">⚡ RECOM.AI</span>
+            <span style="background:linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%); color:#FFFFFF; font-size:0.65rem; font-weight:800; padding:3px 9px; letter-spacing:0.06em; text-transform:uppercase; border:1.5px solid #000000; box-shadow:2px 2px 0px #000000;">PORTAL</span>
+            <span style="color:#94A3B8; font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.05em;">• MULTI-DOMAIN INTELLIGENCE ENGINE</span>
+        </div>
+    ''', unsafe_allow_html=True)
+
+with header_col2:
+    u_col1, u_col2 = st.columns([1.3, 1], gap="small")
+    with u_col1:
+        st.markdown(f'''
+            <div style="background:linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); color:#FFFFFF; border:2.5px solid #000000; box-shadow:3.5px 3.5px 0px #000000; padding:9.5px 12px; text-align:center; font-weight:800; font-size:0.8rem; font-family:'Space Grotesk'; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:1.2rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                👤 @{st.session_state.username}
+            </div>
+        ''', unsafe_allow_html=True)
+    with u_col2:
+        if st.button("LOG OUT", key="top_logout_btn", width="stretch"):
+            st.session_state.user_id = None
+            st.session_state.username = None
+            st.session_state["portal_tabs"] = "🏠 Overview"
+            st.rerun()
+
+# Explicit Spacing Gap Between Top Header Banner and Tab Navigation Bar
+st.markdown('<div style="margin-bottom: 1.8rem;"></div>', unsafe_allow_html=True)
 
 # Sidebar: Saved Bookmarks Drawer
 with st.sidebar:
@@ -1006,12 +1456,59 @@ with st.sidebar:
 # Safe Tab Switching Callback (Runs before widgets are instantiated on rerun)
 def set_active_tab(tab_name, industry=None, category=None):
     st.session_state["portal_tabs"] = tab_name
+    st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
     if industry:
         st.session_state["selected_movie_industry"] = industry
         st.session_state["sb_movie_industry"] = industry
     if category:
         st.session_state["selected_product_category"] = category
         st.session_state["sb_product_category"] = category
+
+# Dropdown Domain Select Callback (Runs before widgets are instantiated on rerun)
+def on_overview_domain_select():
+    selected = st.session_state.get("overview_domain_selectbox")
+    if selected and selected != "🏠 Overview Hub — (Select a Domain below)":
+        st.session_state["portal_tabs"] = selected
+        st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
+
+# Safe Callbacks for Movies & Cinema Domain (Run before widgets instantiate)
+def clear_movie_focus():
+    st.session_state.focused_saved_item = None
+    st.session_state["input_movie_query"] = ""
+
+def set_cinema_industry(ind):
+    st.session_state["selected_movie_industry"] = ind
+    st.session_state["sb_movie_industry"] = ind
+    st.session_state["input_movie_query"] = ""
+
+def on_cinema_industry_change():
+    st.session_state["selected_movie_industry"] = st.session_state.get("sb_movie_industry", "All")
+
+def set_movie_query_theme(theme_text):
+    st.session_state["input_movie_query"] = theme_text
+
+def reset_cinema_filters():
+    st.session_state["sb_movie_industry"] = "All"
+    st.session_state["selected_movie_industry"] = "All"
+    st.session_state["m_genres"] = []
+    st.session_state["input_movie_query"] = ""
+    st.session_state["m_s"] = 5
+    st.session_state["m_alpha"] = 0.6
+
+# Always ensure overview selectbox is reset to the default Overview option when navigating away
+if st.session_state.get("portal_tabs") != "🏠 Overview":
+    st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
+
+# Conditionally hide top navigation bar when on Overview page
+if st.session_state.get("portal_tabs", "🏠 Overview") == "🏠 Overview":
+    st.markdown("""
+    <style>
+        div[data-testid="stTabs"] [role="tablist"],
+        .stTabs [role="tablist"] {
+            display: none !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
 
 # Main Minimalist Tabs
 tabs = st.tabs(TAB_OPTIONS, key="portal_tabs", on_change="rerun")
@@ -1020,20 +1517,37 @@ tabs = st.tabs(TAB_OPTIONS, key="portal_tabs", on_change="rerun")
 # TAB 0: OVERVIEW
 # -------------------------------------------------------------------------
 with tabs[0]:
+    st.markdown('<div style="display:flex;height:8px;margin-bottom:1rem"><span style="flex:1;background:#B3123B"></span><span style="flex:1;background:#FF8A00"></span><span style="flex:1;background:#3B5BFF"></span></div>', unsafe_allow_html=True)
     st.markdown("<h2 style='font-family:\"Space Grotesk\"; text-transform:uppercase; font-size:1.8rem; font-weight:700; margin-bottom:0.2rem;'>WELCOME BACK</h2>", unsafe_allow_html=True)
     st.markdown("<p style='color:#555555; font-size:0.9rem; font-weight:600; text-transform:uppercase; margin-bottom:1.2rem;'>Select a domain below or use the navigation tabs to generate personalized recommendations.</p>", unsafe_allow_html=True)
+
+    # ---------------------------------------------------------
+    # SELECT DOMAIN DROPDOWN SELECTOR INSIDE OVERVIEW
+    # ---------------------------------------------------------
+    st.markdown("<div style='font-family:\"Space Grotesk\"; text-transform:uppercase; font-size:0.85rem; font-weight:800; color:#000000; letter-spacing:0.08em; margin-bottom:0.4rem;'>📌 SELECT A DOMAIN TO EXPLORE</div>", unsafe_allow_html=True)
+    
+    st.selectbox(
+        "Select Domain",
+        options=["🏠 Overview Hub — (Select a Domain below)"] + TAB_OPTIONS[1:],
+        index=0,
+        key="overview_domain_selectbox",
+        on_change=on_overview_domain_select,
+        label_visibility="collapsed"
+    )
+
+    st.markdown("<div style='margin-bottom:1.6rem;'></div>", unsafe_allow_html=True)
 
     # ---------------------------------------------------------
     # VERTICAL DOMAIN CARDS (SCROLL DOWN SEQUENCE)
     # ---------------------------------------------------------
     st.markdown("<div style='font-family:\"Space Grotesk\"; text-transform:uppercase; font-size:0.85rem; font-weight:800; color:#555555; letter-spacing:0.08em; margin-bottom:0.8rem;'>EXPLORE RECOMMENDATION DOMAINS</div>", unsafe_allow_html=True)
 
-    # Vertical Card 1: Cinema Hub
+    # Vertical Card 1: Cinema Hub (Domain 01: Crimson #B3123B)
     st.markdown("""
-    <div class="min-card" style="margin-bottom:0.8rem;">
+    <div class="min-card" style="border-top:5px solid #B3123B !important; margin-bottom:0.8rem;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span style="font-size:0.75rem; color:#555555; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🎬 DOMAIN 01</span>
-            <span class="tag-accent" style="margin:0;">CINEMA & ENTERTAINMENT</span>
+            <span style="font-size:0.75rem; color:#B3123B; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🎬 DOMAIN 01</span>
+            <span style="background:#B3123B; color:#FFFFFF; font-size:0.72rem; font-weight:800; padding:3px 8px; text-transform:uppercase; border:1.5px solid #000000; margin:0;">CINEMA & ENTERTAINMENT</span>
         </div>
         <div style="font-size:1.35rem; font-weight:800; color:#000000; text-transform:uppercase; font-family:'Space Grotesk'; margin:0.2rem 0 0.4rem 0;">Cinema Hub</div>
         <p style="font-size:0.88rem; color:#333333; line-height:1.6; margin-bottom:0.6rem;">
@@ -1057,12 +1571,12 @@ with tabs[0]:
 
     st.markdown("<div style='margin-bottom:1.6rem;'></div>", unsafe_allow_html=True)
 
-    # Vertical Card 2: Indian Brands E-Commerce & Lifestyle
+    # Vertical Card 2: Indian Brands E-Commerce & Lifestyle (Domain 02: Saffron #FF8A00)
     st.markdown("""
-    <div class="min-card" style="margin-bottom:0.8rem;">
+    <div class="min-card" style="border-top:5px solid #FF8A00 !important; margin-bottom:0.8rem;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span style="font-size:0.75rem; color:#555555; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🛍️ DOMAIN 02</span>
-            <span class="tag-accent" style="margin:0;">INDIAN E-COMMERCE & LIFESTYLE</span>
+            <span style="font-size:0.75rem; color:#FF8A00; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🛍️ DOMAIN 02</span>
+            <span style="background:#FF8A00; color:#FFFFFF; font-size:0.72rem; font-weight:800; padding:3px 8px; text-transform:uppercase; border:1.5px solid #000000; margin:0;">INDIAN E-COMMERCE & LIFESTYLE</span>
         </div>
         <div style="font-size:1.35rem; font-weight:800; color:#000000; text-transform:uppercase; font-family:'Space Grotesk'; margin:0.2rem 0 0.4rem 0;">Indian Brands Hub</div>
         <p style="font-size:0.88rem; color:#333333; line-height:1.6; margin-bottom:0.6rem;">
@@ -1090,12 +1604,12 @@ with tabs[0]:
 
     st.markdown("<div style='margin-bottom:1.6rem;'></div>", unsafe_allow_html=True)
 
-    # Vertical Card 3: Career & Skills
+    # Vertical Card 3: Career & Skills (Domain 03: Blue #3B5BFF)
     st.markdown("""
-    <div class="min-card" style="margin-bottom:0.8rem;">
+    <div class="min-card" style="border-top:5px solid #3B5BFF !important; margin-bottom:0.8rem;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span style="font-size:0.75rem; color:#555555; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🎓 DOMAIN 03</span>
-            <span class="tag-accent" style="margin:0;">CAREER EDUCATION</span>
+            <span style="font-size:0.75rem; color:#3B5BFF; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🎓 DOMAIN 03</span>
+            <span style="background:#3B5BFF; color:#FFFFFF; font-size:0.72rem; font-weight:800; padding:3px 8px; text-transform:uppercase; border:1.5px solid #000000; margin:0;">CAREER EDUCATION</span>
         </div>
         <div style="font-size:1.35rem; font-weight:800; color:#000000; text-transform:uppercase; font-family:'Space Grotesk'; margin:0.2rem 0 0.4rem 0;">Career & Skill Pathways</div>
         <p style="font-size:0.88rem; color:#333333; line-height:1.6; margin-bottom:0.6rem;">
@@ -1234,32 +1748,66 @@ with tabs[0]:
     """, unsafe_allow_html=True)
 
 # -------------------------------------------------------------------------
-# TAB 1: MOVIES
+# TAB 1: MOVIES & CINEMA (VELVET & BRASS THEATRE THEME)
 # -------------------------------------------------------------------------
 with tabs[1]:
+    # Velvet and Brass Theatre Marquis Header
+    st.markdown("""
+    <div class="cinema-marquis">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <span style="font-size:1.5rem;">🎭</span>
+                <div>
+                    <div style="font-family:'Space Grotesk'; font-size:1.35rem; font-weight:900; color:#FAF5E8; text-transform:uppercase; letter-spacing:0.06em; line-height:1.15;">
+                        THEATRE & CINEMA REPERTOIRE
+                    </div>
+                    <div style="font-size:0.75rem; font-weight:800; color:#C5A059; text-transform:uppercase; letter-spacing:0.1em; margin-top:3px;">
+                        VELVET ARCHIVE • CURATED WORLD & SOUTH ASIAN CINEMA
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span style="background:#C5A059; color:#1A050B; font-weight:900; font-size:0.68rem; padding:4px 10px; border:1.5px solid #1A050B; box-shadow:2px 2px 0px #1A050B; text-transform:uppercase; letter-spacing:0.06em;">
+                    🏛️ DOMAIN 01: CINEMA
+                </span>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
     focused = st.session_state.get("focused_saved_item")
     if focused and focused.get("category", "").lower() in ["movie", "movies"]:
         f_top1, f_top2 = st.columns([4, 1.2])
         with f_top1:
+            f_poster = ""
+            f_fallback = ""
+            f_id = focused.get("id")
+            if f_id:
+                try:
+                    f_poster, f_fallback = movie_engine.get_poster(int(f_id), focused.get("title", ""), "Cinema", 4.5)
+                except Exception:
+                    pass
+            poster_thumb_html = f'<div style="width:44px; height:64px; flex-shrink:0; border:1.5px solid #C5A059; overflow:hidden; box-shadow:2px 2px 0px #1A050B; background:#1A050B;"><img src="{f_poster or f_fallback}" style="width:100%; height:100%; object-fit:cover;" onerror="this.onerror=null; this.src=\'{f_fallback}\';" /></div>' if (f_poster or f_fallback) else ''
+
             st.markdown(f"""
-            <div style="background:#FFFFFF; border:2.5px solid #000000; box-shadow:4px 4px 0px #000000; padding:10px 16px; margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <span style="background:#000000; color:#FFFFFF; font-size:0.65rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px;">📌 SAVED MOVIE IN FOCUS</span>
-                    <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">{focused['title']}</span>
+            <div style="background:linear-gradient(135deg, #7A0C24 0%, #4D0717 100%); border:2.5px solid #C5A059; box-shadow:4px 4px 0px #1A050B; padding:10px 16px; margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center; gap:12px;">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    {poster_thumb_html}
+                    <div>
+                        <span style="background:#C5A059; color:#1A050B; font-size:0.65rem; font-weight:900; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1px solid #1A050B;">📌 SAVED MOVIE IN FOCUS</span>
+                        <div style="font-weight:900; font-size:1.05rem; color:#FAF5E8; text-transform:uppercase; font-family:'Space Grotesk'; margin-top:4px;">{focused['title']}</div>
+                    </div>
                 </div>
                 <div>
-                    <a href="{focused.get('url', '#')}" target="_blank" class="buy-btn" style="padding:6px 14px; font-size:0.75rem;">🎬 Watch Online ↗</a>
+                    <a href="{focused.get('url', '#')}" target="_blank" class="cinema-buy-btn" style="padding:6px 14px; font-size:0.75rem;">🎬 Watch Online ↗</a>
                 </div>
             </div>
             """, unsafe_allow_html=True)
         with f_top2:
-            if st.button("Clear Focus ✕", key="clr_focus_m", width="stretch"):
-                st.session_state.focused_saved_item = None
-                st.session_state["input_movie_query"] = ""
-                st.rerun()
+            st.button("Clear Focus ✕", key="clr_focus_m", width="stretch", on_click=clear_movie_focus)
 
     # Quick Industry / Category Bar
-    st.markdown("<div style='font-size:0.8rem; font-weight:800; font-family:\"Space Grotesk\"; color:#555555; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;'>SELECT MOVIE INDUSTRY / CATEGORY</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size:0.8rem; font-weight:800; font-family:\"Space Grotesk\"; color:#7A0C24; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;'>🎭 SELECT MOVIE INDUSTRY / CATEGORY</div>", unsafe_allow_html=True)
     all_industries = movie_engine.get_industries()
     
     current_ind = st.session_state.get("selected_movie_industry", "All")
@@ -1283,45 +1831,105 @@ with tabs[1]:
             
             is_active = (current_ind == ind)
             btn_type = "primary" if is_active else "secondary"
-            if st.button(btn_label, key=f"btn_cat_{ind}", width="stretch", type=btn_type):
-                st.session_state["selected_movie_industry"] = ind
-                st.session_state["sb_movie_industry"] = ind
-                st.session_state["input_movie_query"] = ""
-                st.rerun()
+            st.button(btn_label, key=f"btn_cat_{ind}", width="stretch", type=btn_type, on_click=set_cinema_industry, args=(ind,))
 
     st.markdown("<div style='margin-bottom:1.1rem;'></div>", unsafe_allow_html=True)
 
-    f_col, r_col = st.columns([1, 2.5])
+    f_col, r_col = st.columns([1.1, 2.4])
 
     with f_col:
-        st.markdown("<div style='font-size:0.9rem; font-weight:700; font-family:\"Space Grotesk\"; color:#000000; text-transform:uppercase; margin-bottom:0.6rem;'>FILTERS</div>", unsafe_allow_html=True)
-        if "sb_movie_industry" not in st.session_state or st.session_state["sb_movie_industry"] not in all_industries:
-            st.session_state["sb_movie_industry"] = current_ind
+        st.markdown("""
+        <div style="background:linear-gradient(135deg, #7A0C24 0%, #4D0717 100%); border:2px solid #C5A059; box-shadow:3px 3px 0px #1A050B; padding:10px 14px; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <span style="background:#C5A059; color:#1A050B; font-size:0.62rem; font-weight:900; padding:2px 7px; text-transform:uppercase; letter-spacing:0.08em; border:1px solid #1A050B; margin-right:6px;">THEATRE</span>
+                <span style="font-family:'Space Grotesk'; font-weight:900; font-size:0.9rem; color:#FAF5E8; text-transform:uppercase; letter-spacing:0.06em;">CURATION CONSOLE</span>
+            </div>
+            <span style="font-size:0.85rem; color:#C5A059;">🎛️</span>
+        </div>
+        """, unsafe_allow_html=True)
 
         chosen_industry = st.selectbox(
-            "Industry",
+            "🎭 Cinema Industry",
             all_industries,
-            key="sb_movie_industry"
+            key="sb_movie_industry",
+            on_change=on_cinema_industry_change
         )
         st.session_state["selected_movie_industry"] = chosen_industry
 
-        chosen_genres = st.multiselect("Genres (optional filter)", movie_engine.get_genres(), default=[])
-        movie_query = st.text_input("Search Plot / Keywords", placeholder="e.g. space exploration, bank heist, kathmandu, revenge", key="input_movie_query")
-        top_n_m = st.slider("Results", 3, 10, 5, key="m_s")
-        alpha_m = st.slider("Content vs Rating Weight", 0.0, 1.0, 0.6)
+        chosen_genres = st.multiselect(
+            "🎬 Filter by Genre(s)",
+            movie_engine.get_genres(),
+            key="m_genres"
+        )
+
+        movie_query = st.text_input(
+            "🔍 Plot Keywords / Themes",
+            placeholder="e.g. heist, kathmandu, revenge, sci-fi...",
+            key="input_movie_query"
+        )
+
+        # Quick keyword chips for instant discovery - 6 curated themes
+        if chosen_industry == "Nepali Cinema":
+            quick_chips = ["Kathmandu", "Loot", "Mustang", "Berlinale", "Pashupati", "White Sun"]
+        elif chosen_industry == "Bollywood":
+            quick_chips = ["Underworld", "Romance", "Mafia", "Revenge", "Heist", "Dacoit"]
+        elif chosen_industry == "Tollywood":
+            quick_chips = ["Revenge", "Action", "Mythology", "Family", "Hero", "Empire"]
+        elif chosen_industry == "Hollywood":
+            quick_chips = ["Space", "Heist", "Mafia", "Sci-Fi", "Detective", "Thriller"]
+        else:
+            quick_chips = ["Kathmandu", "Heist", "Underworld", "Space", "Revenge", "Romance"]
+
+        st.markdown("<div style='font-size:0.68rem; font-weight:800; color:#7A0C24; text-transform:uppercase; letter-spacing:0.04em; margin-top:-0.3rem; margin-bottom:0.35rem;'>⚡ Quick Themes:</div>", unsafe_allow_html=True)
+        for row_start in range(0, len(quick_chips), 2):
+            row_items = quick_chips[row_start : row_start + 2]
+            row_cols = st.columns(2)
+            for c_offset, chip in enumerate(row_items):
+                with row_cols[c_offset]:
+                    st.button(
+                        chip,
+                        key=f"mchip_{chosen_industry}_{row_start + c_offset}",
+                        width="stretch",
+                        on_click=set_movie_query_theme,
+                        args=(chip,)
+                    )
+
+        st.markdown("<div style='margin-bottom:0.8rem;'></div>", unsafe_allow_html=True)
+
+        top_n_m = st.slider("🎞️ Recommendations Count", min_value=3, max_value=12, key="m_s")
+
+        alpha_m = st.slider("⚖️ Algorithm Tuning (Plot vs Rating)", min_value=0.0, max_value=1.0, step=0.05, key="m_alpha")
+        st.markdown(f"""
+        <div style="background:#FAF6EE; border:1.5px solid #1A050B; border-left:4px solid #C5A059; padding:5px 9px; margin-top:-0.35rem; margin-bottom:0.85rem; font-size:0.72rem; color:#1A050B; display:flex; justify-content:space-between; align-items:center;">
+            <span>📖 <strong>Plot Match:</strong> {int(round(alpha_m*100))}%</span>
+            <span style="color:#C5A059; font-weight:900;">•</span>
+            <span>⭐ <strong>Critic Score:</strong> {int(round((1-alpha_m)*100))}%</span>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # Reset button if any filter is active
+        has_active_filters = (
+            chosen_industry != "All" or 
+            len(chosen_genres) > 0 or 
+            bool(movie_query and movie_query.strip()) or 
+            alpha_m != 0.6 or 
+            top_n_m != 5
+        )
+        if has_active_filters:
+            st.button("↺ Reset All Cinema Filters", key="btn_reset_m_filters", width="stretch", on_click=reset_cinema_filters)
 
     with r_col:
         if chosen_industry == "Nepali Cinema":
             st.markdown("""
-            <div style="background:#FFFFFF; border:2.5px solid #000000; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:linear-gradient(135deg, #6B0F24 0%, #4A0817 100%); border:2.5px solid #C5A059; box-shadow:4px 4px 0px #1A050B; padding:14px 20px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#000000; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px;">🏔️ NEPALI CINEMA</span>
-                        <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Curated Nepali Masterpieces & Cult Classics</span>
+                        <span style="background:#C5A059; color:#1A050B; font-size:0.68rem; font-weight:900; padding:3px 9px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1px solid #1A050B;">🏔️ SPOTLIGHT</span>
+                        <span style="font-weight:900; font-size:1.05rem; color:#FAF5E8; text-transform:uppercase; font-family:'Space Grotesk';">Curated Nepali Masterpieces & Cult Classics</span>
                     </div>
-                    <span style="font-size:0.75rem; font-weight:800; color:#000000; background:#FFF3C4; border:1.5px solid #000000; padding:2px 8px;">18 Titles</span>
+                    <span style="font-size:0.75rem; font-weight:900; color:#1A050B; background:#C5A059; border:1.5px solid #1A050B; padding:2px 9px;">18 Titles</span>
                 </div>
-                <div style="font-size:0.82rem; color:#444444; margin-top:6px; line-height:1.5;">
+                <div style="font-size:0.84rem; color:#E8D8B8; margin-top:8px; line-height:1.55;">
                     Featuring Kathmandu underworld heists (<em>Loot</em>), Mustang romances (<em>Kabaddi</em>), Pashupatinath realism (<em>Pashupati Prasad</em>), to Berlinale & Venice festival selections (<em>Shambhala</em>, <em>Kalo Pothi</em>, <em>White Sun</em>).
                 </div>
             </div>
@@ -1335,36 +1943,83 @@ with tabs[1]:
             alpha=alpha_m
         )
 
-        st.markdown(f"<div style='font-size:0.85rem; font-weight:700; text-transform:uppercase; color:#555555; margin-bottom:0.8rem;'>Showing Top {len(recs)} results in {chosen_industry}</div>", unsafe_allow_html=True)
+        if not recs:
+            st.markdown(f"""
+            <div style="background:#FAF6EE; border:2px dashed #7A0C24; padding:2rem; text-align:center; margin-top:0.8rem; box-shadow:3px 3px 0px #1A050B;">
+                <div style="font-size:2rem; margin-bottom:0.4rem;">🎭</div>
+                <div style="font-family:'Space Grotesk'; font-size:1.05rem; font-weight:900; color:#7A0C24; text-transform:uppercase; letter-spacing:0.04em;">No Matches Found in Curated Archive</div>
+                <div style="font-size:0.85rem; color:#555555; margin-top:0.4rem; max-width:440px; margin-left:auto; margin-right:auto; line-height:1.5;">
+                    No titles match your specific combination of genre filters and keywords in <strong>{chosen_industry}</strong>. Try clearing genres or adjusting the plot search query.
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown(f"""
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.9rem; padding-bottom:0.4rem; border-bottom:1.5px dashed #C5A059;">
+                <div style="font-size:0.86rem; font-weight:800; font-family:'Space Grotesk'; text-transform:uppercase; color:#7A0C24; letter-spacing:0.04em;">
+                    NOW SCREENING &bull; TOP {len(recs)} SELECTIONS IN {chosen_industry.upper()}
+                </div>
+                <div style="font-size:0.72rem; font-weight:800; background:#FAF6EE; color:#7A0C24; border:1px solid #C5A059; padding:2px 8px; letter-spacing:0.04em; text-transform:uppercase;">
+                    HYBRID THEATRE ENGINE
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
 
         for m in recs:
-            genres_html = " ".join([f'<span class="tag-neutral">{g}</span>' for g in m["genres"][:4]])
+            genres_html = " ".join([f'<span class="tag-cinema-genre">{g}</span>' for g in m["genres"][:4]])
             m_url = m.get("url") or f"https://www.google.com/search?q={urllib.parse.quote_plus(str(m.get('title', '')) + ' movie watch online')}"
+            poster_src = m.get("poster_url") or m.get("fallback_poster") or ""
+            fallback_src = m.get("fallback_poster") or ""
+            if not str(poster_src).startswith("data:"):
+                p_url, p_fb = movie_engine.get_poster(m['id'], m['title'], m.get('industry', 'Cinema'), m.get('rating', 4.5))
+                poster_src = p_url if str(p_url).startswith("data:") else p_fb
+            if not str(fallback_src).startswith("data:"):
+                fallback_src = poster_src
+            safe_title = html.escape(str(m.get('title', '')))
+
             st.markdown(f"""
-            <div class="min-card">
-                <span class="tag-match">{m['match_score']}% MATCH</span>
-                <div class="item-title"><a href="{m_url}" target="_blank" style="color:#000000; text-decoration:underline;">{m['title']} ↗</a></div>
-                <div style="margin-top:0.4rem;">
-                    <span class="tag-accent">{m['industry']}</span>
-                    {genres_html}
-                    <span style="font-size:0.85rem; color:#000000; margin-left:0.4rem; font-weight:700;">★ {m['rating']:.1f}</span>
-                    <span style="font-size:0.75rem; color:#666666;">({m['rating_count']} ratings)</span>
+            <div class="cinema-card">
+                <div class="cinema-card-body">
+                    <div class="cinema-poster-frame">
+                        <img src="{poster_src}" 
+                             class="cinema-poster-img" 
+                             loading="lazy" 
+                             referrerpolicy="no-referrer" 
+                             onerror="this.onerror=null; this.src='{fallback_src}';" 
+                             alt="{safe_title}" />
+                    </div>
+                    <div class="cinema-info-col">
+                        <div>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                                <div class="item-title" style="margin-bottom:0.25rem;">
+                                    <a href="{m_url}" target="_blank" style="color:#1A050B; text-decoration:none; font-family:'Space Grotesk'; font-weight:800; font-size:1.12rem;">{safe_title} <span style="font-size:0.85rem; color:#7A0C24;">↗</span></a>
+                                </div>
+                                <span class="tag-cinema-match">{m['match_score']}% MATCH</span>
+                            </div>
+                            <div style="margin-top:0.35rem; display:flex; flex-wrap:wrap; align-items:center; gap:6px;">
+                                <span class="tag-cinema-industry">{m['industry']}</span>
+                                {genres_html}
+                                <span style="font-size:0.85rem; color:#C5A059; margin-left:0.3rem; font-weight:900;">★ {m['rating']:.1f}</span>
+                                <span style="font-size:0.75rem; color:#666666;">({m['rating_count']} ratings)</span>
+                            </div>
+                        </div>
+                        <div class="cinema-reason-box" style="margin-top:0.6rem;">{m['explanation']}</div>
+                    </div>
                 </div>
-                <div class="reason-box">{m['explanation']}</div>
             </div>
             """, unsafe_allow_html=True)
 
             b1, b2, b3, _ = st.columns([1, 1, 1.8, 3.2])
             with b1:
                 if st.button("🔖 Save", key=f"s_m_{m['id']}"):
-                    ok, msg = db.save_bookmark(st.session_state.user_id, "Movie", m['id'], m['title'], extra_info={"url": m_url})
+                    ok, msg = db.save_bookmark(st.session_state.user_id, "Movie", m['id'], m['title'], extra_info={"url": m_url, "poster_url": poster_src, "fallback_poster": fallback_src})
                     st.toast(msg)
             with b2:
                 if st.button("👍 Like", key=f"l_m_{m['id']}"):
                     db.save_feedback(st.session_state.user_id, "Movie", m['id'], "like")
                     st.toast(f"Liked {m['title']}!")
             with b3:
-                st.markdown(f'<a href="{m_url}" target="_blank" class="buy-btn">🎬 Watch Online ↗</a>', unsafe_allow_html=True)
+                st.markdown(f'<a href="{m_url}" target="_blank" class="cinema-buy-btn">🎬 Watch Online ↗</a>', unsafe_allow_html=True)
 
 # -------------------------------------------------------------------------
 # TAB 2: PRODUCTS
