@@ -584,11 +584,11 @@ st.markdown("""
     }
 
     /* =========================================================================
-       MINIMAL LIGHT GRAY & BALANCING TEAL (PRODUCTS & LIFESTYLE DOMAIN)
-       Sleek light gray structure with vibrant Balancing Teal Buy CTA
+       CHARCOAL SLATE GRAPHITE & BALANCING TEAL (PRODUCTS & LIFESTYLE DOMAIN)
+       Deep charcoal canvas provides supreme contrast and luxury polish
        ========================================================================= */
     .product-marquis {
-        background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%) !important;
+        background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%) !important;
         border: 2.5px solid #000000 !important;
         box-shadow: 4px 4px 0px #000000 !important;
         padding: 14px 20px !important;
@@ -611,7 +611,7 @@ st.markdown("""
     .product-card {
         background: #FFFFFF !important;
         border: 2px solid #000000 !important;
-        border-top: 5px solid #9CA3AF !important;
+        border-top: 5px solid #1E293B !important;
         box-shadow: 4px 4px 0px #000000 !important;
         border-radius: 0px !important;
         padding: 1.15rem 1.35rem !important;
@@ -637,7 +637,7 @@ st.markdown("""
     .product-title a {
         color: #000000 !important;
         text-decoration: underline !important;
-        text-decoration-color: #9CA3AF !important;
+        text-decoration-color: #1E293B !important;
         text-decoration-thickness: 2px !important;
         transition: color 0.15s ease, text-decoration-color 0.15s ease !important;
     }
@@ -652,8 +652,8 @@ st.markdown("""
         font-family: 'Space Grotesk', sans-serif !important;
         font-size: 0.8rem !important;
         font-weight: 900 !important;
-        color: #111827 !important;
-        background: #E5E7EB !important;
+        color: #FFFFFF !important;
+        background: #1E293B !important;
         padding: 0.25rem 0.7rem !important;
         border-radius: 0px !important;
         border: 1.5px solid #000000 !important;
@@ -669,9 +669,9 @@ st.markdown("""
         font-weight: 800 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.04em !important;
-        background: #F3F4F6 !important;
-        color: #1F2937 !important;
-        border: 1.5px solid #9CA3AF !important;
+        background: #F1F5F9 !important;
+        color: #1E293B !important;
+        border: 1.5px solid #94A3B8 !important;
         margin-right: 0.35rem !important;
         margin-bottom: 0.3rem !important;
     }
@@ -684,8 +684,8 @@ st.markdown("""
         text-transform: uppercase !important;
         letter-spacing: 0.04em !important;
         background: #FFFFFF !important;
-        color: #4B5563 !important;
-        border: 1.5px solid #D1D5DB !important;
+        color: #475569 !important;
+        border: 1.5px solid #CBD5E1 !important;
         margin-right: 0.35rem !important;
         margin-bottom: 0.3rem !important;
     }
@@ -694,20 +694,20 @@ st.markdown("""
         font-family: 'Space Grotesk', sans-serif !important;
         font-size: 1.05rem !important;
         font-weight: 900 !important;
-        color: #111827 !important;
+        color: #0F172A !important;
         letter-spacing: -0.01em !important;
         margin-left: 0.4rem !important;
     }
 
     .product-reason-box {
-        background: #F9FAFB !important;
+        background: #F8FAFC !important;
         border: 1.5px solid #000000 !important;
-        border-left: 5px solid #9CA3AF !important;
+        border-left: 5px solid #1E293B !important;
         padding: 0.7rem 0.9rem !important;
         margin-top: 0.75rem !important;
         font-size: 0.84rem !important;
         font-weight: 500 !important;
-        color: #1F2937 !important;
+        color: #1E293B !important;
         line-height: 1.45 !important;
     }
 
@@ -738,38 +738,61 @@ st.markdown("""
         box-shadow: 4px 4px 0px #000000 !important;
     }
 
-    /* Product Category Selection Bar (btn_pcat_) */
+    /* Product Category Selection Bar (btn_pcat_) — Anti-Truncation & Sharp Styling */
     div[class*="st-key-btn_pcat_"] button {
         font-family: 'Space Grotesk', sans-serif !important;
-        font-size: 0.78rem !important;
-        letter-spacing: 0.03em !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.01em !important;
         text-transform: uppercase !important;
         transition: all 0.15s ease !important;
-        padding: 0.4rem 0.6rem !important;
+        padding: 0.35rem 0.15rem !important;
         border-radius: 0px !important;
+        min-height: 38px !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    div[class*="st-key-btn_pcat_"] button *,
+    div[class*="st-key-btn_pcat_"] button p,
+    div[class*="st-key-btn_pcat_"] button span {
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        word-break: keep-all !important;
+        font-size: 0.72rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.01em !important;
     }
 
     div[class*="st-key-btn_pcat_"] button[kind="primary"] {
-        background: #E5E7EB !important;
-        color: #111827 !important;
+        background: #1E293B !important;
+        color: #FFFFFF !important;
         border: 2px solid #000000 !important;
         box-shadow: 3.5px 3.5px 0px #000000 !important;
         font-weight: 900 !important;
     }
 
+    div[class*="st-key-btn_pcat_"] button[kind="primary"] *,
+    div[class*="st-key-btn_pcat_"] button[kind="primary"] p,
+    div[class*="st-key-btn_pcat_"] button[kind="primary"] span {
+        color: #FFFFFF !important;
+    }
+
     div[class*="st-key-btn_pcat_"] button[kind="secondary"] {
         background: #FFFFFF !important;
-        color: #000000 !important;
+        color: #1E293B !important;
         border: 2px solid #000000 !important;
         box-shadow: 2px 2px 0px #000000 !important;
         font-weight: 700 !important;
     }
 
     div[class*="st-key-btn_pcat_"] button[kind="secondary"]:hover {
-        background: #F3F4F6 !important;
-        color: #111827 !important;
+        background: #F1F5F9 !important;
+        color: #0D9488 !important;
         border-color: #000000 !important;
-        box-shadow: 3px 3px 0px #000000 !important;
+        box-shadow: 3px 3px 0px #0D9488 !important;
     }
 
     /* Product Action Buttons (Save & Like) */
@@ -786,7 +809,7 @@ st.markdown("""
 
     div[class*="st-key-s_p_"] button:hover,
     div[class*="st-key-l_p_"] button:hover {
-        background: #F3F4F6 !important;
+        background: #F1F5F9 !important;
         border-color: #000000 !important;
         color: #0D9488 !important;
         box-shadow: 3px 3px 0px #0D9488 !important;
@@ -798,7 +821,7 @@ st.markdown("""
     div[class*="st-key-input_product_query"] label,
     div[class*="st-key-p_budget"] label,
     div[class*="st-key-p_s"] label {
-        color: #374151 !important;
+        color: #1E293B !important;
         font-family: 'Space Grotesk', sans-serif !important;
         font-weight: 800 !important;
         font-size: 0.82rem !important;
@@ -841,8 +864,8 @@ st.markdown("""
 
     /* Product Reset Button */
     div[class*="st-key-btn_reset_p_filters"] button {
-        background: #F3F4F6 !important;
-        color: #111827 !important;
+        background: #F1F5F9 !important;
+        color: #1E293B !important;
         border: 2px solid #000000 !important;
         box-shadow: 2.5px 2.5px 0px #000000 !important;
         font-weight: 800 !important;
@@ -855,21 +878,21 @@ st.markdown("""
     }
 
     div[class*="st-key-btn_reset_p_filters"] button:hover {
-        background: #E5E7EB !important;
-        color: #000000 !important;
+        background: #1E293B !important;
+        color: #FFFFFF !important;
         border-color: #000000 !important;
         box-shadow: 3.5px 3.5px 0px #0D9488 !important;
     }
 
     div[class*="st-key-btn_reset_p_filters"] button:hover * {
-        color: #000000 !important;
+        color: #FFFFFF !important;
     }
 
     /* Quick Feature Chips in Product Filter */
     div[class*="st-key-pchip_"] button {
         background: #FFFFFF !important;
-        color: #111827 !important;
-        border: 1.5px solid #9CA3AF !important;
+        color: #1E293B !important;
+        border: 1.5px solid #94A3B8 !important;
         font-size: 0.76rem !important;
         font-weight: 700 !important;
         padding: 0.3rem 0.5rem !important;
@@ -900,14 +923,14 @@ st.markdown("""
     }
 
     div[class*="st-key-pchip_"] button:hover {
-        background: #E5E7EB !important;
-        color: #111827 !important;
+        background: #1E293B !important;
+        color: #FFFFFF !important;
         border-color: #000000 !important;
         box-shadow: 3px 3px 0px #0D9488 !important;
     }
 
     div[class*="st-key-pchip_"] button:hover * {
-        color: #111827 !important;
+        color: #FFFFFF !important;
     }
 
     /* =========================================================================
@@ -2372,7 +2395,7 @@ with tabs[1]:
 # TAB 2: PRODUCTS
 # -------------------------------------------------------------------------
 with tabs[2]:
-    # Saffron & Balancing Teal Lifestyle & Products Marquee Header
+    # Charcoal Slate & Balancing Teal Lifestyle & Products Marquee Header
     st.markdown("""
     <div class="product-marquis">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
@@ -2382,7 +2405,7 @@ with tabs[2]:
                     <div style="font-family:'Space Grotesk'; font-size:1.35rem; font-weight:900; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.06em; line-height:1.15;">
                         PRODUCTS & LIFESTYLE STORE
                     </div>
-                    <div style="font-size:0.75rem; font-weight:800; color:#FFE8D6; text-transform:uppercase; letter-spacing:0.08em; margin-top:3px;">
+                    <div style="font-size:0.75rem; font-weight:800; color:#94A3B8; text-transform:uppercase; letter-spacing:0.08em; margin-top:3px;">
                         CURATED INDIAN BRANDS • HOROLOGY • APPAREL • AUDIO • TECH
                     </div>
                 </div>
@@ -2438,7 +2461,7 @@ with tabs[2]:
             elif c_name == "Desk Setup":
                 btn_txt = "🖥️ Desk Setup"
             else:
-                btn_txt = "🌐 All Products"
+                btn_txt = "🌐 All Items"
 
             is_act = (current_cat == c_name)
             btn_style = "primary" if is_act else "secondary"
@@ -2450,12 +2473,12 @@ with tabs[2]:
 
     with p_f_col:
         st.markdown("""
-        <div style="background:linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%); border:2px solid #000000; box-shadow:3px 3px 0px #000000; padding:10px 14px; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
+        <div style="background:linear-gradient(135deg, #1E293B 0%, #0F172A 100%); border:2px solid #000000; box-shadow:3px 3px 0px #000000; padding:10px 14px; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
             <div>
-                <div style="font-family:'Space Grotesk'; font-size:0.95rem; font-weight:900; color:#111827; text-transform:uppercase; letter-spacing:0.06em;">
+                <div style="font-family:'Space Grotesk'; font-size:0.95rem; font-weight:900; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.06em;">
                     🛍️ PRODUCT FILTERS
                 </div>
-                <div style="font-size:0.68rem; font-weight:800; color:#4B5563; text-transform:uppercase; letter-spacing:0.08em;">
+                <div style="font-size:0.68rem; font-weight:800; color:#94A3B8; text-transform:uppercase; letter-spacing:0.08em;">
                     CURATION ENGINE
                 </div>
             </div>
@@ -2498,10 +2521,10 @@ with tabs[2]:
     with p_r_col:
         if chosen_cat == "Watches":
             st.markdown("""
-            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #9CA3AF; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #1E293B; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#E5E7EB; color:#111827; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">⌚ WATCHES</span>
+                        <span style="background:#1E293B; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">⌚ WATCHES</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Iconic Horology & Modern Smartwatches</span>
                     </div>
                     <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">11 Titles</span>
@@ -2513,10 +2536,10 @@ with tabs[2]:
             """, unsafe_allow_html=True)
         elif chosen_cat == "Fragrance":
             st.markdown("""
-            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #9CA3AF; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #1E293B; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#E5E7EB; color:#111827; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🌸 FRAGRANCES</span>
+                        <span style="background:#1E293B; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🌸 FRAGRANCES</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Luxury Perfumes, Mists & Natural Attars</span>
                     </div>
                     <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">10 Titles</span>
@@ -2528,10 +2551,10 @@ with tabs[2]:
             """, unsafe_allow_html=True)
         elif chosen_cat == "Audio":
             st.markdown("""
-            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #9CA3AF; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #1E293B; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#E5E7EB; color:#111827; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🎧 AUDIO</span>
+                        <span style="background:#1E293B; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🎧 AUDIO</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">High-Fidelity Audio & Wireless ANC</span>
                     </div>
                     <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">Premium Picks</span>
@@ -2543,10 +2566,10 @@ with tabs[2]:
             """, unsafe_allow_html=True)
         elif chosen_cat == "Wearables":
             st.markdown("""
-            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #9CA3AF; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #1E293B; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#E5E7EB; color:#111827; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">📱 WEARABLES</span>
+                        <span style="background:#1E293B; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">📱 WEARABLES</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">AMOLED Smartwatches & Fitness Trackers</span>
                     </div>
                     <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">Top Tech</span>
@@ -2558,10 +2581,10 @@ with tabs[2]:
             """, unsafe_allow_html=True)
         elif chosen_cat == "Desk Setup":
             st.markdown("""
-            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #9CA3AF; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #1E293B; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#E5E7EB; color:#111827; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🖥️ DESK SETUP</span>
+                        <span style="background:#1E293B; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🖥️ DESK SETUP</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Productivity Essentials & Minimalist Workspace</span>
                     </div>
                     <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">Curated</span>

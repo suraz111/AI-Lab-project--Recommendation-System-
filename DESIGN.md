@@ -18,7 +18,7 @@
 | Domain | Primary Accent | Secondary / Balance Accent | Design Intent |
 | :--- | :--- | :--- | :--- |
 | 🎬 **Movies & Cinema** | **Velvet Crimson** (`#7A0C24`) | **Antique Gold & Brass** (`#C5A059`) | Classic heritage theatre ambience, cinematic dignity |
-| 🛍️ **Products & Lifestyle** | **Minimal Light Gray** (`#F3F4F6` / `#E5E7EB` / `#9CA3AF`) | **Balancing Teal** (`#0D9488` / `#0F766E`) | Sleek, clean neutral canvas allowing product details to breathe; vivid Balancing Teal Buy CTA delivers laser-focused conversion without visual clutter |
+| 🛍️ **Products & Lifestyle** | **Charcoal Slate Gray** (`#1E293B` / `#0F172A`) | **Balancing Teal** (`#0D9488` / `#0F766E`) | Sophisticated slate charcoal delivers supreme contrast, rich depth, and luxury horology/tech aesthetic; Balancing Teal Buy CTA gives crisp, intentional focus |
 | 🎓 **Courses & Career** | **Electric Cobalt** (`#2563EB`) | **Amber Mint** (`#10B981`) | Academic focus, skill progression, clarity |
 
 ### Typography & Component Layout
@@ -26,11 +26,11 @@
 * **Paper Canvas Base:** High-contrast `#FDFBF7` canvas with stark black ink borders (`2px solid #000000`) and offset box shadows (`4px 4px 0px #000000`).
 * **Navigation:** Custom styled Streamlit Tabs with custom active indicator line.
 * **Product Cards (`.product-card`):**
-  * Border: `2px solid #000000` with `5px solid #9CA3AF` light gray top accent.
+  * Border: `2px solid #000000` with `5px solid #1E293B` charcoal slate top accent.
   * Padding: `1.15rem 1.35rem`
   * Hover state: `6px 6px 0px #0D9488` Teal glow with 2px lift transition.
 * **Buy CTA (`.product-buy-btn`):** Deep Balancing Teal gradient (`#0D9488` → `#0F766E`) with white text and black ink border, casting a crisp shadow on hover.
-* **Explanation Box (`.product-reason-box`):** Minimal light gray box (`#F9FAFB`) with `5px solid #9CA3AF` left border explaining recommendation context and AI rationale.
+* **Explanation Box (`.product-reason-box`):** Charcoal-accented box (`#F8FAFC`) with `5px solid #1E293B` left border explaining recommendation context and AI rationale.
 
 ---
 
