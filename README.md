@@ -9,7 +9,7 @@
 | Domain | Highlights |
 |:---|:---|
 | **🎬 Movies & Cinema** | 4 industries — Bollywood, Tollywood, Hollywood & Nepali Cinema. Multi-genre filtering, TF-IDF plot search, and tunable hybrid scoring (Content vs. Rating). |
-| **🛍️ Indian Brands** | 9 categories — Audio, Wearables, Gaming, Smart Home, Watches, Fragrance & more. 20+ Indian brands with prices in **INR ₹** and budget sliders. |
+| **🛍️ Products** | 9 categories — Audio, Wearables, Gaming, Smart Home, Watches, Fragrance & more with prices in **INR ₹** and budget sliders. |
 | **🎓 Courses & Skills** | 6 domains — AI, Data Science, Cloud, Cybersecurity, Business & Software Engineering. Skill-interest matching with difficulty filtering. |
 | **📊 Model Benchmarks** | 80/20 holdout evaluation comparing 4 algorithms: Popularity Baseline, Content-Based TF-IDF, Collaborative Filtering (SVD), and Hybrid Model. |
 | **🔖 Saved Items** | Bookmark any recommendation. Click a saved item to jump directly to its tab. Remove items with a single click. |

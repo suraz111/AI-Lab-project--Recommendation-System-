@@ -3,7 +3,7 @@ RECOM.ai — Multi-Domain Recommendation Portal 🔮
 Architecture:
 1. High-Contrast Stark Brutalist Authentication Gateway (Login / Sign Up / Demo Access).
 2. High-Contrast Stark Portal Interface (Accessible only after successful authentication).
-3. Domains: Movies (Bollywood, Tollywood, Hollywood, Nepali Cinema), Indian Brands E-Commerce (INR ₹), and Career Pathways.
+3. Domains: Movies (Bollywood, Tollywood, Hollywood, Nepali Cinema), Products E-Commerce (INR ₹), and Career Pathways.
 """
 
 import os
@@ -1185,7 +1185,7 @@ if "overview_domain_selectbox" not in st.session_state:
 TAB_OPTIONS = [
     "🏠 Overview",
     "🎬 Movies & Cinema",
-    "🛍️ Indian Brands",
+    "🛍️ Products",
     "🎓 Courses & Skills",
     "📊 Model Benchmarks"
 ]
@@ -1194,9 +1194,9 @@ CATEGORY_TAB_MAP = {
     "Movie": "🎬 Movies & Cinema",
     "movie": "🎬 Movies & Cinema",
     "Movies": "🎬 Movies & Cinema",
-    "Product": "🛍️ Indian Brands",
-    "product": "🛍️ Indian Brands",
-    "Products": "🛍️ Indian Brands",
+    "Product": "🛍️ Products",
+    "product": "🛍️ Products",
+    "Products": "🛍️ Products",
     "Course": "🎓 Courses & Skills",
     "course": "🎓 Courses & Skills",
     "Courses": "🎓 Courses & Skills",
@@ -1207,9 +1207,11 @@ CATEGORY_TAB_MAP = {
 def get_engines_v3(movies_mtime, products_mtime, courses_mtime, code_mtime):
     import importlib
     import models.movie_rec
+    import models.product_rec
     importlib.reload(models.movie_rec)
+    importlib.reload(models.product_rec)
     m = models.movie_rec.MovieRecommender()
-    p = ProductRecommender()
+    p = models.product_rec.ProductRecommender()
     c = CourseRecommender()
     return m, p, c
 
@@ -1262,14 +1264,14 @@ if st.session_state.user_id is None:
             </div>
         """, unsafe_allow_html=True)
 
-        # Card 2: Lifestyle & Indian Brands
+        # Card 2: Lifestyle & Products
         st.markdown(f"""
             <div class="login-feature-card">
                 <div class="login-card-img-wrapper">
-                    <img src="data:image/jpeg;base64,{card_imgs['lifestyle_brands.jpg']}" alt="Indian Brands" class="login-card-img" />
+                    <img src="data:image/jpeg;base64,{card_imgs['lifestyle_brands.jpg']}" alt="Products" class="login-card-img" />
                 </div>
                 <div class="login-card-footer">
-                    <span class="login-card-title">🛍️ INDIAN BRANDS</span>
+                    <span class="login-card-title">🛍️ PRODUCTS</span>
                     <span class="login-card-badge">DOMAIN 02</span>
                 </div>
             </div>
@@ -1571,16 +1573,16 @@ with tabs[0]:
 
     st.markdown("<div style='margin-bottom:1.6rem;'></div>", unsafe_allow_html=True)
 
-    # Vertical Card 2: Indian Brands E-Commerce & Lifestyle (Domain 02: Saffron #FF8A00)
+    # Vertical Card 2: Products E-Commerce & Lifestyle (Domain 02: Saffron #FF8A00)
     st.markdown("""
     <div class="min-card" style="border-top:5px solid #FF8A00 !important; margin-bottom:0.8rem;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
             <span style="font-size:0.75rem; color:#FF8A00; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🛍️ DOMAIN 02</span>
-            <span style="background:#FF8A00; color:#FFFFFF; font-size:0.72rem; font-weight:800; padding:3px 8px; text-transform:uppercase; border:1.5px solid #000000; margin:0;">INDIAN E-COMMERCE & LIFESTYLE</span>
+            <span style="background:#FF8A00; color:#FFFFFF; font-size:0.72rem; font-weight:800; padding:3px 8px; text-transform:uppercase; border:1.5px solid #000000; margin:0;">PRODUCTS & LIFESTYLE</span>
         </div>
-        <div style="font-size:1.35rem; font-weight:800; color:#000000; text-transform:uppercase; font-family:'Space Grotesk'; margin:0.2rem 0 0.4rem 0;">Indian Brands Hub</div>
+        <div style="font-size:1.35rem; font-weight:800; color:#000000; text-transform:uppercase; font-family:'Space Grotesk'; margin:0.2rem 0 0.4rem 0;">Products Hub</div>
         <p style="font-size:0.88rem; color:#333333; line-height:1.6; margin-bottom:0.6rem;">
-            Discover curated audio, iconic Indian watches (Titan, HMT, Fastrack, Sonata), luxury fragrances (Titan Skinn, Bella Vita, Forest Essentials, Phool), wearables, and electronics with real-time INR (₹) budget filters.
+            Discover curated audio, iconic watches (Titan, HMT, Fastrack, Sonata), luxury fragrances (Titan Skinn, Bella Vita, Forest Essentials, Phool), wearables, and electronics with real-time INR (₹) budget filters.
         </p>
         <div style="margin-bottom:0.2rem;">
             <span class="tag-neutral">₹ INR Pricing</span>
@@ -1596,11 +1598,11 @@ with tabs[0]:
     """, unsafe_allow_html=True)
     b_col1, b_col2, b_col3 = st.columns([1, 1, 1])
     with b_col1:
-        st.button("Explore All Brands ➔", key="btn_ov_brands", width="stretch", on_click=set_active_tab, args=("🛍️ Indian Brands", None, "All"))
+        st.button("Explore All Products ➔", key="btn_ov_brands", width="stretch", on_click=set_active_tab, args=("🛍️ Products", None, "All"))
     with b_col2:
-        st.button("⌚ Explore Watches ➔", key="btn_ov_watches", width="stretch", on_click=set_active_tab, args=("🛍️ Indian Brands", None, "Watches"))
+        st.button("⌚ Explore Watches ➔", key="btn_ov_watches", width="stretch", on_click=set_active_tab, args=("🛍️ Products", None, "Watches"))
     with b_col3:
-        st.button("🌸 Explore Fragrances ➔", key="btn_ov_fragrance", width="stretch", on_click=set_active_tab, args=("🛍️ Indian Brands", None, "Fragrance"))
+        st.button("🌸 Explore Fragrances ➔", key="btn_ov_fragrance", width="stretch", on_click=set_active_tab, args=("🛍️ Products", None, "Fragrance"))
 
     st.markdown("<div style='margin-bottom:1.6rem;'></div>", unsafe_allow_html=True)
 
@@ -1685,7 +1687,7 @@ with tabs[0]:
             <span style="font-size:0.9rem; color:#000000; margin-left:0.4rem; font-weight:800;">₹2,499</span>
             <span style="font-size:0.85rem; color:#000000; margin-left:0.4rem; font-weight:700;">★ 4.8</span>
         </div>
-        <div class="reason-box">Top active noise cancellation wireless earbuds with 120-hour playback and dual EQ modes from Indian brand boAt.</div>
+        <div class="reason-box">Top active noise cancellation wireless earbuds with 120-hour playback and dual EQ modes from boAt.</div>
         <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank" class="buy-btn">🛒 Buy Now ↗</a></div>
     </div>
     """, unsafe_allow_html=True)
@@ -2108,8 +2110,8 @@ with tabs[2]:
             <div style="background:#FFFFFF; border:2.5px solid #000000; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#000000; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px;">⌚ INDIAN WATCHES</span>
-                        <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Iconic Indian Horology & Modern Smartwatches</span>
+                        <span style="background:#000000; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px;">⌚ WATCHES</span>
+                        <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Iconic Horology & Modern Smartwatches</span>
                     </div>
                     <span style="font-size:0.75rem; font-weight:800; color:#000000; background:#FFF3C4; border:1.5px solid #000000; padding:2px 8px;">11 Titles</span>
                 </div>
@@ -2123,7 +2125,7 @@ with tabs[2]:
             <div style="background:#FFFFFF; border:2.5px solid #000000; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#000000; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px;">🌸 INDIAN FRAGRANCES</span>
+                        <span style="background:#000000; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px;">🌸 FRAGRANCES</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Luxury Perfumes, Mists & Natural Attars</span>
                     </div>
                     <span style="font-size:0.75rem; font-weight:800; color:#000000; background:#FFF3C4; border:1.5px solid #000000; padding:2px 8px;">10 Titles</span>

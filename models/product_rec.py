@@ -34,7 +34,7 @@ class ProductRecommender:
         return ["All"] + sorted(self.products_df["category"].dropna().unique().tolist())
 
     def get_brands(self) -> list:
-        """Returns sorted list of Indian brands in catalog."""
+        """Returns sorted list of brands in catalog."""
         return ["All"] + sorted(self.products_df["brand"].dropna().unique().tolist())
 
     def get_price_range(self) -> tuple:
@@ -126,9 +126,9 @@ class ProductRecommender:
                 raw_url = f"https://www.amazon.in/s?k={urllib.parse.quote_plus(str(row['product_name']))}"
 
             if query_text and query_text.strip():
-                explanation = f"Matches '{query_text.strip()}' by Indian brand {brand_name} in {cat_name} (₹{p_price:,}, {p_rating}★)."
+                explanation = f"Matches '{query_text.strip()}' by {brand_name} in {cat_name} (₹{p_price:,}, {p_rating}★)."
             else:
-                explanation = f"Top-rated {cat_name} product from Indian brand {brand_name} at ₹{p_price:,} ({p_rating}★ customer rating)."
+                explanation = f"Top-rated {cat_name} product from {brand_name} at ₹{p_price:,} ({p_rating}★ customer rating)."
 
             results.append({
                 "id": int(row["product_id"]),

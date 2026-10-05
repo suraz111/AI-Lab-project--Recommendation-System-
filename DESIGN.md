@@ -5,7 +5,7 @@
 **RECOM.ai** is a state-of-the-art, non-generic Multi-Domain Recommendation Portal. Unlike traditional basic recommendation demos, RECOM.ai delivers a unified, highly polished user interface with real-time explainable recommendations across three rich domains:
 
 1. 🎬 **Movies (Cinema Hub):** Seamless switching between **Bollywood (Hindi)**, **Tollywood (Telugu)**, **Hollywood (English)**, and **Nepali Cinema** with plot keyword search and genre vector matching.
-2. 🛍️ **Indian Brand E-Commerce & Lifestyle:** Next-gen product recommendations featuring top **Indian lifestyle, horology & electronics brands** (*Titan, HMT, Fastrack, Sonata, Titan Skinn, Bella Vita Luxury, Bombay Shaving Company, The Man Company, Villain, Forest Essentials, Phool, boAt, Noise, Boult*) across audio, watches, fragrance, and gear priced in **INR (₹)**.
+2. 🛍️ **Products E-Commerce & Lifestyle:** Next-gen product recommendations featuring top **lifestyle, horology & electronics brands** (*Titan, HMT, Fastrack, Sonata, Titan Skinn, Bella Vita Luxury, Bombay Shaving Company, The Man Company, Villain, Forest Essentials, Phool, boAt, Noise, Boult*) across audio, watches, fragrance, and gear priced in **INR (₹)**.
 3. 🎓 **Study & Career Courses:** Skill-interest matching for top professional certificates (*Google, Stanford, Meta, IBM, Harvard*) across AI, Data Science, Software Engineering, Cloud, and Cybersecurity.
 4. 📊 **Evaluation & Analytics Dashboard:** Real-time holdout benchmarking metrics (*Precision@K, Recall@K, RMSE*) comparing Popularity Baseline vs. Content-Based vs. Collaborative vs. Hybrid models.
 
@@ -100,7 +100,7 @@ graph TD
     subgraph UI ["User Interface Layer (Streamlit App)"]
         Sidebar["Sidebar Component (User Auth & Bookmarks)"]
         Tab1["Movies Tab (Bollywood/Tollywood/Hollywood)"]
-        Tab2["Products Tab (Indian Brands & INR ₹)"]
+        Tab2["Products Tab (E-Commerce & INR ₹)"]
         Tab3["Courses Tab (Skills & Certifications)"]
         Tab4["Evaluation Tab (Metrics & Charts)"]
     end
