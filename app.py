@@ -584,6 +584,333 @@ st.markdown("""
     }
 
     /* =========================================================================
+       SAFFRON ORANGE & BALANCING TEAL (PRODUCTS & LIFESTYLE DOMAIN)
+       Saffron orange drives shopping intent and warmth; Teal balances the CTA
+       ========================================================================= */
+    .product-marquis {
+        background: linear-gradient(135deg, #FF7A00 0%, #E65100 100%) !important;
+        border: 2.5px solid #000000 !important;
+        box-shadow: 4px 4px 0px #000000 !important;
+        padding: 14px 20px !important;
+        margin-bottom: 1.3rem !important;
+    }
+
+    .product-domain-badge {
+        background: #0D9488 !important;
+        color: #FFFFFF !important;
+        font-weight: 900 !important;
+        font-size: 0.68rem !important;
+        padding: 4px 10px !important;
+        border: 1.5px solid #000000 !important;
+        box-shadow: 2px 2px 0px #000000 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.06em !important;
+        display: inline-block !important;
+    }
+
+    .product-card {
+        background: #FFFFFF !important;
+        border: 2px solid #000000 !important;
+        border-top: 5px solid #FF7A00 !important;
+        box-shadow: 4px 4px 0px #000000 !important;
+        border-radius: 0px !important;
+        padding: 1.15rem 1.35rem !important;
+        margin-bottom: 0.65rem !important;
+        position: relative !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    .product-card:hover {
+        transform: translate(-2px, -2px) !important;
+        box-shadow: 6px 6px 0px #FF7A00 !important;
+    }
+
+    .product-title {
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 900 !important;
+        font-size: 1.15rem !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.25 !important;
+        margin-top: 0.2rem !important;
+    }
+
+    .product-title a {
+        color: #000000 !important;
+        text-decoration: underline !important;
+        text-decoration-color: #FF7A00 !important;
+        text-decoration-thickness: 2px !important;
+        transition: color 0.15s ease, text-decoration-color 0.15s ease !important;
+    }
+
+    .product-title a:hover {
+        color: #E65100 !important;
+        text-decoration-color: #0D9488 !important;
+    }
+
+    .tag-product-match {
+        float: right;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-size: 0.8rem !important;
+        font-weight: 900 !important;
+        color: #FFFFFF !important;
+        background: linear-gradient(135deg, #FF7A00 0%, #E65100 100%) !important;
+        padding: 0.25rem 0.7rem !important;
+        border-radius: 0px !important;
+        border: 1.5px solid #000000 !important;
+        box-shadow: 2px 2px 0px #000000 !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+    }
+
+    .tag-product-brand {
+        display: inline-block !important;
+        padding: 0.2rem 0.65rem !important;
+        font-size: 0.72rem !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.04em !important;
+        background: #FFF3E0 !important;
+        color: #D84315 !important;
+        border: 1.5px solid #FF7A00 !important;
+        margin-right: 0.35rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+
+    .tag-product-cat {
+        display: inline-block !important;
+        padding: 0.2rem 0.6rem !important;
+        font-size: 0.72rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.04em !important;
+        background: #F3F4F6 !important;
+        color: #1F2937 !important;
+        border: 1.5px solid #000000 !important;
+        margin-right: 0.35rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+
+    .tag-product-price {
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-size: 1.05rem !important;
+        font-weight: 900 !important;
+        color: #E65100 !important;
+        letter-spacing: -0.01em !important;
+        margin-left: 0.4rem !important;
+    }
+
+    .product-reason-box {
+        background: #FFFDF9 !important;
+        border: 1.5px solid #000000 !important;
+        border-left: 5px solid #FF7A00 !important;
+        padding: 0.7rem 0.9rem !important;
+        margin-top: 0.75rem !important;
+        font-size: 0.84rem !important;
+        font-weight: 500 !important;
+        color: #2D2319 !important;
+        line-height: 1.45 !important;
+    }
+
+    /* Balancing Teal Buy Button */
+    .product-buy-btn {
+        display: inline-block !important;
+        width: 100% !important;
+        text-align: center !important;
+        background: linear-gradient(135deg, #0D9488 0%, #0F766E 100%) !important;
+        color: #FFFFFF !important;
+        border: 2px solid #000000 !important;
+        padding: 0.45rem 0.75rem !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-size: 0.8rem !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        text-decoration: none !important;
+        box-shadow: 3px 3px 0px #000000 !important;
+        transition: all 0.2s ease !important;
+        box-sizing: border-box !important;
+    }
+
+    .product-buy-btn:hover {
+        background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%) !important;
+        color: #FFFFFF !important;
+        transform: translate(-1px, -1px) !important;
+        box-shadow: 4px 4px 0px #FF7A00 !important;
+    }
+
+    /* Product Category Selection Bar (btn_pcat_) */
+    div[class*="st-key-btn_pcat_"] button {
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-size: 0.78rem !important;
+        letter-spacing: 0.03em !important;
+        text-transform: uppercase !important;
+        transition: all 0.15s ease !important;
+        padding: 0.4rem 0.6rem !important;
+        border-radius: 0px !important;
+    }
+
+    div[class*="st-key-btn_pcat_"] button[kind="primary"] {
+        background: linear-gradient(135deg, #FF7A00 0%, #E65100 100%) !important;
+        color: #FFFFFF !important;
+        border: 2px solid #000000 !important;
+        box-shadow: 3.5px 3.5px 0px #000000 !important;
+        font-weight: 900 !important;
+    }
+
+    div[class*="st-key-btn_pcat_"] button[kind="secondary"] {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        box-shadow: 2px 2px 0px #000000 !important;
+        font-weight: 700 !important;
+    }
+
+    div[class*="st-key-btn_pcat_"] button[kind="secondary"]:hover {
+        background: #FFF3E0 !important;
+        color: #E65100 !important;
+        border-color: #FF7A00 !important;
+        box-shadow: 3px 3px 0px #000000 !important;
+    }
+
+    /* Product Action Buttons (Save & Like) */
+    div[class*="st-key-s_p_"] button,
+    div[class*="st-key-l_p_"] button {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        box-shadow: 2px 2px 0px #000000 !important;
+        font-weight: 800 !important;
+        font-size: 0.78rem !important;
+        padding: 0.35rem 0.5rem !important;
+    }
+
+    div[class*="st-key-s_p_"] button:hover,
+    div[class*="st-key-l_p_"] button:hover {
+        background: #FFF3E0 !important;
+        border-color: #FF7A00 !important;
+        color: #E65100 !important;
+        box-shadow: 3px 3px 0px #0D9488 !important;
+    }
+
+    /* Product Filter Inputs & Sliders */
+    div[class*="st-key-sb_product_category"] label,
+    div[class*="st-key-sb_product_brand"] label,
+    div[class*="st-key-input_product_query"] label,
+    div[class*="st-key-p_budget"] label,
+    div[class*="st-key-p_s"] label {
+        color: #E65100 !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 800 !important;
+        font-size: 0.82rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+    }
+
+    div[class*="st-key-input_product_query"] input,
+    div[class*="st-key-sb_product_category"] [data-baseweb="select"] > div,
+    div[class*="st-key-sb_product_brand"] [data-baseweb="select"] > div {
+        background-color: #FFFFFF !important;
+        border: 2px solid #000000 !important;
+        border-radius: 0px !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 700 !important;
+        color: #000000 !important;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+    }
+
+    div[class*="st-key-input_product_query"] input:focus,
+    div[class*="st-key-sb_product_category"] [data-baseweb="select"] > div:focus-within,
+    div[class*="st-key-sb_product_brand"] [data-baseweb="select"] > div:focus-within {
+        border-color: #FF7A00 !important;
+        box-shadow: 2.5px 2.5px 0px #0D9488 !important;
+    }
+
+    div[class*="st-key-p_budget"] [data-baseweb="slider"] div[role="slider"],
+    div[class*="st-key-p_s"] [data-baseweb="slider"] div[role="slider"] {
+        background-color: #FFFFFF !important;
+        border: 2.5px solid #FF7A00 !important;
+        box-shadow: 2px 2px 0px #0D9488 !important;
+    }
+
+    div[class*="st-key-p_budget"] [data-testid="stThumbValue"],
+    div[class*="st-key-p_s"] [data-testid="stThumbValue"] {
+        color: #E65100 !important;
+        font-weight: 900 !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+    }
+
+    /* Product Reset Button */
+    div[class*="st-key-btn_reset_p_filters"] button {
+        background: #FFF3E0 !important;
+        color: #E65100 !important;
+        border: 2px solid #FF7A00 !important;
+        box-shadow: 2.5px 2.5px 0px #000000 !important;
+        font-weight: 800 !important;
+        font-size: 0.78rem !important;
+        letter-spacing: 0.05em !important;
+        text-transform: uppercase !important;
+        padding: 0.4rem 0.6rem !important;
+        margin-top: 0.5rem !important;
+        transition: all 0.2s ease !important;
+    }
+
+    div[class*="st-key-btn_reset_p_filters"] button:hover {
+        background: #FF7A00 !important;
+        color: #FFFFFF !important;
+        border-color: #000000 !important;
+        box-shadow: 3.5px 3.5px 0px #0D9488 !important;
+    }
+
+    div[class*="st-key-btn_reset_p_filters"] button:hover * {
+        color: #FFFFFF !important;
+    }
+
+    /* Quick Feature Chips in Product Filter */
+    div[class*="st-key-pchip_"] button {
+        background: #FFFDF9 !important;
+        color: #000000 !important;
+        border: 1.5px solid #FF7A00 !important;
+        font-size: 0.76rem !important;
+        font-weight: 700 !important;
+        padding: 0.3rem 0.5rem !important;
+        border-radius: 0px !important;
+        box-shadow: 2px 2px 0px #000000 !important;
+        letter-spacing: 0.02em !important;
+        min-height: 32px !important;
+        line-height: 1.25 !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    div[class*="st-key-pchip_"] button *,
+    div[class*="st-key-pchip_"] button p,
+    div[class*="st-key-pchip_"] button span {
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        word-break: keep-all !important;
+        font-size: 0.76rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    div[class*="st-key-pchip_"] button:hover {
+        background: #FF7A00 !important;
+        color: #FFFFFF !important;
+        border-color: #000000 !important;
+        box-shadow: 3px 3px 0px #0D9488 !important;
+    }
+
+    div[class*="st-key-pchip_"] button:hover * {
+        color: #FFFFFF !important;
+    }
+
+    /* =========================================================================
        HIGH-CONTRAST STARK NAVIGATION TAB BAR (REACT-ARIA & BASEWEB COMPATIBLE)
        ========================================================================= */
     div[data-testid="stTabs"],
@@ -1497,6 +1824,30 @@ def reset_cinema_filters():
     st.session_state["m_s"] = 5
     st.session_state["m_alpha"] = 0.6
 
+# Safe Callbacks for Products & Lifestyle Domain (Run before widgets instantiate)
+def clear_product_focus():
+    st.session_state.focused_saved_item = None
+    st.session_state["input_product_query"] = ""
+
+def set_product_category(cat):
+    st.session_state["selected_product_category"] = cat
+    st.session_state["sb_product_category"] = cat
+    st.session_state["input_product_query"] = ""
+
+def on_product_category_change():
+    st.session_state["selected_product_category"] = st.session_state.get("sb_product_category", "All")
+
+def set_product_query_feature(feat_text):
+    st.session_state["input_product_query"] = feat_text
+
+def reset_product_filters(max_p):
+    st.session_state["sb_product_category"] = "All"
+    st.session_state["selected_product_category"] = "All"
+    st.session_state["sb_product_brand"] = "All"
+    st.session_state["input_product_query"] = ""
+    st.session_state["p_budget"] = max_p
+    st.session_state["p_s"] = 5
+
 # Always ensure overview selectbox is reset to the default Overview option when navigating away
 if st.session_state.get("portal_tabs") != "🏠 Overview":
     st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
@@ -1675,58 +2026,52 @@ with tabs[0]:
 
     # Vertical Recommendation 2: boAt Nirvana Ion
     st.markdown("""
-    <div class="min-card" style="margin-bottom:1.2rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span class="tag-match" style="margin:0;">96.8% MATCH</span>
-            <span style="font-size:0.75rem; color:#555555; text-transform:uppercase; font-weight:800; letter-spacing:0.05em;">🎧 AUDIO PICK</span>
-        </div>
-        <div class="item-title"><a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank" style="color:#000000; text-decoration:underline;">boAt Nirvana Ion ANC ↗</a></div>
+    <div class="product-card" style="margin-bottom:1.2rem;">
+        <span class="tag-product-match">96.8% MATCH</span>
+        <div style="font-size:0.75rem; color:#E65100; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🎧 AUDIO PICK</div>
+        <div class="product-title"><a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank">boAt Nirvana Ion ANC ↗</a></div>
         <div style="margin:0.4rem 0 0.5rem 0;">
-            <span class="tag-accent">boAt</span>
-            <span class="tag-neutral">Audio</span>
-            <span style="font-size:0.9rem; color:#000000; margin-left:0.4rem; font-weight:800;">₹2,499</span>
-            <span style="font-size:0.85rem; color:#000000; margin-left:0.4rem; font-weight:700;">★ 4.8</span>
+            <span class="tag-product-brand">boAt</span>
+            <span class="tag-product-cat">Audio</span>
+            <span class="tag-product-price">₹2,499</span>
+            <span style="font-size:0.85rem; color:#0D9488; margin-left:0.4rem; font-weight:800;">★ 4.8</span>
         </div>
-        <div class="reason-box">Top active noise cancellation wireless earbuds with 120-hour playback and dual EQ modes from boAt.</div>
-        <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank" class="buy-btn">🛒 Buy Now ↗</a></div>
+        <div class="product-reason-box">Top active noise cancellation wireless earbuds with 120-hour playback and dual EQ modes from boAt.</div>
+        <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
     </div>
     """, unsafe_allow_html=True)
 
     # Vertical Recommendation 2B: Titan Watch Pick
     st.markdown("""
-    <div class="min-card" style="margin-bottom:1.2rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span class="tag-match" style="margin:0;">97.4% MATCH</span>
-            <span style="font-size:0.75rem; color:#555555; text-transform:uppercase; font-weight:800; letter-spacing:0.05em;">⌚ WATCH PICK</span>
-        </div>
-        <div class="item-title"><a href="https://www.titan.co.in/shop/watches" target="_blank" style="color:#000000; text-decoration:underline;">Titan Octane Mechanical Automatic Watch ↗</a></div>
+    <div class="product-card" style="margin-bottom:1.2rem;">
+        <span class="tag-product-match">97.4% MATCH</span>
+        <div style="font-size:0.75rem; color:#E65100; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">⌚ WATCH PICK</div>
+        <div class="product-title"><a href="https://www.titan.co.in/shop/watches" target="_blank">Titan Octane Mechanical Automatic Watch ↗</a></div>
         <div style="margin:0.4rem 0 0.5rem 0;">
-            <span class="tag-accent">Titan</span>
-            <span class="tag-neutral">Watches</span>
-            <span style="font-size:0.9rem; color:#000000; margin-left:0.4rem; font-weight:800;">₹12,495</span>
-            <span style="font-size:0.85rem; color:#000000; margin-left:0.4rem; font-weight:700;">★ 4.8</span>
+            <span class="tag-product-brand">Titan</span>
+            <span class="tag-product-cat">Watches</span>
+            <span class="tag-product-price">₹12,495</span>
+            <span style="font-size:0.85rem; color:#0D9488; margin-left:0.4rem; font-weight:800;">★ 4.8</span>
         </div>
-        <div class="reason-box">Exquisite automatic mechanical watch by Tata Titan featuring skeleton dial displaying inner mechanical gear movements and stainless steel bracelet.</div>
-        <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.titan.co.in/shop/watches" target="_blank" class="buy-btn">🛒 Buy Now ↗</a></div>
+        <div class="product-reason-box">Exquisite automatic mechanical watch by Tata Titan featuring skeleton dial displaying inner mechanical gear movements and stainless steel bracelet.</div>
+        <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.titan.co.in/shop/watches" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
     </div>
     """, unsafe_allow_html=True)
 
     # Vertical Recommendation 2C: Fragrance Pick
     st.markdown("""
-    <div class="min-card" style="margin-bottom:1.2rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span class="tag-match" style="margin:0;">96.5% MATCH</span>
-            <span style="font-size:0.75rem; color:#555555; text-transform:uppercase; font-weight:800; letter-spacing:0.05em;">🌸 FRAGRANCE PICK</span>
-        </div>
-        <div class="item-title"><a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank" style="color:#000000; text-decoration:underline;">Titan Skinn Raw Eau De Parfum (100ml) ↗</a></div>
+    <div class="product-card" style="margin-bottom:1.2rem;">
+        <span class="tag-product-match">96.5% MATCH</span>
+        <div style="font-size:0.75rem; color:#E65100; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🌸 FRAGRANCE PICK</div>
+        <div class="product-title"><a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank">Titan Skinn Raw Eau De Parfum (100ml) ↗</a></div>
         <div style="margin:0.4rem 0 0.5rem 0;">
-            <span class="tag-accent">Titan Skinn</span>
-            <span class="tag-neutral">Fragrance</span>
-            <span style="font-size:0.9rem; color:#000000; margin-left:0.4rem; font-weight:800;">₹2,495</span>
-            <span style="font-size:0.85rem; color:#000000; margin-left:0.4rem; font-weight:700;">★ 4.9</span>
+            <span class="tag-product-brand">Titan Skinn</span>
+            <span class="tag-product-cat">Fragrance</span>
+            <span class="tag-product-price">₹2,495</span>
+            <span style="font-size:0.85rem; color:#0D9488; margin-left:0.4rem; font-weight:800;">★ 4.9</span>
         </div>
-        <div class="reason-box">French-crafted luxury Eau De Parfum for India blending fresh citrus bergamot, watery watermelon, and earthy Indonesian patchouli.</div>
-        <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank" class="buy-btn">🛒 Buy Now ↗</a></div>
+        <div class="product-reason-box">French-crafted luxury Eau De Parfum for India blending fresh citrus bergamot, watery watermelon, and earthy Indonesian patchouli.</div>
+        <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -2027,29 +2372,50 @@ with tabs[1]:
 # TAB 2: PRODUCTS
 # -------------------------------------------------------------------------
 with tabs[2]:
+    # Saffron & Balancing Teal Lifestyle & Products Marquee Header
+    st.markdown("""
+    <div class="product-marquis">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <span style="font-size:1.5rem;">🛍️</span>
+                <div>
+                    <div style="font-family:'Space Grotesk'; font-size:1.35rem; font-weight:900; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.06em; line-height:1.15;">
+                        PRODUCTS & LIFESTYLE STORE
+                    </div>
+                    <div style="font-size:0.75rem; font-weight:800; color:#FFE8D6; text-transform:uppercase; letter-spacing:0.08em; margin-top:3px;">
+                        CURATED INDIAN BRANDS • HOROLOGY • APPAREL • AUDIO • TECH
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span class="product-domain-badge">
+                    🏷️ DOMAIN 02: PRODUCTS
+                </span>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
     focused = st.session_state.get("focused_saved_item")
     if focused and focused.get("category", "").lower() in ["product", "products"]:
         f_top1, f_top2 = st.columns([4, 1.2])
         with f_top1:
             st.markdown(f"""
-            <div style="background:#FFFFFF; border:2.5px solid #000000; box-shadow:4px 4px 0px #000000; padding:10px 16px; margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center;">
+            <div style="background:linear-gradient(135deg, #FFF8F0 0%, #FFF3E0 100%); border:2.5px solid #000000; border-left:8px solid #FF7A00; box-shadow:4px 4px 0px #000000; padding:10px 16px; margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center;">
                 <div>
-                    <span style="background:#000000; color:#FFFFFF; font-size:0.65rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px;">📌 SAVED PRODUCT IN FOCUS</span>
+                    <span style="background:#FF7A00; color:#FFFFFF; font-size:0.65rem; font-weight:900; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1px solid #000000;">📌 SAVED PRODUCT IN FOCUS</span>
                     <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">{focused['title']}</span>
                 </div>
                 <div>
-                    <a href="{focused.get('url', '#')}" target="_blank" class="buy-btn" style="padding:6px 14px; font-size:0.75rem;">🛒 Buy Now ↗</a>
+                    <a href="{focused.get('url', '#')}" target="_blank" class="product-buy-btn" style="padding:6px 14px; font-size:0.75rem;">🛒 Buy Now ↗</a>
                 </div>
             </div>
             """, unsafe_allow_html=True)
         with f_top2:
-            if st.button("Clear Focus ✕", key="clr_focus_p", width="stretch"):
-                st.session_state.focused_saved_item = None
-                st.session_state["input_product_query"] = ""
-                st.rerun()
+            st.button("Clear Focus ✕", key="clr_focus_p", width="stretch", on_click=clear_product_focus)
 
     # Quick Product Category Bar
-    st.markdown("<div style='font-size:0.8rem; font-weight:800; font-family:\"Space Grotesk\"; color:#555555; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;'>SELECT PRODUCT CATEGORY</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size:0.8rem; font-weight:800; font-family:\"Space Grotesk\"; color:#E65100; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;'>🛍️ SELECT PRODUCT CATEGORY</div>", unsafe_allow_html=True)
     all_categories = product_engine.get_categories()
     
     current_cat = st.session_state.get("selected_product_category", "All")
@@ -2076,44 +2442,69 @@ with tabs[2]:
 
             is_act = (current_cat == c_name)
             btn_style = "primary" if is_act else "secondary"
-            if st.button(btn_txt, key=f"btn_pcat_{c_name}", width="stretch", type=btn_style):
-                st.session_state["selected_product_category"] = c_name
-                st.session_state["sb_product_category"] = c_name
-                st.session_state["input_product_query"] = ""
-                st.rerun()
+            st.button(btn_txt, key=f"btn_pcat_{c_name}", width="stretch", type=btn_style, on_click=set_product_category, args=(c_name,))
 
     st.markdown("<div style='margin-bottom:1.1rem;'></div>", unsafe_allow_html=True)
 
-    p_f_col, p_r_col = st.columns([1, 2.5])
+    p_f_col, p_r_col = st.columns([1.1, 2.4])
 
     with p_f_col:
-        st.markdown("<div style='font-size:0.9rem; font-weight:700; font-family:\"Space Grotesk\"; color:#000000; text-transform:uppercase; margin-bottom:0.6rem;'>FILTERS</div>", unsafe_allow_html=True)
+        st.markdown("""
+        <div style="background:linear-gradient(135deg, #FF7A00 0%, #E65100 100%); border:2px solid #000000; box-shadow:3px 3px 0px #000000; padding:10px 14px; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <div style="font-family:'Space Grotesk'; font-size:0.95rem; font-weight:900; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.06em;">
+                    🛍️ PRODUCT FILTERS
+                </div>
+                <div style="font-size:0.68rem; font-weight:800; color:#FFE8D6; text-transform:uppercase; letter-spacing:0.08em;">
+                    CURATION ENGINE
+                </div>
+            </div>
+            <span style="background:#0D9488; color:#FFFFFF; font-size:0.62rem; font-weight:900; padding:3px 8px; border:1px solid #000000; text-transform:uppercase; letter-spacing:0.06em;">
+                LIVE
+            </span>
+        </div>
+        """, unsafe_allow_html=True)
+
         if "sb_product_category" not in st.session_state or st.session_state["sb_product_category"] not in all_categories:
             st.session_state["sb_product_category"] = current_cat
 
         chosen_cat = st.selectbox(
             "Category",
             all_categories,
-            key="sb_product_category"
+            key="sb_product_category",
+            on_change=on_product_category_change
         )
         st.session_state["selected_product_category"] = chosen_cat
 
-        chosen_brand = st.selectbox("Brand", product_engine.get_brands())
+        chosen_brand = st.selectbox("Brand", product_engine.get_brands(), key="sb_product_brand")
         min_p, max_p = product_engine.get_price_range()
-        budget = st.slider("Max Budget (₹ INR)", min_p, max_p, max_p, step=500)
-        p_query = st.text_input("Feature Search", placeholder="e.g. ceramic slim, mechanical, oud, bergamot, noise cancellation", key="input_product_query")
+        if "p_budget" not in st.session_state:
+            st.session_state["p_budget"] = max_p
+        budget = st.slider("Max Budget (₹ INR)", min_p, max_p, step=500, key="p_budget")
+        p_query = st.text_input("Feature Search", placeholder="e.g. ceramic slim, mechanical, oud, noise cancellation", key="input_product_query")
+
+        # Quick feature inspiration tags
+        st.markdown("<div style='font-size:0.75rem; font-weight:800; font-family:\"Space Grotesk\"; color:#E65100; text-transform:uppercase; letter-spacing:0.06em; margin-top:0.6rem; margin-bottom:0.35rem;'>⚡ POPULAR FEATURES</div>", unsafe_allow_html=True)
+        feat_chips = ["Ceramic Slim", "Automatic", "Oud Wood", "Noise Cancelling", "Ergonomic", "Waterproof"]
+        fc_cols = st.columns(2)
+        for i, f_txt in enumerate(feat_chips):
+            with fc_cols[i % 2]:
+                st.button(f_txt, key=f"pchip_{i}", width="stretch", on_click=set_product_query_feature, args=(f_txt,))
+
         top_n_p = st.slider("Results", 3, 10, 5, key="p_s")
+
+        st.button("Reset Filters ↺", key="btn_reset_p_filters", width="stretch", on_click=reset_product_filters, args=(max_p,))
 
     with p_r_col:
         if chosen_cat == "Watches":
             st.markdown("""
-            <div style="background:#FFFFFF; border:2.5px solid #000000; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #FF7A00; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#000000; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px;">⌚ WATCHES</span>
+                        <span style="background:#FF7A00; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">⌚ WATCHES</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Iconic Horology & Modern Smartwatches</span>
                     </div>
-                    <span style="font-size:0.75rem; font-weight:800; color:#000000; background:#FFF3C4; border:1.5px solid #000000; padding:2px 8px;">11 Titles</span>
+                    <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">11 Titles</span>
                 </div>
                 <div style="font-size:0.82rem; color:#444444; margin-top:6px; line-height:1.5;">
                     Featuring Tata Titan (Edge ceramic ultra-slim & Octane mechanical automatic), historic HMT (Kohinoor & Janata Devanagari Hindi dial), Fastrack chronographs & AMOLED smartwatches, and Sonata minimalist quartz.
@@ -2122,16 +2513,61 @@ with tabs[2]:
             """, unsafe_allow_html=True)
         elif chosen_cat == "Fragrance":
             st.markdown("""
-            <div style="background:#FFFFFF; border:2.5px solid #000000; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #FF7A00; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <span style="background:#000000; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px;">🌸 FRAGRANCES</span>
+                        <span style="background:#FF7A00; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🌸 FRAGRANCES</span>
                         <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Luxury Perfumes, Mists & Natural Attars</span>
                     </div>
-                    <span style="font-size:0.75rem; font-weight:800; color:#000000; background:#FFF3C4; border:1.5px solid #000000; padding:2px 8px;">10 Titles</span>
+                    <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">10 Titles</span>
                 </div>
                 <div style="font-size:0.82rem; color:#444444; margin-top:6px; line-height:1.5;">
                     Featuring French-crafted Titan Skinn (Raw & Celeste), Bella Vita Luxury (CEO Man & Honey Oud), Bombay Shaving Company (Mexico EDP), Forest Essentials pure Kashmiri Nargis mist, and Phool upcycled natural floral perfumes.
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        elif chosen_cat == "Audio":
+            st.markdown("""
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #FF7A00; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <span style="background:#FF7A00; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🎧 AUDIO</span>
+                        <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">High-Fidelity Audio & Wireless ANC</span>
+                    </div>
+                    <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">Premium Picks</span>
+                </div>
+                <div style="font-size:0.82rem; color:#444444; margin-top:6px; line-height:1.5;">
+                    Featuring boAt Nirvana Ion ANC wireless earbuds with 120-hour playback, Noise Buds VS series, and Boult Audio high-definition acoustics designed for Indian bass preferences.
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        elif chosen_cat == "Wearables":
+            st.markdown("""
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #FF7A00; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <span style="background:#FF7A00; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">📱 WEARABLES</span>
+                        <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">AMOLED Smartwatches & Fitness Trackers</span>
+                    </div>
+                    <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">Top Tech</span>
+                </div>
+                <div style="font-size:0.82rem; color:#444444; margin-top:6px; line-height:1.5;">
+                    Equipped with Bluetooth calling, SpO2 monitoring, always-on AMOLED displays, and durable IP68 water resistance from Noise, Fire-Boltt, and Fastrack.
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        elif chosen_cat == "Desk Setup":
+            st.markdown("""
+            <div style="background:#FFFDF9; border:2px solid #000000; border-left:6px solid #FF7A00; box-shadow:4px 4px 0px #000000; padding:12px 18px; margin-bottom:1.2rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <span style="background:#FF7A00; color:#FFFFFF; font-size:0.68rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1.5px solid #000000;">🖥️ DESK SETUP</span>
+                        <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">Productivity Essentials & Minimalist Workspace</span>
+                    </div>
+                    <span style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#CCFBF1; border:1.5px solid #000000; padding:2px 8px;">Curated</span>
+                </div>
+                <div style="font-size:0.82rem; color:#444444; margin-top:6px; line-height:1.5;">
+                    Ergonomic laptop stands, vegan leather desk mats, wireless fast chargers, and cable organizers from DailyObjects and Portronics.
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -2144,22 +2580,22 @@ with tabs[2]:
             top_n=top_n_p
         )
 
-        st.markdown(f"<div style='font-size:0.85rem; font-weight:700; text-transform:uppercase; color:#555555; margin-bottom:0.8rem;'>Showing Top {len(p_recs)} results in {chosen_cat}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='font-size:0.85rem; font-weight:800; text-transform:uppercase; color:#E65100; letter-spacing:0.05em; margin-bottom:0.8rem;'>Showing Top {len(p_recs)} results in {chosen_cat}</div>", unsafe_allow_html=True)
 
         for p in p_recs:
             p_url = p.get("url") or f"https://www.amazon.in/s?k={urllib.parse.quote_plus(str(p.get('name', '')))}"
             st.markdown(f"""
-            <div class="min-card">
-                <span class="tag-match">{p['match_score']}% MATCH</span>
-                <div class="item-title"><a href="{p_url}" target="_blank" style="color:#000000; text-decoration:underline;">{p['name']} ↗</a></div>
-                <div style="margin-top:0.4rem;">
-                    <span class="tag-accent">{p['brand']}</span>
-                    <span class="tag-neutral">{p['category']}</span>
-                    <span style="font-size:0.88rem; color:#000000; font-weight:800; margin-left:0.4rem;">₹{p['price_inr']:,}</span>
-                    <span style="font-size:0.85rem; color:#000000; margin-left:0.4rem; font-weight:700;">★ {p['rating']:.1f}</span>
+            <div class="product-card">
+                <span class="tag-product-match">{p['match_score']}% MATCH</span>
+                <div class="product-title"><a href="{p_url}" target="_blank">{p['name']} ↗</a></div>
+                <div style="margin-top:0.45rem; display:flex; flex-wrap:wrap; align-items:center; gap:6px;">
+                    <span class="tag-product-brand">{p['brand']}</span>
+                    <span class="tag-product-cat">{p['category']}</span>
+                    <span class="tag-product-price">₹{p['price_inr']:,}</span>
+                    <span style="font-size:0.88rem; color:#0D9488; font-weight:800; margin-left:0.2rem;">★ {p['rating']:.1f}</span>
                 </div>
-                <p style="color:#333333; font-size:0.84rem; margin:0.4rem 0 0 0;">{p['description']}</p>
-                <div class="reason-box">{p['explanation']}</div>
+                <p style="color:#333333; font-size:0.84rem; margin:0.45rem 0 0 0; line-height:1.45;">{p['description']}</p>
+                <div class="product-reason-box">{p['explanation']}</div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -2173,7 +2609,7 @@ with tabs[2]:
                     db.save_feedback(st.session_state.user_id, "Product", p['id'], "like")
                     st.toast(f"Liked {p['name']}!")
             with pb3:
-                st.markdown(f'<a href="{p_url}" target="_blank" class="buy-btn">🛒 Buy Now ↗</a>', unsafe_allow_html=True)
+                st.markdown(f'<a href="{p_url}" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a>', unsafe_allow_html=True)
 
 # -------------------------------------------------------------------------
 # TAB 3: COURSES
