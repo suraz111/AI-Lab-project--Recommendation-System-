@@ -105,6 +105,59 @@ st.markdown("""
         box-shadow: 4.5px 4.5px 0px #000000 !important;
     }
 
+    /* Top Header Recom.AI Clickable Banner & Overlay Button */
+    .recom-banner-box {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 100%);
+        border: 2.5px solid #000000;
+        box-shadow: 4px 4px 0px #000000;
+        padding: 0 18px;
+        height: 52px;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    div[class*="st-key-top_banner_home_btn"] {
+        margin-top: -52px !important;
+        height: 52px !important;
+        position: relative !important;
+        z-index: 10 !important;
+        margin-bottom: 1.2rem !important;
+    }
+
+    div[class*="st-key-top_banner_home_btn"] button {
+        width: 100% !important;
+        height: 52px !important;
+        min-height: 52px !important;
+        max-height: 52px !important;
+        opacity: 0 !important;
+        cursor: pointer !important;
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    div[class*="st-key-top_banner_home_btn"] button:focus,
+    div[class*="st-key-top_banner_home_btn"] button:active {
+        outline: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+
+    /* Interactive Hover Effect for RECOM.AI Banner when button or banner is hovered */
+    div[data-testid="stColumn"]:has(div[class*="st-key-top_banner_home_btn"] button:hover) .recom-banner-box,
+    .recom-banner-box:hover {
+        transform: translate(-1.5px, -1.5px);
+        box-shadow: 6px 6px 0px #FF2E93 !important;
+        border-color: #FF2E93 !important;
+    }
+
     /* Top Header Portal Navigation Bar */
     .portal-nav {
         display: flex;
@@ -234,10 +287,37 @@ st.markdown("""
         margin-bottom: 1.3rem;
     }
 
+    .cinema-domain-badge {
+        background: #C5A059 !important;
+        color: #1A050B !important;
+        font-weight: 900 !important;
+        font-size: 0.68rem !important;
+        padding: 4px 10px !important;
+        border: 1.5px solid #1A050B !important;
+        box-shadow: 2px 2px 0px #1A050B !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.06em !important;
+        display: inline-block !important;
+    }
+
+    .cinema-brass-pill {
+        background: #FAF6EE !important;
+        color: #7A0C24 !important;
+        border: 1.5px solid #C5A059 !important;
+        font-weight: 800 !important;
+        font-size: 0.72rem !important;
+        padding: 0.2rem 0.6rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.04em !important;
+        display: inline-block !important;
+        margin-right: 0.35rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+
     .cinema-card {
         background-color: #FFFFFF !important;
-        border: 2px solid #1A050B !important;
-        border-top: 5px solid #7A0C24 !important;
+        border: 2px solid #7A0C24 !important;
+        border-top: 5px solid #C5A059 !important;
         box-shadow: 4px 4px 0px #1A050B !important;
         border-radius: 0px !important;
         padding: 1.15rem 1.25rem !important;
@@ -513,18 +593,43 @@ st.markdown("""
     }
 
     /* Cinema Reset Button */
+    div[class*="st-key-btn_reset_m_filters"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
     div[class*="st-key-btn_reset_m_filters"] button {
         background: #FAF6EE !important;
         color: #7A0C24 !important;
         border: 2px solid #7A0C24 !important;
         box-shadow: 2.5px 2.5px 0px #1A050B !important;
         font-weight: 800 !important;
-        font-size: 0.78rem !important;
-        letter-spacing: 0.05em !important;
+        font-size: 0.76rem !important;
+        letter-spacing: 0.03em !important;
         text-transform: uppercase !important;
-        padding: 0.4rem 0.6rem !important;
+        padding: 0.4rem 0.4rem !important;
         margin-top: 0.5rem !important;
         transition: all 0.2s ease !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        white-space: normal !important;
+        overflow: hidden !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    div[class*="st-key-btn_reset_m_filters"] button div[data-testid="stMarkdownContainer"],
+    div[class*="st-key-btn_reset_m_filters"] button div,
+    div[class*="st-key-btn_reset_m_filters"] button p,
+    div[class*="st-key-btn_reset_m_filters"] button span {
+        white-space: normal !important;
+        overflow: hidden !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        line-height: 1.2 !important;
+        margin: 0 !important;
     }
 
     div[class*="st-key-btn_reset_m_filters"] button:hover {
@@ -539,37 +644,59 @@ st.markdown("""
     }
 
     /* Quick Keyword Chips in Cinema Filter */
+    div[class*="st-key-mchip_"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
     div[class*="st-key-mchip_"] button {
         background: #FAF6EE !important;
         color: #1A050B !important;
         border: 1.5px solid #C5A059 !important;
-        font-size: 0.76rem !important;
-        font-weight: 700 !important;
-        padding: 0.3rem 0.5rem !important;
+        font-size: 0.68rem !important;
+        font-weight: 800 !important;
+        padding: 0.25rem 0.2rem !important;
         border-radius: 0px !important;
         box-shadow: 2px 2px 0px #1A050B !important;
-        letter-spacing: 0.02em !important;
+        letter-spacing: 0.01em !important;
         min-height: 32px !important;
-        line-height: 1.25 !important;
-        white-space: nowrap !important;
-        overflow: visible !important;
-        text-overflow: clip !important;
+        height: auto !important;
+        line-height: 1.15 !important;
+        white-space: normal !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
         width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        text-align: center !important;
     }
 
-    div[class*="st-key-mchip_"] button *,
+    div[class*="st-key-mchip_"] button div[data-testid="stMarkdownContainer"],
+    div[class*="st-key-mchip_"] button div,
     div[class*="st-key-mchip_"] button p,
     div[class*="st-key-mchip_"] button span {
-        white-space: nowrap !important;
-        overflow: visible !important;
-        text-overflow: clip !important;
-        word-break: keep-all !important;
-        font-size: 0.76rem !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.02em !important;
+        white-space: normal !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        font-size: 0.68rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.01em !important;
+        line-height: 1.15 !important;
+        text-align: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
     }
 
     div[class*="st-key-mchip_"] button:hover {
@@ -623,6 +750,72 @@ st.markdown("""
     .product-card:hover {
         transform: translate(-2px, -2px) !important;
         box-shadow: 6px 6px 0px #0D9488 !important;
+    }
+
+    /* Product Card: Image + Info two-column poster layout */
+    .product-card-body {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 1.25rem !important;
+        align-items: stretch !important;
+    }
+
+    .product-img-frame {
+        flex-shrink: 0 !important;
+        width: 120px !important;
+        height: 180px !important;
+        aspect-ratio: 2 / 3 !important;
+        background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%) !important;
+        border: 2px solid #000000 !important;
+        box-shadow: 3px 3px 0px #0D9488 !important;
+        overflow: hidden !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-decoration: none !important;
+    }
+
+    .product-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        display: block !important;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .product-card:hover .product-img {
+        transform: scale(1.05) !important;
+    }
+
+    .product-img-placeholder {
+        font-size: 2.2rem !important;
+        line-height: 1 !important;
+        color: #94A3B8 !important;
+        text-align: center !important;
+    }
+
+    .product-info-col {
+        flex-grow: 1 !important;
+        min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
+    @media (max-width: 680px) {
+        .product-card-body {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+        }
+        .product-img-frame {
+            width: 140px !important;
+            height: 210px !important;
+            margin-bottom: 0.75rem !important;
+        }
+        .product-info-col { width: 100% !important; }
     }
 
     .product-title {
@@ -739,31 +932,53 @@ st.markdown("""
     }
 
     /* Product Category Selection Bar (btn_pcat_) — Anti-Truncation & Sharp Styling */
+    div[class*="st-key-btn_pcat_"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
     div[class*="st-key-btn_pcat_"] button {
         font-family: 'Space Grotesk', sans-serif !important;
-        font-size: 0.72rem !important;
+        font-size: 0.70rem !important;
         letter-spacing: 0.01em !important;
         text-transform: uppercase !important;
         transition: all 0.15s ease !important;
-        padding: 0.35rem 0.15rem !important;
+        padding: 0.35rem 0.2rem !important;
         border-radius: 0px !important;
         min-height: 38px !important;
+        height: auto !important;
         width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        white-space: normal !important;
+        overflow: hidden !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
     }
 
-    div[class*="st-key-btn_pcat_"] button *,
+    div[class*="st-key-btn_pcat_"] button div[data-testid="stMarkdownContainer"],
+    div[class*="st-key-btn_pcat_"] button div,
     div[class*="st-key-btn_pcat_"] button p,
     div[class*="st-key-btn_pcat_"] button span {
-        white-space: nowrap !important;
-        overflow: visible !important;
-        text-overflow: clip !important;
-        word-break: keep-all !important;
-        font-size: 0.72rem !important;
+        white-space: normal !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        font-size: 0.70rem !important;
         font-weight: 800 !important;
         letter-spacing: 0.01em !important;
+        line-height: 1.15 !important;
+        text-align: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
     }
 
     div[class*="st-key-btn_pcat_"] button[kind="primary"] {
@@ -838,6 +1053,8 @@ st.markdown("""
         font-family: 'Space Grotesk', sans-serif !important;
         font-weight: 700 !important;
         color: #000000 !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
         transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
     }
 
@@ -863,18 +1080,43 @@ st.markdown("""
     }
 
     /* Product Reset Button */
+    div[class*="st-key-btn_reset_p_filters"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
     div[class*="st-key-btn_reset_p_filters"] button {
         background: #F1F5F9 !important;
         color: #1E293B !important;
         border: 2px solid #000000 !important;
         box-shadow: 2.5px 2.5px 0px #000000 !important;
         font-weight: 800 !important;
-        font-size: 0.78rem !important;
-        letter-spacing: 0.05em !important;
+        font-size: 0.76rem !important;
+        letter-spacing: 0.03em !important;
         text-transform: uppercase !important;
-        padding: 0.4rem 0.6rem !important;
+        padding: 0.4rem 0.4rem !important;
         margin-top: 0.5rem !important;
         transition: all 0.2s ease !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        white-space: normal !important;
+        overflow: hidden !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    div[class*="st-key-btn_reset_p_filters"] button div[data-testid="stMarkdownContainer"],
+    div[class*="st-key-btn_reset_p_filters"] button div,
+    div[class*="st-key-btn_reset_p_filters"] button p,
+    div[class*="st-key-btn_reset_p_filters"] button span {
+        white-space: normal !important;
+        overflow: hidden !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        line-height: 1.2 !important;
+        margin: 0 !important;
     }
 
     div[class*="st-key-btn_reset_p_filters"] button:hover {
@@ -889,37 +1131,59 @@ st.markdown("""
     }
 
     /* Quick Feature Chips in Product Filter */
+    div[class*="st-key-pchip_"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
     div[class*="st-key-pchip_"] button {
         background: #FFFFFF !important;
         color: #1E293B !important;
         border: 1.5px solid #94A3B8 !important;
-        font-size: 0.76rem !important;
-        font-weight: 700 !important;
-        padding: 0.3rem 0.5rem !important;
+        font-size: 0.68rem !important;
+        font-weight: 800 !important;
+        padding: 0.25rem 0.2rem !important;
         border-radius: 0px !important;
         box-shadow: 2px 2px 0px #000000 !important;
-        letter-spacing: 0.02em !important;
+        letter-spacing: 0.01em !important;
         min-height: 32px !important;
-        line-height: 1.25 !important;
-        white-space: nowrap !important;
-        overflow: visible !important;
-        text-overflow: clip !important;
+        height: auto !important;
+        line-height: 1.15 !important;
+        white-space: normal !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
         width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        text-align: center !important;
     }
 
-    div[class*="st-key-pchip_"] button *,
+    div[class*="st-key-pchip_"] button div[data-testid="stMarkdownContainer"],
+    div[class*="st-key-pchip_"] button div,
     div[class*="st-key-pchip_"] button p,
     div[class*="st-key-pchip_"] button span {
-        white-space: nowrap !important;
-        overflow: visible !important;
-        text-overflow: clip !important;
-        word-break: keep-all !important;
-        font-size: 0.76rem !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.02em !important;
+        white-space: normal !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        font-size: 0.68rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.01em !important;
+        line-height: 1.15 !important;
+        text-align: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
     }
 
     div[class*="st-key-pchip_"] button:hover {
@@ -931,6 +1195,625 @@ st.markdown("""
 
     div[class*="st-key-pchip_"] button:hover * {
         color: #FFFFFF !important;
+    }
+
+    /* =========================================================================
+       EMERALD GREEN & SUNBEAM YELLOW (CAREER PATHWAYS & SKILLS DOMAIN)
+       Emerald Green stands for growth, momentum, and progress.
+       Sunbeam Yellow works like a highlighter pen to spotlight acquired skills,
+       the learning path strip, and the Enroll button.
+       Brutalist structure with deep green borders and hard shadows.
+       ========================================================================= */
+    .career-marquis {
+        background: linear-gradient(135deg, #064E3B 0%, #022C22 100%) !important;
+        border: 2.5px solid #064E3B !important;
+        box-shadow: 4px 4px 0px #064E3B !important;
+        padding: 14px 20px !important;
+        margin-bottom: 1.3rem !important;
+    }
+
+    .career-domain-badge {
+        background: #FACC15 !important;
+        color: #022C22 !important;
+        font-weight: 900 !important;
+        font-size: 0.68rem !important;
+        padding: 4px 10px !important;
+        border: 1.5px solid #064E3B !important;
+        box-shadow: 2px 2px 0px #064E3B !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.06em !important;
+        display: inline-block !important;
+    }
+
+    .career-card {
+        background: #FFFFFF !important;
+        border: 2px solid #064E3B !important;
+        border-top: 5px solid #059669 !important;
+        box-shadow: 4px 4px 0px #064E3B !important;
+        border-radius: 0px !important;
+        padding: 1.25rem 1.45rem !important;
+        margin-bottom: 0.95rem !important;
+        position: relative !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    .career-card:hover {
+        transform: translate(-2px, -2px) !important;
+        box-shadow: 6px 6px 0px #FACC15 !important;
+    }
+
+    /* Emerald & Sunbeam Yellow: Career Card Poster Layout */
+    .career-card-body {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 1.25rem !important;
+        align-items: stretch !important;
+    }
+
+    .career-poster-frame {
+        flex-shrink: 0 !important;
+        width: 120px !important;
+        height: 180px !important;
+        aspect-ratio: 2 / 3 !important;
+        background: linear-gradient(135deg, #064E3B 0%, #022C22 100%) !important;
+        border: 2px solid #064E3B !important;
+        box-shadow: 3px 3px 0px #FACC15 !important;
+        overflow: hidden !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .career-poster-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        display: block !important;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .career-card:hover .career-poster-img {
+        transform: scale(1.05) !important;
+    }
+
+    .career-info-col {
+        flex-grow: 1 !important;
+        min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
+    @media (max-width: 680px) {
+        .career-card-body {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+        }
+        .career-poster-frame {
+            width: 140px !important;
+            height: 210px !important;
+            margin-bottom: 0.75rem !important;
+        }
+        .career-info-col { width: 100% !important; }
+    }
+
+    .tag-career-match {
+        background: #064E3B !important;
+        color: #FFFFFF !important;
+        border: 1.5px solid #022C22 !important;
+        font-weight: 900 !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.05em !important;
+        padding: 3px 8px !important;
+        text-transform: uppercase !important;
+        box-shadow: 2px 2px 0px #022C22 !important;
+        display: inline-block !important;
+    }
+
+    .tag-career-org {
+        background: #022C22 !important;
+        color: #FFFFFF !important;
+        font-weight: 800 !important;
+        font-size: 0.72rem !important;
+        padding: 2px 8px !important;
+        border: 1.5px solid #064E3B !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.04em !important;
+        display: inline-block !important;
+    }
+
+    .tag-career-level {
+        background: #ECFDF5 !important;
+        color: #064E3B !important;
+        font-weight: 800 !important;
+        font-size: 0.72rem !important;
+        padding: 2px 8px !important;
+        border: 1.5px solid #059669 !important;
+        text-transform: uppercase !important;
+        display: inline-block !important;
+    }
+
+    .tag-career-duration {
+        background: #F4FBF7 !important;
+        color: #065F46 !important;
+        font-weight: 800 !important;
+        font-size: 0.72rem !important;
+        padding: 2px 8px !important;
+        border: 1.5px solid #059669 !important;
+        display: inline-block !important;
+    }
+
+    /* Sunbeam Yellow Highlighter Skill Badge (Marks acquired / matching skills) */
+    .skill-highlighter {
+        background: #FDE047 !important;
+        color: #022C22 !important;
+        border: 1.5px solid #064E3B !important;
+        font-weight: 900 !important;
+        font-size: 0.72rem !important;
+        padding: 3px 8px !important;
+        display: inline-block !important;
+        margin-right: 5px !important;
+        margin-bottom: 5px !important;
+        box-shadow: 2px 2px 0px #064E3B !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    .skill-curriculum {
+        background: #ECFDF5 !important;
+        color: #065F46 !important;
+        border: 1.5px solid #059669 !important;
+        font-weight: 700 !important;
+        font-size: 0.72rem !important;
+        padding: 2px 7px !important;
+        display: inline-block !important;
+        margin-right: 5px !important;
+        margin-bottom: 5px !important;
+    }
+
+    /* Learning Path Strip marked in Sunbeam Yellow */
+    .career-path-strip {
+        background: #FEF9C3 !important;
+        border: 1.5px solid #064E3B !important;
+        box-shadow: 2.5px 2.5px 0px #064E3B !important;
+        padding: 6px 12px !important;
+        margin-top: 0.75rem !important;
+        margin-bottom: 0.6rem !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        gap: 6px !important;
+    }
+
+    .career-path-label {
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 900 !important;
+        font-size: 0.68rem !important;
+        color: #022C22 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.06em !important;
+        background: #FACC15 !important;
+        padding: 2px 6px !important;
+        border: 1px solid #064E3B !important;
+    }
+
+    .career-path-step {
+        font-size: 0.72rem !important;
+        font-weight: 800 !important;
+        color: #022C22 !important;
+    }
+
+    .career-path-arrow {
+        color: #059669 !important;
+        font-weight: 900 !important;
+        font-size: 0.75rem !important;
+    }
+
+    .career-reason-box {
+        background: #F0FDF4 !important;
+        border: 1.5px solid #064E3B !important;
+        border-left: 5px solid #059669 !important;
+        padding: 8px 12px !important;
+        font-size: 0.78rem !important;
+        color: #064E3B !important;
+        line-height: 1.5 !important;
+        font-weight: 600 !important;
+    }
+
+    /* Sunbeam Yellow Highlighter Enroll Button */
+    .career-enroll-btn {
+        display: inline-block !important;
+        width: 100% !important;
+        text-align: center !important;
+        background: linear-gradient(135deg, #FDE047 0%, #FACC15 100%) !important;
+        color: #022C22 !important;
+        border: 2px solid #064E3B !important;
+        padding: 0.45rem 0.75rem !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-size: 0.8rem !important;
+        font-weight: 900 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        text-decoration: none !important;
+        box-shadow: 3.5px 3.5px 0px #064E3B !important;
+        transition: all 0.2s ease !important;
+        box-sizing: border-box !important;
+    }
+
+    .career-enroll-btn:hover {
+        background: #064E3B !important;
+        color: #FACC15 !important;
+        transform: translate(-1px, -1px) !important;
+        box-shadow: 4.5px 4.5px 0px #022C22 !important;
+    }
+
+    /* Domain Selector Bar for Careers (btn_cdom_) */
+    div[class*="st-key-btn_cdom_"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    div[class*="st-key-btn_cdom_"] button {
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-size: 0.70rem !important;
+        letter-spacing: 0.01em !important;
+        text-transform: uppercase !important;
+        transition: all 0.15s ease !important;
+        padding: 0.35rem 0.2rem !important;
+        border-radius: 0px !important;
+        min-height: 38px !important;
+        height: auto !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        white-space: normal !important;
+        overflow: hidden !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    div[class*="st-key-btn_cdom_"] button div[data-testid="stMarkdownContainer"],
+    div[class*="st-key-btn_cdom_"] button div,
+    div[class*="st-key-btn_cdom_"] button p,
+    div[class*="st-key-btn_cdom_"] button span {
+        white-space: normal !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        font-size: 0.70rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.01em !important;
+        line-height: 1.15 !important;
+        text-align: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+    }
+
+    div[class*="st-key-btn_cdom_"] button[kind="primary"] {
+        background: #064E3B !important;
+        color: #FFFFFF !important;
+        border: 2px solid #064E3B !important;
+        box-shadow: 3.5px 3.5px 0px #FACC15 !important;
+        font-weight: 900 !important;
+    }
+
+    div[class*="st-key-btn_cdom_"] button[kind="primary"] *,
+    div[class*="st-key-btn_cdom_"] button[kind="primary"] p,
+    div[class*="st-key-btn_cdom_"] button[kind="primary"] span {
+        color: #FFFFFF !important;
+    }
+
+    div[class*="st-key-btn_cdom_"] button[kind="secondary"] {
+        background: #FFFFFF !important;
+        color: #064E3B !important;
+        border: 2px solid #064E3B !important;
+        box-shadow: 2px 2px 0px #064E3B !important;
+        font-weight: 700 !important;
+    }
+
+    div[class*="st-key-btn_cdom_"] button[kind="secondary"]:hover {
+        background: #ECFDF5 !important;
+        color: #047857 !important;
+        border-color: #064E3B !important;
+        box-shadow: 3px 3px 0px #FACC15 !important;
+    }
+
+    /* In-Demand Skill Chips in Career Filter (cchip_) */
+    div[class*="st-key-cchip_"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    div[class*="st-key-cchip_"] button {
+        background: #FFFFFF !important;
+        color: #064E3B !important;
+        border: 1.5px solid #059669 !important;
+        font-size: 0.68rem !important;
+        font-weight: 800 !important;
+        padding: 0.25rem 0.2rem !important;
+        border-radius: 0px !important;
+        box-shadow: 2px 2px 0px #064E3B !important;
+        letter-spacing: 0.01em !important;
+        min-height: 32px !important;
+        height: auto !important;
+        line-height: 1.15 !important;
+        white-space: normal !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    div[class*="st-key-cchip_"] button div[data-testid="stMarkdownContainer"],
+    div[class*="st-key-cchip_"] button div,
+    div[class*="st-key-cchip_"] button p,
+    div[class*="st-key-cchip_"] button span {
+        white-space: normal !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        font-size: 0.68rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.01em !important;
+        line-height: 1.15 !important;
+        text-align: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+    }
+
+    div[class*="st-key-cchip_"] button:hover {
+        background: #064E3B !important;
+        color: #FACC15 !important;
+        border-color: #064E3B !important;
+        box-shadow: 3px 3px 0px #FACC15 !important;
+    }
+
+    div[class*="st-key-cchip_"] button:hover * {
+        color: #FACC15 !important;
+    }
+
+    /* Career Domain Widgets and Sliders */
+    div[class*="st-key-sb_course_domain"] label,
+    div[class*="st-key-sb_course_level"] label,
+    div[class*="st-key-input_course_query"] label,
+    div[class*="st-key-c_s"] label,
+    div[class*="st-key-c_alpha"] label {
+        color: #064E3B !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 800 !important;
+        font-size: 0.82rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+    }
+
+    div[class*="st-key-input_course_query"] input,
+    div[class*="st-key-sb_course_domain"] [data-baseweb="select"] > div,
+    div[class*="st-key-sb_course_level"] [data-baseweb="select"] > div {
+        background-color: #FFFFFF !important;
+        border: 2px solid #064E3B !important;
+        border-radius: 0px !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 700 !important;
+        color: #022C22 !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+    }
+
+    div[class*="st-key-input_course_query"] input:focus,
+    div[class*="st-key-sb_course_domain"] [data-baseweb="select"] > div:focus-within,
+    div[class*="st-key-sb_course_level"] [data-baseweb="select"] > div:focus-within {
+        border-color: #059669 !important;
+        box-shadow: 2.5px 2.5px 0px #FACC15 !important;
+    }
+
+    div[class*="st-key-c_s"] [data-baseweb="slider"] div[role="slider"],
+    div[class*="st-key-c_alpha"] [data-baseweb="slider"] div[role="slider"] {
+        background-color: #FFFFFF !important;
+        border: 2.5px solid #059669 !important;
+        box-shadow: 2px 2px 0px #064E3B !important;
+    }
+
+    div[class*="st-key-c_s"] [data-testid="stThumbValue"],
+    div[class*="st-key-c_alpha"] [data-testid="stThumbValue"] {
+        color: #059669 !important;
+        font-weight: 900 !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+    }
+
+    /* Career Action Buttons (Save & Like) */
+    div[class*="st-key-s_c_"] button,
+    div[class*="st-key-l_c_"] button {
+        background: #FFFFFF !important;
+        color: #064E3B !important;
+        border: 2px solid #064E3B !important;
+        box-shadow: 2px 2px 0px #064E3B !important;
+        font-weight: 800 !important;
+        font-size: 0.78rem !important;
+        padding: 0.35rem 0.5rem !important;
+    }
+
+    div[class*="st-key-s_c_"] button:hover,
+    div[class*="st-key-l_c_"] button:hover {
+        background: #ECFDF5 !important;
+        border-color: #064E3B !important;
+        color: #059669 !important;
+        box-shadow: 3px 3px 0px #FACC15 !important;
+    }
+
+    /* Course Reset Button */
+    div[class*="st-key-btn_reset_c_filters"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    div[class*="st-key-btn_reset_c_filters"] button {
+        background: #F1F5F9 !important;
+        color: #064E3B !important;
+        border: 2px solid #064E3B !important;
+        box-shadow: 2.5px 2.5px 0px #064E3B !important;
+        font-weight: 800 !important;
+        font-size: 0.76rem !important;
+        letter-spacing: 0.03em !important;
+        text-transform: uppercase !important;
+        padding: 0.4rem 0.4rem !important;
+        margin-top: 0.5rem !important;
+        transition: all 0.2s ease !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        white-space: normal !important;
+        overflow: hidden !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    div[class*="st-key-btn_reset_c_filters"] button div[data-testid="stMarkdownContainer"],
+    div[class*="st-key-btn_reset_c_filters"] button div,
+    div[class*="st-key-btn_reset_c_filters"] button p,
+    div[class*="st-key-btn_reset_c_filters"] button span {
+        white-space: normal !important;
+        overflow: hidden !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        line-height: 1.2 !important;
+        margin: 0 !important;
+    }
+
+    div[class*="st-key-btn_reset_c_filters"] button:hover {
+        background: #064E3B !important;
+        color: #FACC15 !important;
+        border-color: #064E3B !important;
+        box-shadow: 3.5px 3.5px 0px #FACC15 !important;
+    }
+
+    div[class*="st-key-btn_reset_c_filters"] button:hover * {
+        color: #FACC15 !important;
+    }
+
+    /* =========================================================================
+       OVERVIEW DOMAIN EXPLORATION BUTTONS (PALETTE HARMONIZED)
+       ========================================================================= */
+    /* Movies & Cinema Explore Buttons (Velvet Crimson & Antique Brass) */
+    div[class*="st-key-btn_ov_cinema"] button {
+        background: linear-gradient(135deg, #7A0C24 0%, #4D0717 100%) !important;
+        color: #FAF5E8 !important;
+        border: 2px solid #C5A059 !important;
+        box-shadow: 3.5px 3.5px 0px #1A050B !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 800 !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+        transition: all 0.2s ease !important;
+    }
+
+    div[class*="st-key-btn_ov_cinema"] button * {
+        color: #FAF5E8 !important;
+    }
+
+    div[class*="st-key-btn_ov_cinema"] button:hover {
+        background: #C5A059 !important;
+        color: #1A050B !important;
+        border-color: #1A050B !important;
+        box-shadow: 4.5px 4.5px 0px #7A0C24 !important;
+        transform: translate(-1px, -1px) !important;
+    }
+
+    div[class*="st-key-btn_ov_cinema"] button:hover * {
+        color: #1A050B !important;
+    }
+
+    /* Products & Lifestyle Explore Buttons (Charcoal Slate & Balancing Teal) */
+    div[class*="st-key-btn_ov_brands"] button,
+    div[class*="st-key-btn_ov_watches"] button,
+    div[class*="st-key-btn_ov_fragrance"] button {
+        background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%) !important;
+        color: #F8FAFC !important;
+        border: 2px solid #0D9488 !important;
+        box-shadow: 3.5px 3.5px 0px #0F172A !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 800 !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+        transition: all 0.2s ease !important;
+    }
+
+    div[class*="st-key-btn_ov_brands"] button *,
+    div[class*="st-key-btn_ov_watches"] button *,
+    div[class*="st-key-btn_ov_fragrance"] button * {
+        color: #F8FAFC !important;
+    }
+
+    div[class*="st-key-btn_ov_brands"] button:hover,
+    div[class*="st-key-btn_ov_watches"] button:hover,
+    div[class*="st-key-btn_ov_fragrance"] button:hover {
+        background: #0D9488 !important;
+        color: #FFFFFF !important;
+        border-color: #0F172A !important;
+        box-shadow: 4.5px 4.5px 0px #F97316 !important;
+        transform: translate(-1px, -1px) !important;
+    }
+
+    div[class*="st-key-btn_ov_brands"] button:hover *,
+    div[class*="st-key-btn_ov_watches"] button:hover *,
+    div[class*="st-key-btn_ov_fragrance"] button:hover * {
+        color: #FFFFFF !important;
+    }
+
+    /* Career Pathways Explore Buttons (Emerald Green & Sunbeam Yellow) */
+    div[class*="st-key-btn_ov_courses"] button {
+        background: linear-gradient(135deg, #064E3B 0%, #022C22 100%) !important;
+        color: #FFFFFF !important;
+        border: 2px solid #064E3B !important;
+        box-shadow: 3.5px 3.5px 0px #FACC15 !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 900 !important;
+        font-size: 0.82rem !important;
+        letter-spacing: 0.05em !important;
+        text-transform: uppercase !important;
+        transition: all 0.2s ease !important;
+    }
+
+    div[class*="st-key-btn_ov_courses"] button * {
+        color: #FFFFFF !important;
+    }
+
+    div[class*="st-key-btn_ov_courses"] button:hover {
+        background: #FACC15 !important;
+        color: #022C22 !important;
+        border-color: #064E3B !important;
+        box-shadow: 4.5px 4.5px 0px #064E3B !important;
+        transform: translate(-1px, -1px) !important;
+    }
+
+    div[class*="st-key-btn_ov_courses"] button:hover * {
+        color: #022C22 !important;
     }
 
     /* =========================================================================
@@ -1161,19 +2044,10 @@ st.markdown("""
     /* =========================================================================
        FILTER SECTION SUBTITLES & WIDGET LABELS (FORCED DEFAULT BOLD BLACK #000000)
        ========================================================================= */
-    div[data-testid="stWidgetLabel"],
-    div[data-testid="stWidgetLabel"] *,
-    div[data-testid="stWidgetLabel"] p,
-    div[data-testid="stWidgetLabel"] span,
-    div[data-testid="stWidgetLabel"] div,
     label[data-testid="stWidgetLabel"],
     label[data-testid="stWidgetLabel"] *,
     label[data-testid="stWidgetLabel"] p,
     label[data-testid="stWidgetLabel"] span,
-    label,
-    label *,
-    label p,
-    label span,
     .stSelectbox label,
     .stSelectbox label *,
     .stSelectbox label p,
@@ -1191,33 +2065,39 @@ st.markdown("""
     .stMultiSelect label p,
     .stMultiSelect label span,
     div[data-testid="stSlider"] [data-testid="stWidgetLabel"] p,
-    div[data-testid="stSlider"] [data-testid="stWidgetLabel"] span,
-    div[data-testid="stSlider"] [data-testid="stTickBarMin"],
-    div[data-testid="stSlider"] [data-testid="stTickBarMax"] {
+    div[data-testid="stSlider"] [data-testid="stWidgetLabel"] span {
         color: #000000 !important;
         font-family: 'Space Grotesk', sans-serif !important;
         font-weight: 800 !important;
         font-size: 0.82rem !important;
         text-transform: uppercase !important;
-        letter-spacing: 0.05em !important;
+        letter-spacing: 0.04em !important;
         opacity: 1 !important;
         visibility: visible !important;
-        -webkit-text-stroke: 0.25px #000000 !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        line-height: 1.25 !important;
     }
 
-    /* Slider values & numbers */
+    /* Slider values & numbers - contained strictly */
     div[data-testid="stSlider"] [data-testid="stThumbValue"],
     div[data-testid="stSlider"] div[role="slider"] {
         color: #000000 !important;
         font-weight: 800 !important;
     }
 
-    /* Form Inputs, Selectboxes, and MultiSelects */
-    div[data-testid="stSelectbox"] > div,
-    div[data-testid="stSelectbox"] [role="combobox"],
-    div[data-testid="stSelectbox"] [data-baseweb="select"],
+    div[data-testid="stSlider"] [data-testid="stTickBarMin"],
+    div[data-testid="stSlider"] [data-testid="stTickBarMax"] {
+        color: #000000 !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.01em !important;
+    }
+
+    /* Form Inputs, Selectboxes, and MultiSelects - Single Outer Border Only */
     div[data-testid="stSelectbox"] [data-baseweb="select"] > div,
-    div[data-testid="stMultiSelect"] > div,
     div[data-testid="stMultiSelect"] [data-baseweb="select"] > div,
     div[data-baseweb="select"] > div,
     div[data-testid="stTextInput"] input,
@@ -1229,17 +2109,58 @@ st.markdown("""
         font-family: 'Space Grotesk', sans-serif !important;
         font-weight: 700 !important;
         opacity: 1 !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
     }
 
-    div[data-testid="stSelectbox"] [role="combobox"] *,
-    div[data-testid="stSelectbox"] div[data-testid="stMarkdownContainer"] *,
-    div[data-testid="stSelectbox"] span,
-    div[data-testid="stSelectbox"] p,
-    div[data-testid="stMultiSelect"] div,
-    div[data-testid="stMultiSelect"] span,
-    div[data-testid="stMultiSelect"] p {
+    /* Prevent accidental double borders on wrapper divs */
+    div[data-testid="stSelectbox"] > div,
+    div[data-testid="stSelectbox"] [data-baseweb="select"],
+    div[data-testid="stMultiSelect"] > div,
+    div[data-testid="stMultiSelect"] [data-baseweb="select"] {
+        border: none !important;
+        background: transparent !important;
+        box-sizing: border-box !important;
+    }
+
+    div[data-testid="stSelectbox"] [role="combobox"],
+    div[data-testid="stMultiSelect"] [role="combobox"] {
+        border: none !important;
+        background: transparent !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        max-width: 100% !important;
+    }
+
+    /* Selected value text inside Selectbox: contain text and prevent spilling outside box */
+    div[data-testid="stSelectbox"] [data-baseweb="select"] [aria-selected="true"],
+    div[data-testid="stSelectbox"] [data-baseweb="select"] span,
+    div[data-testid="stSelectbox"] [data-baseweb="select"] p,
+    div[data-testid="stSelectbox"] [data-baseweb="select"] div {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
         color: #000000 !important;
         font-weight: 700 !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+    }
+
+    /* Multiselect Tags: strictly contained inside selectbox without leaking */
+    div[data-testid="stMultiSelect"] div[data-baseweb="tag"],
+    div[data-testid="stMultiSelect"] span[data-baseweb="tag"] {
+        max-width: calc(100% - 6px) !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    div[data-testid="stMultiSelect"] div[data-baseweb="tag"] span {
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        max-width: calc(100% - 16px) !important;
     }
 
     /* Selectbox dropdown virtual popover options */
@@ -1500,6 +2421,41 @@ st.markdown("""
 # Initialize Database
 db.init_db()
 
+# Safe Comprehensive Filter Reset Callback for All 3 Domains
+def reset_all_domain_filters():
+    """
+    Reset all filters, categories, search queries, sliders, and focused items
+    across all 3 domains (Cinema, Products, Careers) to default 'All' state.
+    Ensures no categories are pre-selected without explicit user input.
+    """
+    # Portal Tab & Overview Hub
+    st.session_state["portal_tabs"] = "🏠 Overview"
+    st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
+    st.session_state.focused_saved_item = None
+
+    # Domain 1: 🎬 Movies & Cinema
+    st.session_state["selected_movie_industry"] = "All"
+    st.session_state["sb_movie_industry"] = "All"
+    st.session_state["m_genres"] = []
+    st.session_state["input_movie_query"] = ""
+    st.session_state["m_s"] = 5
+    st.session_state["m_alpha"] = 0.6
+
+    # Domain 2: 🛍️ Products & Lifestyle
+    st.session_state["selected_product_category"] = "All"
+    st.session_state["sb_product_category"] = "All"
+    st.session_state["sb_product_brand"] = "All"
+    st.session_state["input_product_query"] = ""
+    st.session_state["p_budget"] = 14995
+    st.session_state["p_s"] = 5
+
+    # Domain 3: 🎓 Career Pathways & Skills
+    st.session_state["selected_course_domain"] = "All"
+    st.session_state["sb_course_domain"] = "All"
+    st.session_state["sb_course_level"] = "All"
+    st.session_state["input_course_query"] = ""
+    st.session_state["c_s"] = 5
+
 # Session State Initialization
 if "user_id" not in st.session_state:
     st.session_state.user_id = None
@@ -1509,28 +2465,53 @@ if "auth_error" not in st.session_state:
     st.session_state.auth_error = None
 if "auth_success" not in st.session_state:
     st.session_state.auth_success = None
+
+# Ensure all 3 domains default to clean "All" state on fresh session initialization
 if "portal_tabs" not in st.session_state:
-    st.session_state["portal_tabs"] = "🏠 Overview"
-if "focused_saved_item" not in st.session_state:
-    st.session_state.focused_saved_item = None
-if "input_movie_query" not in st.session_state:
-    st.session_state["input_movie_query"] = ""
+    reset_all_domain_filters()
+
+# Defensive defaults for all individual domain state keys
 if "selected_movie_industry" not in st.session_state:
     st.session_state["selected_movie_industry"] = "All"
 if "sb_movie_industry" not in st.session_state:
     st.session_state["sb_movie_industry"] = "All"
 if "m_genres" not in st.session_state:
     st.session_state["m_genres"] = []
+if "input_movie_query" not in st.session_state:
+    st.session_state["input_movie_query"] = ""
 if "m_s" not in st.session_state:
     st.session_state["m_s"] = 5
 if "m_alpha" not in st.session_state:
     st.session_state["m_alpha"] = 0.6
+
+if "selected_product_category" not in st.session_state:
+    st.session_state["selected_product_category"] = "All"
+if "sb_product_category" not in st.session_state:
+    st.session_state["sb_product_category"] = "All"
+if "sb_product_brand" not in st.session_state:
+    st.session_state["sb_product_brand"] = "All"
 if "input_product_query" not in st.session_state:
     st.session_state["input_product_query"] = ""
+if "p_budget" not in st.session_state:
+    st.session_state["p_budget"] = 14995
+if "p_s" not in st.session_state:
+    st.session_state["p_s"] = 5
+
+if "selected_course_domain" not in st.session_state:
+    st.session_state["selected_course_domain"] = "All"
+if "sb_course_domain" not in st.session_state:
+    st.session_state["sb_course_domain"] = "All"
+if "sb_course_level" not in st.session_state:
+    st.session_state["sb_course_level"] = "All"
 if "input_course_query" not in st.session_state:
     st.session_state["input_course_query"] = ""
+if "c_s" not in st.session_state:
+    st.session_state["c_s"] = 5
+
 if "overview_domain_selectbox" not in st.session_state:
     st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
+if "focused_saved_item" not in st.session_state:
+    st.session_state.focused_saved_item = None
 
 TAB_OPTIONS = [
     "🏠 Overview",
@@ -1554,15 +2535,17 @@ CATEGORY_TAB_MAP = {
 
 # Model Loader (Auto-invalidates cache when clean CSV files or model codes are updated)
 @st.cache_resource
-def get_engines_v3(movies_mtime, products_mtime, courses_mtime, code_mtime):
+def get_engines_v4(movies_mtime, products_mtime, courses_mtime, models_mtime):
     import importlib
     import models.movie_rec
     import models.product_rec
+    import models.course_rec
     importlib.reload(models.movie_rec)
     importlib.reload(models.product_rec)
+    importlib.reload(models.course_rec)
     m = models.movie_rec.MovieRecommender()
     p = models.product_rec.ProductRecommender()
-    c = CourseRecommender()
+    c = models.course_rec.CourseRecommender()
     return m, p, c
 
 @st.cache_data
@@ -1673,7 +2656,7 @@ if st.session_state.user_id is None:
                 st.session_state.username = username
                 st.session_state.auth_error = None
                 st.session_state.auth_success = None
-                st.session_state["portal_tabs"] = "🏠 Overview"
+                reset_all_domain_filters()
                 st.rerun()
             else:
                 st.session_state.auth_error = msg
@@ -1687,7 +2670,7 @@ if st.session_state.user_id is None:
                 st.session_state.username = username
                 st.session_state.auth_error = None
                 st.session_state.auth_success = f"Account created! Welcome, {username}!"
-                st.session_state["portal_tabs"] = "🏠 Overview"
+                reset_all_domain_filters()
                 st.rerun()
             else:
                 st.session_state.auth_error = msg
@@ -1702,7 +2685,7 @@ if st.session_state.user_id is None:
             st.session_state.username = "demo_user"
             st.session_state.auth_error = None
             st.session_state.auth_success = None
-            st.session_state["portal_tabs"] = "🏠 Overview"
+            reset_all_domain_filters()
             st.rerun()
 
     st.stop()  # Stop execution here if not logged in
@@ -1713,24 +2696,65 @@ if st.session_state.user_id is None:
 m_csv = "data/cleaned/movies_clean.csv"
 p_csv = "data/cleaned/products_clean.csv"
 c_csv = "data/cleaned/courses_clean.csv"
-rec_code = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models", "movie_rec.py")
-movie_engine, product_engine, course_engine = get_engines_v3(
+m_py = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models", "movie_rec.py")
+p_py = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models", "product_rec.py")
+c_py = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models", "course_rec.py")
+models_mtime = (
+    (os.path.getmtime(m_py) if os.path.exists(m_py) else 0) +
+    (os.path.getmtime(p_py) if os.path.exists(p_py) else 0) +
+    (os.path.getmtime(c_py) if os.path.exists(c_py) else 0)
+)
+movie_engine, product_engine, course_engine = get_engines_v4(
     os.path.getmtime(m_csv) if os.path.exists(m_csv) else 0,
     os.path.getmtime(p_csv) if os.path.exists(p_csv) else 0,
     os.path.getmtime(c_csv) if os.path.exists(c_csv) else 0,
-    os.path.getmtime(rec_code) if os.path.exists(rec_code) else 0,
+    models_mtime,
 )
+
+def resolve_product_image(product_id: int, name: str, brand: str, category: str, price_inr: int = 1999, rating: float = 4.5) -> tuple:
+    """Bulletproof resolver that invokes product_engine.get_image, ProductRecommender.get_image, or fallback poster."""
+    if hasattr(product_engine, "get_image"):
+        try:
+            return product_engine.get_image(product_id, name, brand, category, price_inr, rating)
+        except Exception:
+            pass
+    try:
+        import models.product_rec
+        return models.product_rec.get_product_poster(product_id, name, brand, category, price_inr, rating)
+    except Exception:
+        return ("", "")
+
+# Safe Tab Switching Callback (Runs before widgets are instantiated on rerun)
+def set_active_tab(tab_name, industry=None, category=None, domain=None):
+    st.session_state["portal_tabs"] = tab_name
+    st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
+    if tab_name == "🏠 Overview":
+        st.session_state.focused_saved_item = None
+    if industry:
+        st.session_state["selected_movie_industry"] = industry
+        st.session_state["sb_movie_industry"] = industry
+    if category:
+        st.session_state["selected_product_category"] = category
+        st.session_state["sb_product_category"] = category
+    if domain:
+        st.session_state["selected_course_domain"] = domain
+        st.session_state["sb_course_domain"] = domain
 
 # Top Header Navigation Bar (Placed at the very top edge with vibrant color palette)
 header_col1, header_col2 = st.columns([2.5, 1.5], gap="small")
 with header_col1:
     st.markdown('''
-        <div style="display:flex; align-items:center; gap:12px; background:linear-gradient(135deg, #0F172A 0%, #1E1B4B 100%); border:2.5px solid #000000; box-shadow:4px 4px 0px #000000; padding:10px 18px; margin-bottom:1.2rem;">
+        <div class="recom-banner-box" title="⚡ Recom.AI — Click to jump to Overview Hub">
             <span style="font-weight:900; font-size:1.35rem; letter-spacing:0.08em; background:linear-gradient(90deg, #FF2E93 0%, #FF8A00 50%, #FFD600 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-family:'Space Grotesk';">⚡ RECOM.AI</span>
             <span style="background:linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%); color:#FFFFFF; font-size:0.65rem; font-weight:800; padding:3px 9px; letter-spacing:0.06em; text-transform:uppercase; border:1.5px solid #000000; box-shadow:2px 2px 0px #000000;">PORTAL</span>
             <span style="color:#94A3B8; font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.05em;">• MULTI-DOMAIN INTELLIGENCE ENGINE</span>
         </div>
     ''', unsafe_allow_html=True)
+    if st.button("⚡ RECOM.AI (Go to Overview)", key="top_banner_home_btn", help="⚡ Click to return to Overview page", on_click=set_active_tab, args=("🏠 Overview",)):
+        st.session_state["portal_tabs"] = "🏠 Overview"
+        st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
+        st.session_state.focused_saved_item = None
+        st.rerun()
 
 with header_col2:
     u_col1, u_col2 = st.columns([1.3, 1], gap="small")
@@ -1744,7 +2768,9 @@ with header_col2:
         if st.button("LOG OUT", key="top_logout_btn", width="stretch"):
             st.session_state.user_id = None
             st.session_state.username = None
-            st.session_state["portal_tabs"] = "🏠 Overview"
+            st.session_state.auth_error = None
+            st.session_state.auth_success = None
+            reset_all_domain_filters()
             st.rerun()
 
 # Explicit Spacing Gap Between Top Header Banner and Tab Navigation Bar
@@ -1805,16 +2831,7 @@ with st.sidebar:
     else:
         st.caption("No saved items yet. Click 🔖 on any card to save it here.")
 
-# Safe Tab Switching Callback (Runs before widgets are instantiated on rerun)
-def set_active_tab(tab_name, industry=None, category=None):
-    st.session_state["portal_tabs"] = tab_name
-    st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
-    if industry:
-        st.session_state["selected_movie_industry"] = industry
-        st.session_state["sb_movie_industry"] = industry
-    if category:
-        st.session_state["selected_product_category"] = category
-        st.session_state["sb_product_category"] = category
+# (Note: set_active_tab callback defined above for top header navigation)
 
 # Dropdown Domain Select Callback (Runs before widgets are instantiated on rerun)
 def on_overview_domain_select():
@@ -1871,6 +2888,29 @@ def reset_product_filters(max_p):
     st.session_state["p_budget"] = max_p
     st.session_state["p_s"] = 5
 
+# Safe Callbacks for Career Pathways & Skills Domain (Run before widgets instantiate)
+def clear_course_focus():
+    st.session_state.focused_saved_item = None
+    st.session_state["input_course_query"] = ""
+
+def set_course_domain(dom):
+    st.session_state["selected_course_domain"] = dom
+    st.session_state["sb_course_domain"] = dom
+    st.session_state["input_course_query"] = ""
+
+def on_course_domain_change():
+    st.session_state["selected_course_domain"] = st.session_state.get("sb_course_domain", "All")
+
+def set_course_query_skill(skill_text):
+    st.session_state["input_course_query"] = skill_text
+
+def reset_course_filters():
+    st.session_state["sb_course_domain"] = "All"
+    st.session_state["selected_course_domain"] = "All"
+    st.session_state["sb_course_level"] = "All"
+    st.session_state["input_course_query"] = ""
+    st.session_state["c_s"] = 5
+
 # Always ensure overview selectbox is reset to the default Overview option when navigating away
 if st.session_state.get("portal_tabs") != "🏠 Overview":
     st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
@@ -1893,8 +2933,13 @@ tabs = st.tabs(TAB_OPTIONS, key="portal_tabs", on_change="rerun")
 # TAB 0: OVERVIEW
 # -------------------------------------------------------------------------
 with tabs[0]:
-    st.markdown('<div style="display:flex;height:8px;margin-bottom:1rem"><span style="flex:1;background:#B3123B"></span><span style="flex:1;background:#FF8A00"></span><span style="flex:1;background:#3B5BFF"></span></div>', unsafe_allow_html=True)
-    st.markdown("<h2 style='font-family:\"Space Grotesk\"; text-transform:uppercase; font-size:1.8rem; font-weight:700; margin-bottom:0.2rem;'>WELCOME BACK</h2>", unsafe_allow_html=True)
+    user_display = (st.session_state.get("username") or "Explorer").strip().upper()
+    st.markdown('<div style="display:flex;height:8px;margin-bottom:1rem"><span style="flex:1;background:#B3123B"></span><span style="flex:1;background:#FF8A00"></span><span style="flex:1;background:#059669"></span></div>', unsafe_allow_html=True)
+    st.markdown(f'''
+        <h2 style='font-family:"Space Grotesk"; text-transform:uppercase; font-size:1.85rem; font-weight:800; margin-bottom:0.2rem; letter-spacing:0.02em;'>
+            WELCOME BACK, <span style="background:linear-gradient(90deg, #B3123B 0%, #FF8A00 50%, #059669 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">{user_display}</span> 👋
+        </h2>
+    ''', unsafe_allow_html=True)
     st.markdown("<p style='color:#555555; font-size:0.9rem; font-weight:600; text-transform:uppercase; margin-bottom:1.2rem;'>Select a domain below or use the navigation tabs to generate personalized recommendations.</p>", unsafe_allow_html=True)
 
     # ---------------------------------------------------------
@@ -1918,24 +2963,37 @@ with tabs[0]:
     # ---------------------------------------------------------
     st.markdown("<div style='font-family:\"Space Grotesk\"; text-transform:uppercase; font-size:0.85rem; font-weight:800; color:#555555; letter-spacing:0.08em; margin-bottom:0.8rem;'>EXPLORE RECOMMENDATION DOMAINS</div>", unsafe_allow_html=True)
 
-    # Vertical Card 1: Cinema Hub (Domain 01: Crimson #B3123B)
-    st.markdown("""
-    <div class="min-card" style="border-top:5px solid #B3123B !important; margin-bottom:0.8rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span style="font-size:0.75rem; color:#B3123B; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🎬 DOMAIN 01</span>
-            <span style="background:#B3123B; color:#FFFFFF; font-size:0.72rem; font-weight:800; padding:3px 8px; text-transform:uppercase; border:1.5px solid #000000; margin:0;">CINEMA & ENTERTAINMENT</span>
-        </div>
-        <div style="font-size:1.35rem; font-weight:800; color:#000000; text-transform:uppercase; font-family:'Space Grotesk'; margin:0.2rem 0 0.4rem 0;">Cinema Hub</div>
-        <p style="font-size:0.88rem; color:#333333; line-height:1.6; margin-bottom:0.6rem;">
-            Explore Bollywood, Tollywood, Hollywood, and Nepali cinema films with multi-genre filters, content-based TF-IDF plot search, and IMDb score weighting.
-        </p>
-        <div style="margin-bottom:0.2rem;">
-            <span class="tag-neutral">Bollywood</span>
-            <span class="tag-neutral">Tollywood</span>
-            <span class="tag-neutral">Hollywood</span>
-            <span class="tag-neutral">Nepali Cinema</span>
-            <span class="tag-neutral">TF-IDF Plot Match</span>
-            <span class="tag-neutral">Genre Filters</span>
+    # Vertical Card 1: Cinema Hub (Domain 01: Velvet Crimson #7A0C24 & Antique Brass #C5A059)
+    overview_cinema_img = get_login_card_images().get("movies_cinema.jpg", "")
+    st.markdown(f"""
+    <div class="cinema-card" style="padding:1.25rem 1.45rem !important; margin-bottom:0.8rem;">
+        <div class="cinema-card-body">
+            <div class="cinema-poster-frame">
+                <img src="data:image/jpeg;base64,{overview_cinema_img}" 
+                     class="cinema-poster-img" 
+                     alt="Cinema & Theatre Hub" />
+            </div>
+            <div class="cinema-info-col">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                        <span style="font-size:0.75rem; color:#7A0C24; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🎬 DOMAIN 01</span>
+                        <span class="cinema-domain-badge">🏛️ CINEMA & THEATRE</span>
+                    </div>
+                    <div style="font-size:1.35rem; font-weight:900; color:#7A0C24; text-transform:uppercase; font-family:'Space Grotesk'; margin:0.15rem 0 0.35rem 0;">Cinema & Theatre Hub</div>
+                    <p style="font-size:0.88rem; color:#333333; line-height:1.55; margin-bottom:0.6rem;">
+                        Explore Bollywood, Tollywood, Hollywood, and Nepali cinema films with multi-genre filters, content-based TF-IDF plot search, and IMDb score weighting.
+                    </p>
+                    <div style="margin-bottom:0.2rem; display:flex; flex-wrap:wrap; gap:5px;">
+                        <span class="tag-cinema-industry">Bollywood</span>
+                        <span class="tag-cinema-industry">Tollywood</span>
+                        <span class="tag-cinema-industry">Hollywood</span>
+                        <span class="tag-cinema-industry">Nepali Cinema</span>
+                        <span class="cinema-brass-pill">TF-IDF Plot Match</span>
+                        <span class="cinema-brass-pill">23 Curated Genres</span>
+                        <span class="cinema-brass-pill">IMDb Weighted</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -1947,26 +3005,38 @@ with tabs[0]:
 
     st.markdown("<div style='margin-bottom:1.6rem;'></div>", unsafe_allow_html=True)
 
-    # Vertical Card 2: Products E-Commerce & Lifestyle (Domain 02: Saffron #FF8A00)
-    st.markdown("""
-    <div class="min-card" style="border-top:5px solid #FF8A00 !important; margin-bottom:0.8rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span style="font-size:0.75rem; color:#FF8A00; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🛍️ DOMAIN 02</span>
-            <span style="background:#FF8A00; color:#FFFFFF; font-size:0.72rem; font-weight:800; padding:3px 8px; text-transform:uppercase; border:1.5px solid #000000; margin:0;">PRODUCTS & LIFESTYLE</span>
-        </div>
-        <div style="font-size:1.35rem; font-weight:800; color:#000000; text-transform:uppercase; font-family:'Space Grotesk'; margin:0.2rem 0 0.4rem 0;">Products Hub</div>
-        <p style="font-size:0.88rem; color:#333333; line-height:1.6; margin-bottom:0.6rem;">
-            Discover curated audio, iconic watches (Titan, HMT, Fastrack, Sonata), luxury fragrances (Titan Skinn, Bella Vita, Forest Essentials, Phool), wearables, and electronics with real-time INR (₹) budget filters.
-        </p>
-        <div style="margin-bottom:0.2rem;">
-            <span class="tag-neutral">₹ INR Pricing</span>
-            <span class="tag-neutral">⌚ Watches</span>
-            <span class="tag-neutral">🌸 Fragrance</span>
-            <span class="tag-neutral">Titan</span>
-            <span class="tag-neutral">HMT</span>
-            <span class="tag-neutral">Titan Skinn</span>
-            <span class="tag-neutral">boAt</span>
-            <span class="tag-neutral">Noise</span>
+    # Vertical Card 2: Products E-Commerce & Lifestyle (Domain 02: Slate #0F172A & Teal #0D9488)
+    overview_product_img = get_login_card_images().get("lifestyle_brands.jpg", "")
+    st.markdown(f"""
+    <div class="product-card" style="padding:1.25rem 1.45rem !important; margin-bottom:0.8rem; border-top:5px solid #0D9488 !important; border-color:#0F172A !important;">
+        <div class="product-card-body">
+            <div class="product-img-frame">
+                <img src="data:image/jpeg;base64,{overview_product_img}" 
+                     class="product-img" 
+                     alt="Products & Lifestyle Store" />
+            </div>
+            <div class="product-info-col">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                        <span style="font-size:0.75rem; color:#0D9488; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🛍️ DOMAIN 02</span>
+                        <span class="product-domain-badge">PRODUCTS & LIFESTYLE</span>
+                    </div>
+                    <div style="font-size:1.35rem; font-weight:900; color:#0F172A; text-transform:uppercase; font-family:'Space Grotesk'; margin:0.15rem 0 0.35rem 0;">Products & Lifestyle Store</div>
+                    <p style="font-size:0.88rem; color:#333333; line-height:1.55; margin-bottom:0.6rem;">
+                        Discover curated audio, iconic watches (Titan, HMT, Fastrack, Sonata), luxury fragrances (Titan Skinn, Bella Vita, Forest Essentials, Phool), wearables, and electronics with real-time INR (₹) budget filters.
+                    </p>
+                    <div style="margin-bottom:0.2rem; display:flex; flex-wrap:wrap; gap:5px;">
+                        <span class="tag-product-price">₹ INR Pricing</span>
+                        <span class="tag-product-cat">⌚ Watches</span>
+                        <span class="tag-product-cat">🌸 Fragrance</span>
+                        <span class="tag-product-brand">Titan</span>
+                        <span class="tag-product-brand">HMT</span>
+                        <span class="tag-product-brand">Titan Skinn</span>
+                        <span class="tag-product-brand">boAt</span>
+                        <span class="tag-product-brand">Noise</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -1980,140 +3050,265 @@ with tabs[0]:
 
     st.markdown("<div style='margin-bottom:1.6rem;'></div>", unsafe_allow_html=True)
 
-    # Vertical Card 3: Career & Skills (Domain 03: Blue #3B5BFF)
-    st.markdown("""
-    <div class="min-card" style="border-top:5px solid #3B5BFF !important; margin-bottom:0.8rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span style="font-size:0.75rem; color:#3B5BFF; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🎓 DOMAIN 03</span>
-            <span style="background:#3B5BFF; color:#FFFFFF; font-size:0.72rem; font-weight:800; padding:3px 8px; text-transform:uppercase; border:1.5px solid #000000; margin:0;">CAREER EDUCATION</span>
-        </div>
-        <div style="font-size:1.35rem; font-weight:800; color:#000000; text-transform:uppercase; font-family:'Space Grotesk'; margin:0.2rem 0 0.4rem 0;">Career & Skill Pathways</div>
-        <p style="font-size:0.88rem; color:#333333; line-height:1.6; margin-bottom:0.6rem;">
-            Match job goals to industry certifications and university pathways from Stanford, Google, Meta, and Harvard in AI, Data Science, and Software Engineering.
-        </p>
-        <div style="margin-bottom:0.2rem;">
-            <span class="tag-neutral">Stanford</span>
-            <span class="tag-neutral">Google</span>
-            <span class="tag-neutral">Meta</span>
-            <span class="tag-neutral">Machine Learning</span>
-            <span class="tag-neutral">Full Stack</span>
-            <span class="tag-neutral">Skill Match</span>
+    # Vertical Card 3: Career & Skills (Domain 03: Emerald Green #064E3B & Sunbeam Yellow #FACC15)
+    overview_career_img = get_login_card_images().get("career_skills.jpg", "")
+    st.markdown(f"""
+    <div class="career-card" style="padding:1.25rem 1.45rem !important; margin-bottom:0.8rem;">
+        <div class="career-card-body">
+            <div class="career-poster-frame">
+                <img src="data:image/jpeg;base64,{overview_career_img}" 
+                     class="career-poster-img" 
+                     alt="Career & Skill Pathways" />
+            </div>
+            <div class="career-info-col">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                        <span style="font-size:0.75rem; color:#064E3B; text-transform:uppercase; font-weight:800; letter-spacing:0.06em;">🎓 DOMAIN 03</span>
+                        <span class="career-domain-badge">CAREER EDUCATION</span>
+                    </div>
+                    <div style="font-size:1.35rem; font-weight:900; color:#064E3B; text-transform:uppercase; font-family:'Space Grotesk'; margin:0.15rem 0 0.35rem 0;">Career & Skill Pathways</div>
+                    <p style="font-size:0.88rem; color:#333333; line-height:1.55; margin-bottom:0.6rem;">
+                        Match job goals to industry certifications and university pathways from Stanford, Google, Meta, and Harvard in AI, Data Science, and Software Engineering.
+                    </p>
+                    <div style="margin-bottom:0.2rem; display:flex; flex-wrap:wrap; gap:5px;">
+                        <span class="skill-highlighter">Stanford</span>
+                        <span class="skill-highlighter">Google</span>
+                        <span class="skill-highlighter">Meta</span>
+                        <span class="skill-curriculum">Machine Learning</span>
+                        <span class="skill-curriculum">Full Stack</span>
+                        <span class="skill-curriculum">Skill Match</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
-    st.button("Explore Pathways ➔", key="btn_ov_courses", width="stretch", on_click=set_active_tab, args=("🎓 Courses & Skills",))
+    st.button("Explore Pathways ➔", key="btn_ov_courses", width="stretch", on_click=set_active_tab, args=("🎓 Courses & Skills", None, None, "All"))
 
     st.markdown("<hr style='border:none; border-top:2.5px solid #000000; margin:2.2rem 0;'>", unsafe_allow_html=True)
     st.markdown("<h3 style='font-family:\"Space Grotesk\"; text-transform:uppercase; font-size:1.2rem; font-weight:700; color:#000000; margin-bottom:0.3rem;'>Curated Recommendations</h3>", unsafe_allow_html=True)
     st.markdown("<p style='color:#555555; font-size:0.85rem; font-weight:600; text-transform:uppercase; margin-bottom:1.2rem;'>Top-rated picks across all domains, stacked for quick exploration.</p>", unsafe_allow_html=True)
 
-    # Vertical Recommendation 1: RRR
-    st.markdown("""
-    <div class="min-card" style="margin-bottom:1.2rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span class="tag-match" style="margin:0;">98.5% MATCH</span>
-            <span style="font-size:0.75rem; color:#555555; text-transform:uppercase; font-weight:800; letter-spacing:0.05em;">🎬 CINEMA PICK</span>
+    # Vertical Recommendation 1: RRR (Velvet Crimson & Antique Brass Theatre Card)
+    rrr_p, rrr_fb = movie_engine.get_poster(91001, "RRR (2022)", "Tollywood", 4.6)
+    st.markdown(f"""
+    <div class="cinema-card" style="margin-bottom:1.2rem;">
+        <div class="cinema-card-body">
+            <div class="cinema-poster-frame">
+                <img src="{rrr_p}" 
+                     class="cinema-poster-img" 
+                     loading="lazy" 
+                     referrerpolicy="no-referrer" 
+                     onerror="this.onerror=null; this.src='{rrr_fb}';" 
+                     alt="RRR (2022)" />
+            </div>
+            <div class="cinema-info-col">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                        <div>
+                            <div style="font-size:0.72rem; color:#7A0C24; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🎬 CINEMA PICK</div>
+                            <div class="item-title" style="margin-bottom:0.25rem;">
+                                <a href="https://www.google.com/search?q=RRR+2022+movie+watch+online" target="_blank" style="color:#7A0C24; text-decoration:none; font-family:'Space Grotesk'; font-weight:800; font-size:1.12rem;">RRR (2022) <span style="font-size:0.85rem; color:#C5A059;">↗</span></a>
+                            </div>
+                        </div>
+                        <span class="tag-cinema-match">98.5% MATCH</span>
+                    </div>
+                    <div style="margin-top:0.35rem; display:flex; flex-wrap:wrap; align-items:center; gap:6px;">
+                        <span class="tag-cinema-industry">Tollywood</span>
+                        <span class="tag-cinema-genre">Action</span>
+                        <span class="tag-cinema-genre">Drama</span>
+                        <span style="font-size:0.85rem; color:#C5A059; margin-left:0.3rem; font-weight:900;">★ 4.6</span>
+                        <span style="font-size:0.75rem; color:#666666;">(Top Community Narrative)</span>
+                    </div>
+                    <p style="color:#333333; font-size:0.84rem; margin:0.4rem 0 0 0; line-height:1.45;">High community rating & iconic Telugu period action narrative with groundbreaking visual spectacle.</p>
+                </div>
+                <div class="cinema-reason-box" style="margin-top:0.6rem;">High community rating & iconic Telugu period action narrative with groundbreaking visual spectacle.</div>
+                <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.google.com/search?q=RRR+2022+movie+watch+online" target="_blank" class="cinema-buy-btn">🎬 Watch Online ↗</a></div>
+            </div>
         </div>
-        <div class="item-title"><a href="https://www.google.com/search?q=RRR+2022+movie+watch+online" target="_blank" style="color:#000000; text-decoration:underline;">RRR (2022) ↗</a></div>
-        <div style="margin:0.4rem 0 0.5rem 0;">
-            <span class="tag-accent">Tollywood</span>
-            <span class="tag-neutral">Action</span>
-            <span style="font-size:0.85rem; color:#000000; margin-left:0.4rem; font-weight:700;">★ 4.9</span>
-            <span style="font-size:0.75rem; color:#666666; margin-left:0.2rem;">(Top Community Narrative)</span>
-        </div>
-        <div class="reason-box">High community rating & iconic Telugu period action narrative with groundbreaking visual spectacle.</div>
-        <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.google.com/search?q=RRR+2022+movie+watch+online" target="_blank" class="buy-btn">🎬 Watch Online ↗</a></div>
     </div>
     """, unsafe_allow_html=True)
 
-    # Vertical Recommendation 1B: Nepali Cinema (Loot)
-    st.markdown("""
-    <div class="min-card" style="margin-bottom:1.2rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span class="tag-match" style="margin:0;">98.2% MATCH</span>
-            <span style="font-size:0.75rem; color:#555555; text-transform:uppercase; font-weight:800; letter-spacing:0.05em;">🏔️ NEPALI CINEMA PICK</span>
+    # Vertical Recommendation 1B: Nepali Cinema (Loot) (Velvet Crimson & Antique Brass Theatre Card)
+    loot_p, loot_fb = movie_engine.get_poster(200001, "Loot (2012)", "Nepali Cinema", 4.8)
+    st.markdown(f"""
+    <div class="cinema-card" style="margin-bottom:1.2rem;">
+        <div class="cinema-card-body">
+            <div class="cinema-poster-frame">
+                <img src="{loot_p}" 
+                     class="cinema-poster-img" 
+                     loading="lazy" 
+                     referrerpolicy="no-referrer" 
+                     onerror="this.onerror=null; this.src='{loot_fb}';" 
+                     alt="Loot (2012)" />
+            </div>
+            <div class="cinema-info-col">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                        <div>
+                            <div style="font-size:0.72rem; color:#7A0C24; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🏔️ NEPALI CINEMA PICK</div>
+                            <div class="item-title" style="margin-bottom:0.25rem;">
+                                <a href="https://www.google.com/search?q=Loot+2012+nepali+movie+watch+online" target="_blank" style="color:#7A0C24; text-decoration:none; font-family:'Space Grotesk'; font-weight:800; font-size:1.12rem;">Loot (2012) <span style="font-size:0.85rem; color:#C5A059;">↗</span></a>
+                            </div>
+                        </div>
+                        <span class="tag-cinema-match">98.2% MATCH</span>
+                    </div>
+                    <div style="margin-top:0.35rem; display:flex; flex-wrap:wrap; align-items:center; gap:6px;">
+                        <span class="tag-cinema-industry">Nepali Cinema</span>
+                        <span class="tag-cinema-genre">Action</span>
+                        <span class="tag-cinema-genre">Crime</span>
+                        <span class="tag-cinema-genre">Thriller</span>
+                        <span style="font-size:0.85rem; color:#C5A059; margin-left:0.3rem; font-weight:900;">★ 4.8</span>
+                        <span style="font-size:0.75rem; color:#666666;">(Revolution of Modern Nepali Cinema)</span>
+                    </div>
+                    <p style="color:#333333; font-size:0.84rem; margin:0.4rem 0 0 0; line-height:1.45;">Cult classic Kathmandu underworld bank heist thriller that redefined contemporary Nepali cinema with iconic performances and realistic pacing.</p>
+                </div>
+                <div class="cinema-reason-box" style="margin-top:0.6rem;">Cult classic Kathmandu underworld bank heist thriller that redefined contemporary Nepali cinema with iconic performances and realistic pacing.</div>
+                <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.google.com/search?q=Loot+2012+nepali+movie+watch+online" target="_blank" class="cinema-buy-btn">🎬 Watch Online ↗</a></div>
+            </div>
         </div>
-        <div class="item-title"><a href="https://www.google.com/search?q=Loot+2012+nepali+movie+watch+online" target="_blank" style="color:#000000; text-decoration:underline;">Loot (2012) ↗</a></div>
-        <div style="margin:0.4rem 0 0.5rem 0;">
-            <span class="tag-accent">Nepali Cinema</span>
-            <span class="tag-neutral">Action</span>
-            <span class="tag-neutral">Crime</span>
-            <span class="tag-neutral">Thriller</span>
-            <span style="font-size:0.85rem; color:#000000; margin-left:0.4rem; font-weight:700;">★ 4.8</span>
-            <span style="font-size:0.75rem; color:#666666; margin-left:0.2rem;">(Revolution of Modern Nepali Cinema)</span>
-        </div>
-        <div class="reason-box">Cult classic Kathmandu underworld bank heist thriller that redefined contemporary Nepali cinema with iconic performances and realistic pacing.</div>
-        <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.google.com/search?q=Loot+2012+nepali+movie+watch+online" target="_blank" class="buy-btn">🎬 Watch Online ↗</a></div>
     </div>
     """, unsafe_allow_html=True)
 
     # Vertical Recommendation 2: boAt Nirvana Ion
-    st.markdown("""
+    p102_img, p102_fb = resolve_product_image(102, "boAt Nirvana Ion ANC Headphones", "boAt", "Audio", 2499, 4.8)
+    st.markdown(f"""
     <div class="product-card" style="margin-bottom:1.2rem;">
-        <span class="tag-product-match">96.8% MATCH</span>
-        <div style="font-size:0.75rem; color:#4B5563; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🎧 AUDIO PICK</div>
-        <div class="product-title"><a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank">boAt Nirvana Ion ANC ↗</a></div>
-        <div style="margin:0.4rem 0 0.5rem 0;">
-            <span class="tag-product-brand">boAt</span>
-            <span class="tag-product-cat">Audio</span>
-            <span class="tag-product-price">₹2,499</span>
-            <span style="font-size:0.85rem; color:#0D9488; margin-left:0.4rem; font-weight:800;">★ 4.8</span>
+        <div class="product-card-body">
+            <a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank" class="product-img-frame" title="boAt Nirvana Ion ANC">
+                <img src="{p102_img}" class="product-img" onerror="this.onerror=null; this.src='{p102_fb}';" alt="boAt Nirvana Ion ANC" />
+            </a>
+            <div class="product-info-col">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                        <div>
+                            <div style="font-size:0.72rem; color:#4B5563; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🎧 AUDIO PICK</div>
+                            <div class="product-title" style="margin-bottom:0.25rem;"><a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank">boAt Nirvana Ion ANC ↗</a></div>
+                        </div>
+                        <span class="tag-product-match">96.8% MATCH</span>
+                    </div>
+                    <div style="margin:0.35rem 0 0.45rem 0; display:flex; flex-wrap:wrap; align-items:center; gap:6px;">
+                        <span class="tag-product-brand">boAt</span>
+                        <span class="tag-product-cat">Audio</span>
+                        <span class="tag-product-price">₹2,499</span>
+                        <span style="font-size:0.85rem; color:#0D9488; font-weight:800; margin-left:0.2rem;">★ 4.8</span>
+                    </div>
+                    <p style="color:#333333; font-size:0.84rem; margin:0.4rem 0 0 0; line-height:1.45;">Top active noise cancellation wireless earbuds with 120-hour playback and dual EQ modes from boAt.</p>
+                </div>
+                <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
+            </div>
         </div>
-        <div class="product-reason-box">Top active noise cancellation wireless earbuds with 120-hour playback and dual EQ modes from boAt.</div>
-        <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
     </div>
     """, unsafe_allow_html=True)
 
     # Vertical Recommendation 2B: Titan Watch Pick
-    st.markdown("""
+    p122_img, p122_fb = resolve_product_image(122, "Titan Octane Mechanical Automatic Watch", "Titan", "Watches", 12495, 4.8)
+    st.markdown(f"""
     <div class="product-card" style="margin-bottom:1.2rem;">
-        <span class="tag-product-match">97.4% MATCH</span>
-        <div style="font-size:0.75rem; color:#4B5563; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">⌚ WATCH PICK</div>
-        <div class="product-title"><a href="https://www.titan.co.in/shop/watches" target="_blank">Titan Octane Mechanical Automatic Watch ↗</a></div>
-        <div style="margin:0.4rem 0 0.5rem 0;">
-            <span class="tag-product-brand">Titan</span>
-            <span class="tag-product-cat">Watches</span>
-            <span class="tag-product-price">₹12,495</span>
-            <span style="font-size:0.85rem; color:#0D9488; margin-left:0.4rem; font-weight:800;">★ 4.8</span>
+        <div class="product-card-body">
+            <a href="https://www.titan.co.in/shop/watches" target="_blank" class="product-img-frame" title="Titan Octane Automatic">
+                <img src="{p122_img}" class="product-img" onerror="this.onerror=null; this.src='{p122_fb}';" alt="Titan Octane Automatic" />
+            </a>
+            <div class="product-info-col">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                        <div>
+                            <div style="font-size:0.72rem; color:#4B5563; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">⌚ WATCH PICK</div>
+                            <div class="product-title" style="margin-bottom:0.25rem;"><a href="https://www.titan.co.in/shop/watches" target="_blank">Titan Octane Mechanical Automatic Watch ↗</a></div>
+                        </div>
+                        <span class="tag-product-match">97.4% MATCH</span>
+                    </div>
+                    <div style="margin:0.35rem 0 0.45rem 0; display:flex; flex-wrap:wrap; align-items:center; gap:6px;">
+                        <span class="tag-product-brand">Titan</span>
+                        <span class="tag-product-cat">Watches</span>
+                        <span class="tag-product-price">₹12,495</span>
+                        <span style="font-size:0.85rem; color:#0D9488; font-weight:800; margin-left:0.2rem;">★ 4.8</span>
+                    </div>
+                    <p style="color:#333333; font-size:0.84rem; margin:0.4rem 0 0 0; line-height:1.45;">Exquisite automatic mechanical watch by Tata Titan featuring skeleton dial displaying inner mechanical gear movements.</p>
+                </div>
+                <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.titan.co.in/shop/watches" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
+            </div>
         </div>
-        <div class="product-reason-box">Exquisite automatic mechanical watch by Tata Titan featuring skeleton dial displaying inner mechanical gear movements and stainless steel bracelet.</div>
-        <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.titan.co.in/shop/watches" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
     </div>
     """, unsafe_allow_html=True)
 
     # Vertical Recommendation 2C: Fragrance Pick
-    st.markdown("""
+    p132_img, p132_fb = resolve_product_image(132, "Titan Skinn Raw Eau De Parfum (100ml)", "Titan Skinn", "Fragrance", 2495, 4.9)
+    st.markdown(f"""
     <div class="product-card" style="margin-bottom:1.2rem;">
-        <span class="tag-product-match">96.5% MATCH</span>
-        <div style="font-size:0.75rem; color:#4B5563; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🌸 FRAGRANCE PICK</div>
-        <div class="product-title"><a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank">Titan Skinn Raw Eau De Parfum (100ml) ↗</a></div>
-        <div style="margin:0.4rem 0 0.5rem 0;">
-            <span class="tag-product-brand">Titan Skinn</span>
-            <span class="tag-product-cat">Fragrance</span>
-            <span class="tag-product-price">₹2,495</span>
-            <span style="font-size:0.85rem; color:#0D9488; margin-left:0.4rem; font-weight:800;">★ 4.9</span>
+        <div class="product-card-body">
+            <a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank" class="product-img-frame" title="Titan Skinn Raw EDP">
+                <img src="{p132_img}" class="product-img" onerror="this.onerror=null; this.src='{p132_fb}';" alt="Titan Skinn Raw EDP" />
+            </a>
+            <div class="product-info-col">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                        <div>
+                            <div style="font-size:0.72rem; color:#4B5563; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🌸 FRAGRANCE PICK</div>
+                            <div class="product-title" style="margin-bottom:0.25rem;"><a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank">Titan Skinn Raw Eau De Parfum (100ml) ↗</a></div>
+                        </div>
+                        <span class="tag-product-match">96.5% MATCH</span>
+                    </div>
+                    <div style="margin:0.35rem 0 0.45rem 0; display:flex; flex-wrap:wrap; align-items:center; gap:6px;">
+                        <span class="tag-product-brand">Titan Skinn</span>
+                        <span class="tag-product-cat">Fragrance</span>
+                        <span class="tag-product-price">₹2,495</span>
+                        <span style="font-size:0.85rem; color:#0D9488; font-weight:800; margin-left:0.2rem;">★ 4.9</span>
+                    </div>
+                    <p style="color:#333333; font-size:0.84rem; margin:0.4rem 0 0 0; line-height:1.45;">French-crafted luxury Eau De Parfum for India blending fresh citrus bergamot, watery watermelon, and Indonesian patchouli.</p>
+                </div>
+                <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
+            </div>
         </div>
-        <div class="product-reason-box">French-crafted luxury Eau De Parfum for India blending fresh citrus bergamot, watery watermelon, and earthy Indonesian patchouli.</div>
-        <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
     </div>
     """, unsafe_allow_html=True)
 
-    # Vertical Recommendation 3: ML Specialization
-    st.markdown("""
-    <div class="min-card" style="margin-bottom:1.2rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-            <span class="tag-match" style="margin:0;">99.1% MATCH</span>
-            <span style="font-size:0.75rem; color:#555555; text-transform:uppercase; font-weight:800; letter-spacing:0.05em;">🎓 CAREER PICK</span>
+    # Vertical Recommendation 3: ML Specialization (Emerald Green & Sunbeam Yellow 2-column layout)
+    st.markdown(f"""
+    <div class="career-card" style="margin-bottom:1.2rem;">
+        <div class="career-card-body">
+            <div class="career-poster-frame">
+                <img src="data:image/jpeg;base64,{overview_career_img}" 
+                     class="career-poster-img" 
+                     alt="Machine Learning Specialization" />
+            </div>
+            <div class="career-info-col">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                        <div>
+                            <div style="font-size:0.72rem; color:#064E3B; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🎓 CAREER PICK</div>
+                            <div class="item-title" style="margin-bottom:0.25rem;">
+                                <a href="https://coursera.org/specializations/machine-learning-introduction" target="_blank" style="color:#064E3B; text-decoration:none; font-family:'Space Grotesk'; font-weight:800; font-size:1.12rem;">Machine Learning Specialization <span style="font-size:0.85rem; color:#064E3B;">↗</span></a>
+                            </div>
+                        </div>
+                        <span class="tag-career-match" style="margin:0;">99.1% MATCH</span>
+                    </div>
+                    <div style="margin:0.35rem 0 0.45rem 0; display:flex; flex-wrap:wrap; align-items:center; gap:6px;">
+                        <span class="tag-career-org">Stanford</span>
+                        <span class="tag-career-level">Beginner</span>
+                        <span class="tag-career-duration">⏱️ 60 Hours</span>
+                        <span style="font-size:0.85rem; color:#064E3B; margin-left:0.3rem; font-weight:800;">★ 4.9</span>
+                    </div>
+                    <div style="margin-top:0.35rem; margin-bottom:0.5rem; display:flex; flex-wrap:wrap; gap:5px;">
+                        <span class="skill-highlighter">Machine Learning</span>
+                        <span class="skill-highlighter">Python</span>
+                        <span class="skill-curriculum">Supervised Learning</span>
+                        <span class="skill-curriculum">Neural Networks</span>
+                    </div>
+                    <div class="career-path-strip">
+                        <span class="career-path-label">⚡ LEARNING PATHWAY</span>
+                        <span class="career-path-step">01 Foundation</span>
+                        <span class="career-path-arrow">➔</span>
+                        <span class="career-path-step">02 Applied Labs</span>
+                        <span class="career-path-arrow">➔</span>
+                        <span class="career-path-step" style="background:#FDE047; color:#022C22; padding:1px 6px; border:1px solid #064E3B; font-weight:900;">03 Capstone & Credential</span>
+                    </div>
+                    <p style="color:#333333; font-size:0.84rem; margin:0.4rem 0 0 0; line-height:1.45;">Fundamental ML certification taught by Andrew Ng covering supervised learning, neural networks, and decision trees.</p>
+                </div>
+                <div class="career-reason-box" style="margin-top:0.6rem;">Fundamental ML certification taught by Andrew Ng covering supervised learning, neural networks, and decision trees.</div>
+                <div style="margin-top:0.8rem; max-width:280px;"><a href="https://coursera.org/specializations/machine-learning-introduction" target="_blank" class="career-enroll-btn">🎓 Enroll Now ↗</a></div>
+            </div>
         </div>
-        <div class="item-title"><a href="https://coursera.org/specializations/machine-learning-introduction" target="_blank" style="color:#000000; text-decoration:underline;">Machine Learning Specialization ↗</a></div>
-        <div style="margin:0.4rem 0 0.5rem 0;">
-            <span class="tag-accent">Stanford</span>
-            <span class="tag-neutral">Beginner</span>
-            <span style="font-size:0.85rem; color:#000000; margin-left:0.4rem; font-weight:700;">⏱️ 60 Hours</span>
-            <span style="font-size:0.85rem; color:#000000; margin-left:0.4rem; font-weight:700;">★ 4.9</span>
-        </div>
-        <div class="reason-box">Fundamental ML certification taught by Andrew Ng covering supervised learning, neural networks, and decision trees.</div>
-        <div style="margin-top:0.8rem; max-width:280px;"><a href="https://coursera.org/specializations/machine-learning-introduction" target="_blank" class="buy-btn">🎓 Enroll Now ↗</a></div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -2205,11 +3400,11 @@ with tabs[1]:
 
     st.markdown("<div style='margin-bottom:1.1rem;'></div>", unsafe_allow_html=True)
 
-    f_col, r_col = st.columns([1.1, 2.4])
+    f_col, r_col = st.columns([1.15, 2.35])
 
     with f_col:
         st.markdown("""
-        <div style="background:linear-gradient(135deg, #7A0C24 0%, #4D0717 100%); border:2px solid #C5A059; box-shadow:3px 3px 0px #1A050B; padding:10px 14px; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
+        <div style="background:linear-gradient(135deg, #7A0C24 0%, #4D0717 100%); border:2px solid #C5A059; box-shadow:3px 3px 0px #1A050B; padding:10px 14px; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; box-sizing:border-box; overflow:hidden;">
             <div>
                 <span style="background:#C5A059; color:#1A050B; font-size:0.62rem; font-weight:900; padding:2px 7px; text-transform:uppercase; letter-spacing:0.08em; border:1px solid #1A050B; margin-right:6px;">THEATRE</span>
                 <span style="font-family:'Space Grotesk'; font-weight:900; font-size:0.9rem; color:#FAF5E8; text-transform:uppercase; letter-spacing:0.06em;">CURATION CONSOLE</span>
@@ -2270,10 +3465,10 @@ with tabs[1]:
 
         alpha_m = st.slider("⚖️ Algorithm Tuning (Plot vs Rating)", min_value=0.0, max_value=1.0, step=0.05, key="m_alpha")
         st.markdown(f"""
-        <div style="background:#FAF6EE; border:1.5px solid #1A050B; border-left:4px solid #C5A059; padding:5px 9px; margin-top:-0.35rem; margin-bottom:0.85rem; font-size:0.72rem; color:#1A050B; display:flex; justify-content:space-between; align-items:center;">
-            <span>📖 <strong>Plot Match:</strong> {int(round(alpha_m*100))}%</span>
+        <div style="background:#FAF6EE; border:1.5px solid #1A050B; border-left:4px solid #C5A059; padding:5px 9px; margin-top:-0.35rem; margin-bottom:0.85rem; font-size:0.72rem; color:#1A050B; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; box-sizing:border-box; overflow:hidden;">
+            <span>📖 <strong>Plot:</strong> {int(round(alpha_m*100))}%</span>
             <span style="color:#C5A059; font-weight:900;">•</span>
-            <span>⭐ <strong>Critic Score:</strong> {int(round((1-alpha_m)*100))}%</span>
+            <span>⭐ <strong>Critic:</strong> {int(round((1-alpha_m)*100))}%</span>
         </div>
         """, unsafe_allow_html=True)
 
@@ -2286,7 +3481,7 @@ with tabs[1]:
             top_n_m != 5
         )
         if has_active_filters:
-            st.button("↺ Reset All Cinema Filters", key="btn_reset_m_filters", width="stretch", on_click=reset_cinema_filters)
+            st.button("↺ Reset Filters", key="btn_reset_m_filters", width="stretch", on_click=reset_cinema_filters)
 
     with r_col:
         if chosen_industry == "Nepali Cinema":
@@ -2362,7 +3557,7 @@ with tabs[1]:
                         <div>
                             <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
                                 <div class="item-title" style="margin-bottom:0.25rem;">
-                                    <a href="{m_url}" target="_blank" style="color:#1A050B; text-decoration:none; font-family:'Space Grotesk'; font-weight:800; font-size:1.12rem;">{safe_title} <span style="font-size:0.85rem; color:#7A0C24;">↗</span></a>
+                                    <a href="{m_url}" target="_blank" style="color:#7A0C24; text-decoration:none; font-family:'Space Grotesk'; font-weight:800; font-size:1.12rem;">{safe_title} <span style="font-size:0.85rem; color:#C5A059;">↗</span></a>
                                 </div>
                                 <span class="tag-cinema-match">{m['match_score']}% MATCH</span>
                             </div>
@@ -2379,16 +3574,12 @@ with tabs[1]:
             </div>
             """, unsafe_allow_html=True)
 
-            b1, b2, b3, _ = st.columns([1, 1, 1.8, 3.2])
+            b1, b2, _ = st.columns([1, 1.8, 4.2])
             with b1:
                 if st.button("🔖 Save", key=f"s_m_{m['id']}"):
                     ok, msg = db.save_bookmark(st.session_state.user_id, "Movie", m['id'], m['title'], extra_info={"url": m_url, "poster_url": poster_src, "fallback_poster": fallback_src})
                     st.toast(msg)
             with b2:
-                if st.button("👍 Like", key=f"l_m_{m['id']}"):
-                    db.save_feedback(st.session_state.user_id, "Movie", m['id'], "like")
-                    st.toast(f"Liked {m['title']}!")
-            with b3:
                 st.markdown(f'<a href="{m_url}" target="_blank" class="cinema-buy-btn">🎬 Watch Online ↗</a>', unsafe_allow_html=True)
 
 # -------------------------------------------------------------------------
@@ -2423,11 +3614,24 @@ with tabs[2]:
     if focused and focused.get("category", "").lower() in ["product", "products"]:
         f_top1, f_top2 = st.columns([4, 1.2])
         with f_top1:
+            f_img = ""
+            f_fallback = ""
+            f_id = focused.get("id")
+            if f_id:
+                try:
+                    f_img, f_fallback = resolve_product_image(int(f_id), focused.get("title", ""), "Product", "Products", 1999, 4.5)
+                except Exception:
+                    pass
+            img_thumb_html = f'<div style="width:44px; height:64px; flex-shrink:0; border:1.5px solid #0D9488; overflow:hidden; box-shadow:2px 2px 0px #000000; background:#0F172A;"><img src="{f_img or f_fallback}" style="width:100%; height:100%; object-fit:cover;" onerror="this.onerror=null; this.src=\'{f_fallback}\';" /></div>' if (f_img or f_fallback) else ''
+
             st.markdown(f"""
-            <div style="background:linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%); border:2.5px solid #000000; border-left:8px solid #9CA3AF; box-shadow:4px 4px 0px #000000; padding:10px 16px; margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <span style="background:#E5E7EB; color:#111827; font-size:0.65rem; font-weight:900; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1px solid #000000;">📌 SAVED PRODUCT IN FOCUS</span>
-                    <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">{focused['title']}</span>
+            <div style="background:linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%); border:2.5px solid #000000; border-left:8px solid #0D9488; box-shadow:4px 4px 0px #000000; padding:10px 16px; margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center; gap:12px;">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    {img_thumb_html}
+                    <div>
+                        <span style="background:#E5E7EB; color:#111827; font-size:0.65rem; font-weight:900; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1px solid #000000;">📌 SAVED PRODUCT IN FOCUS</span>
+                        <div style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk'; margin-top:4px;">{focused['title']}</div>
+                    </div>
                 </div>
                 <div>
                     <a href="{focused.get('url', '#')}" target="_blank" class="product-buy-btn" style="padding:6px 14px; font-size:0.75rem;">🛒 Buy Now ↗</a>
@@ -2469,11 +3673,11 @@ with tabs[2]:
 
     st.markdown("<div style='margin-bottom:1.1rem;'></div>", unsafe_allow_html=True)
 
-    p_f_col, p_r_col = st.columns([1.1, 2.4])
+    p_f_col, p_r_col = st.columns([1.15, 2.35])
 
     with p_f_col:
         st.markdown("""
-        <div style="background:linear-gradient(135deg, #1E293B 0%, #0F172A 100%); border:2px solid #000000; box-shadow:3px 3px 0px #000000; padding:10px 14px; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
+        <div style="background:linear-gradient(135deg, #1E293B 0%, #0F172A 100%); border:2px solid #000000; box-shadow:3px 3px 0px #000000; padding:10px 14px; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; box-sizing:border-box; overflow:hidden;">
             <div>
                 <div style="font-family:'Space Grotesk'; font-size:0.95rem; font-weight:900; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.06em;">
                     🛍️ PRODUCT FILTERS
@@ -2504,19 +3708,41 @@ with tabs[2]:
         if "p_budget" not in st.session_state:
             st.session_state["p_budget"] = max_p
         budget = st.slider("Max Budget (₹ INR)", min_p, max_p, step=500, key="p_budget")
-        p_query = st.text_input("Feature Search", placeholder="e.g. ceramic slim, mechanical, oud, noise cancellation", key="input_product_query")
+        category_placeholders = {
+            "Audio": "e.g. noise cancelling, deep bass, 100H playtime, dolby...",
+            "Wearables": "e.g. amoled display, bluetooth calling, rugged outdoor...",
+            "Watches": "e.g. automatic mechanical, ceramic slim, devanagari, chronograph...",
+            "Fragrance": "e.g. oud wood, citrus fresh, edp long lasting, body mist...",
+            "Desk Setup": "e.g. 65W GaN, 20000mAh, adjustable laptop stand...",
+            "Computer Accessories": "e.g. mechanical keyboard, red switches, silent mouse...",
+            "Gaming": "e.g. wireless gamepad, dual rumble, optical gaming mouse...",
+            "Smart Home": "e.g. RGB batten, BLDC fan, 360 security camera...",
+        }
+        p_ph = category_placeholders.get(chosen_cat, "e.g. ceramic slim, mechanical, oud, noise cancellation...")
+        p_query = st.text_input("Feature Search", placeholder=p_ph, key="input_product_query")
 
-        # Quick feature inspiration tags
+        # Category-driven popular features (strictly max 4 per category, concise labels)
+        category_features = {
+            "Audio": ["Noise Cancel", "Deep Bass", "Dolby Audio", "100H Battery"],
+            "Wearables": ["AMOLED Screen", "BT Calling", "Rugged Sport", "Heart & SpO2"],
+            "Watches": ["Automatic", "Ceramic Slim", "Devanagari", "Chronograph"],
+            "Fragrance": ["Oud Wood", "Citrus Fresh", "Long Lasting", "Body Mist"],
+            "Desk Setup": ["65W GaN", "Powerbank", "Laptop Stand", "Fast Charge"],
+            "Computer Accessories": ["Mechanical", "RGB Lighting", "Silent Click", "Tenkeyless"],
+            "Gaming": ["Gamepad", "Dual Rumble", "Gaming Mouse", "Low Latency"],
+            "Smart Home": ["RGB Sync", "BLDC Motor", "360 Camera", "Voice Control"],
+        }
+        feat_chips = category_features.get(chosen_cat, ["Noise Cancel", "AMOLED", "Automatic", "Oud Wood"])[:4]
+
         st.markdown("<div style='font-size:0.75rem; font-weight:800; font-family:\"Space Grotesk\"; color:#4B5563; text-transform:uppercase; letter-spacing:0.06em; margin-top:0.6rem; margin-bottom:0.35rem;'>⚡ POPULAR FEATURES</div>", unsafe_allow_html=True)
-        feat_chips = ["Ceramic Slim", "Automatic", "Oud Wood", "Noise Cancelling", "Ergonomic", "Waterproof"]
         fc_cols = st.columns(2)
         for i, f_txt in enumerate(feat_chips):
             with fc_cols[i % 2]:
-                st.button(f_txt, key=f"pchip_{i}", width="stretch", on_click=set_product_query_feature, args=(f_txt,))
+                st.button(f_txt, key=f"pchip_{chosen_cat}_{i}", width="stretch", on_click=set_product_query_feature, args=(f_txt,))
 
         top_n_p = st.slider("Results", 3, 10, 5, key="p_s")
 
-        st.button("Reset Filters ↺", key="btn_reset_p_filters", width="stretch", on_click=reset_product_filters, args=(max_p,))
+        st.button("↺ Reset Filters", key="btn_reset_p_filters", width="stretch", on_click=reset_product_filters, args=(max_p,))
 
     with p_r_col:
         if chosen_cat == "Watches":
@@ -2605,68 +3831,246 @@ with tabs[2]:
 
         st.markdown(f"<div style='font-size:0.85rem; font-weight:800; text-transform:uppercase; color:#4B5563; letter-spacing:0.05em; margin-bottom:0.8rem;'>Showing Top {len(p_recs)} results in {chosen_cat}</div>", unsafe_allow_html=True)
 
+        # ── Load individual product images as base64 data URIs ──
+        _img_dir = os.path.join(os.path.dirname(__file__), "assets", "product_images")
+        _dir_mtime = max([os.path.getmtime(os.path.join(_img_dir, f)) for f in os.listdir(_img_dir)]) if os.path.exists(_img_dir) and os.listdir(_img_dir) else 0
+
+        @st.cache_data(show_spinner=False)
+        def _load_all_product_images_v2(img_dir: str, cache_mtime: float) -> dict:
+            result = {}
+            if os.path.exists(img_dir):
+                for fname in os.listdir(img_dir):
+                    fpath = os.path.join(img_dir, fname)
+                    if os.path.isfile(fpath) and os.path.getsize(fpath) > 100:
+                        name_lower = fname.lower()
+                        for ext in [".jpg", ".jpeg", ".png", ".webp"]:
+                            if name_lower.endswith(ext):
+                                base_key = fname[:-len(ext)]
+                                mime = "image/png" if ext == ".png" else "image/jpeg"
+                                try:
+                                    with open(fpath, "rb") as f:
+                                        data_uri = f"data:{mime};base64," + base64.b64encode(f.read()).decode()
+                                    result[base_key] = data_uri
+                                    clean_id = base_key.lstrip("p")
+                                    if clean_id.isdigit():
+                                        result[int(clean_id)] = data_uri
+                                except Exception:
+                                    pass
+            return result
+
+        _product_imgs = _load_all_product_images_v2(_img_dir, _dir_mtime)
+
         for p in p_recs:
             p_url = p.get("url") or f"https://www.amazon.in/s?k={urllib.parse.quote_plus(str(p.get('name', '')))}"
+            safe_name = html.escape(str(p.get("name", "")))
+            
+            # Resolve individual real product image -> engine image -> SVG fallback
+            poster_src = (
+                _product_imgs.get(p["id"]) or 
+                _product_imgs.get(f"p{p['id']}") or 
+                _product_imgs.get(str(p["id"])) or 
+                p.get("image_url", "")
+            )
+            fallback_src = p.get("fallback_image") or ""
+            if not poster_src or not str(poster_src).startswith("data:"):
+                p_img, p_fb = resolve_product_image(
+                    product_id=p["id"],
+                    name=p["name"],
+                    brand=p["brand"],
+                    category=p["category"],
+                    price_inr=p["price_inr"],
+                    rating=p["rating"]
+                )
+                poster_src = p_img if str(p_img).startswith("data:") else p_fb
+                if not fallback_src:
+                    fallback_src = p_fb
+
+            if not fallback_src:
+                fallback_src = poster_src
+
             st.markdown(f"""
             <div class="product-card">
-                <span class="tag-product-match">{p['match_score']}% MATCH</span>
-                <div class="product-title"><a href="{p_url}" target="_blank">{p['name']} ↗</a></div>
-                <div style="margin-top:0.45rem; display:flex; flex-wrap:wrap; align-items:center; gap:6px;">
-                    <span class="tag-product-brand">{p['brand']}</span>
-                    <span class="tag-product-cat">{p['category']}</span>
-                    <span class="tag-product-price">₹{p['price_inr']:,}</span>
-                    <span style="font-size:0.88rem; color:#0D9488; font-weight:800; margin-left:0.2rem;">★ {p['rating']:.1f}</span>
+                <div class="product-card-body">
+                    <a href="{p_url}" target="_blank" class="product-img-frame" title="View {safe_name}">
+                        <img src="{poster_src}" 
+                             class="product-img" 
+                             loading="lazy" 
+                             referrerpolicy="no-referrer" 
+                             onerror="this.onerror=null; this.src='{fallback_src}';" 
+                             alt="{safe_name}" />
+                    </a>
+                    <div class="product-info-col">
+                        <div>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                                <div class="product-title" style="margin-bottom:0.25rem;">
+                                    <a href="{p_url}" target="_blank">{safe_name} <span style="font-size:0.85rem; color:#0D9488;">↗</span></a>
+                                </div>
+                                <span class="tag-product-match">{p['match_score']}% MATCH</span>
+                            </div>
+                            <div style="margin-top:0.35rem; display:flex; flex-wrap:wrap; align-items:center; gap:6px;">
+                                <span class="tag-product-brand">{p['brand']}</span>
+                                <span class="tag-product-cat">{p['category']}</span>
+                                <span class="tag-product-price">₹{p['price_inr']:,}</span>
+                                <span style="font-size:0.88rem; color:#0D9488; font-weight:800; margin-left:0.2rem;">★ {p['rating']:.1f}</span>
+                            </div>
+                            <p style="color:#333333; font-size:0.84rem; margin:0.45rem 0 0 0; line-height:1.45;">{p['description']}</p>
+                        </div>
+                        <div class="product-reason-box" style="margin-top:0.6rem;">{p['explanation']}</div>
+                    </div>
                 </div>
-                <p style="color:#333333; font-size:0.84rem; margin:0.45rem 0 0 0; line-height:1.45;">{p['description']}</p>
-                <div class="product-reason-box">{p['explanation']}</div>
             </div>
             """, unsafe_allow_html=True)
 
-            pb1, pb2, pb3, _ = st.columns([1, 1, 1.8, 3.2])
+            pb1, pb2, _ = st.columns([1, 1.8, 4.2])
             with pb1:
                 if st.button("🔖 Save", key=f"s_p_{p['id']}"):
-                    ok, msg = db.save_bookmark(st.session_state.user_id, "Product", p['id'], p['name'], extra_info={"url": p_url})
+                    ok, msg = db.save_bookmark(st.session_state.user_id, "Product", p['id'], p['name'], extra_info={"url": p_url, "image_url": poster_src, "fallback_image": fallback_src})
                     st.toast(msg)
             with pb2:
-                if st.button("👍 Like", key=f"l_p_{p['id']}"):
-                    db.save_feedback(st.session_state.user_id, "Product", p['id'], "like")
-                    st.toast(f"Liked {p['name']}!")
-            with pb3:
                 st.markdown(f'<a href="{p_url}" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a>', unsafe_allow_html=True)
 
 # -------------------------------------------------------------------------
-# TAB 3: COURSES
+# TAB 3: CAREER PATHWAYS & SKILLS (EMERALD GREEN & SUNBEAM YELLOW)
 # -------------------------------------------------------------------------
 with tabs[3]:
+    # Emerald Green & Sunbeam Yellow Career & Skills Marquis Header
+    st.markdown("""
+    <div class="career-marquis">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <span style="font-size:1.5rem;">🎓</span>
+                <div>
+                    <div style="font-family:'Space Grotesk'; font-size:1.35rem; font-weight:900; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.06em; line-height:1.15;">
+                        CAREER PATHWAYS & SKILLS
+                    </div>
+                    <div style="font-size:0.75rem; font-weight:800; color:#A7F3D0; text-transform:uppercase; letter-spacing:0.08em; margin-top:3px;">
+                        GROWTH & PROGRESS ENGINE • STANFORD • GOOGLE • META • HARVARD
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span class="career-domain-badge">
+                    ⚡ DOMAIN 03: CAREERS & SKILLS
+                </span>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
     focused = st.session_state.get("focused_saved_item")
     if focused and focused.get("category", "").lower() in ["course", "courses"]:
         f_top1, f_top2 = st.columns([4, 1.2])
         with f_top1:
             st.markdown(f"""
-            <div style="background:#FFFFFF; border:2.5px solid #000000; box-shadow:4px 4px 0px #000000; padding:10px 16px; margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center;">
+            <div style="background:#FFFFFF; border:2.5px solid #064E3B; border-left:8px solid #059669; box-shadow:4px 4px 0px #064E3B; padding:10px 16px; margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center; gap:12px;">
                 <div>
-                    <span style="background:#000000; color:#FFFFFF; font-size:0.65rem; font-weight:800; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px;">📌 SAVED COURSE IN FOCUS</span>
-                    <span style="font-weight:900; font-size:1.05rem; color:#000000; text-transform:uppercase; font-family:'Space Grotesk';">{focused['title']}</span>
+                    <span style="background:#064E3B; color:#FFFFFF; font-size:0.65rem; font-weight:900; padding:3px 8px; text-transform:uppercase; letter-spacing:0.08em; margin-right:8px; border:1px solid #022C22;">📌 SAVED COURSE IN FOCUS</span>
+                    <div style="font-weight:900; font-size:1.05rem; color:#064E3B; text-transform:uppercase; font-family:'Space Grotesk'; margin-top:4px;">{focused['title']}</div>
                 </div>
                 <div>
-                    <a href="{focused.get('url', '#')}" target="_blank" class="buy-btn" style="padding:6px 14px; font-size:0.75rem;">🎓 Enroll Now ↗</a>
+                    <a href="{focused.get('url', '#')}" target="_blank" class="career-enroll-btn" style="padding:6px 14px; font-size:0.75rem; width:auto; display:inline-block;">🎓 Enroll Now ↗</a>
                 </div>
             </div>
             """, unsafe_allow_html=True)
         with f_top2:
-            if st.button("Clear Focus ✕", key="clr_focus_c", width="stretch"):
-                st.session_state.focused_saved_item = None
-                st.session_state["input_course_query"] = ""
-                st.rerun()
+            st.button("Clear Focus ✕", key="clr_focus_c", width="stretch", on_click=clear_course_focus)
 
-    c_f_col, c_r_col = st.columns([1, 2.5])
+    # Quick Career Domain Selector Bar (Emerald Green & Sunbeam Yellow)
+    st.markdown("<div style='font-size:0.8rem; font-weight:800; font-family:\"Space Grotesk\"; color:#064E3B; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;'>🎓 SELECT CAREER DOMAIN</div>", unsafe_allow_html=True)
+    all_domains = course_engine.get_categories()
+
+    current_dom = st.session_state.get("selected_course_domain", "All")
+    if current_dom not in all_domains:
+        current_dom = "All"
+        st.session_state["selected_course_domain"] = "All"
+
+    featured_doms = ["All", "Artificial Intelligence", "Data Science", "Software Engineering", "Cloud Computing", "Cybersecurity", "Business & Management"]
+    dom_btn_cols = st.columns(len(featured_doms))
+    for idx, d_name in enumerate(featured_doms):
+        with dom_btn_cols[idx]:
+            if d_name == "Artificial Intelligence":
+                btn_txt = "🤖 AI & ML"
+            elif d_name == "Data Science":
+                btn_txt = "📊 Data Science"
+            elif d_name == "Software Engineering":
+                btn_txt = "💻 Software"
+            elif d_name == "Cloud Computing":
+                btn_txt = "☁️ Cloud"
+            elif d_name == "Cybersecurity":
+                btn_txt = "🛡️ Security"
+            elif d_name == "Business & Management":
+                btn_txt = "📈 Business"
+            else:
+                btn_txt = "🌐 All Domains"
+
+            is_act = (current_dom == d_name)
+            btn_style = "primary" if is_act else "secondary"
+            st.button(btn_txt, key=f"btn_cdom_{d_name}", width="stretch", type=btn_style, on_click=set_course_domain, args=(d_name,))
+
+    st.markdown("<div style='margin-bottom:1.1rem;'></div>", unsafe_allow_html=True)
+
+    c_f_col, c_r_col = st.columns([1.15, 2.35])
 
     with c_f_col:
-        st.markdown("<div style='font-size:0.9rem; font-weight:700; font-family:\"Space Grotesk\"; color:#000000; text-transform:uppercase; margin-bottom:0.6rem;'>FILTERS</div>", unsafe_allow_html=True)
-        chosen_c_cat = st.selectbox("Domain", course_engine.get_categories())
-        chosen_lvl = st.selectbox("Level", course_engine.get_difficulty_levels())
-        target_skills = st.text_input("Desired Skills", placeholder="e.g. Python, SQL, Machine Learning", key="input_course_query")
+        st.markdown("""
+        <div style="background:linear-gradient(135deg, #064E3B 0%, #022C22 100%); border:2px solid #064E3B; box-shadow:3px 3px 0px #064E3B; padding:10px 14px; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; box-sizing:border-box; overflow:hidden;">
+            <div>
+                <div style="font-family:'Space Grotesk'; font-size:0.95rem; font-weight:900; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.06em;">
+                    🎓 CAREER FILTERS
+                </div>
+                <div style="font-size:0.68rem; font-weight:800; color:#A7F3D0; text-transform:uppercase; letter-spacing:0.08em;">
+                    PROGRESS & SKILLS ENGINE
+                </div>
+            </div>
+            <span style="background:#FACC15; color:#022C22; font-size:0.62rem; font-weight:900; padding:3px 8px; border:1px solid #064E3B; text-transform:uppercase; letter-spacing:0.06em;">
+                LIVE
+            </span>
+        </div>
+        """, unsafe_allow_html=True)
+
+        if "sb_course_domain" not in st.session_state or st.session_state["sb_course_domain"] not in all_domains:
+            st.session_state["sb_course_domain"] = current_dom
+
+        chosen_c_cat = st.selectbox(
+            "Domain",
+            all_domains,
+            key="sb_course_domain",
+            on_change=on_course_domain_change
+        )
+        st.session_state["selected_course_domain"] = chosen_c_cat
+
+        chosen_lvl = st.selectbox("Level", course_engine.get_difficulty_levels(), key="sb_course_level")
+        target_skills = st.text_input("Desired Skills", placeholder="e.g. Python, SQL, Neural Networks", key="input_course_query")
+
+        # Contextual In-Demand Skill Chips (Max 4 popular features per domain)
+        skill_presets = {
+            "Artificial Intelligence": ["Python", "Machine Learning", "Neural Networks", "Deep Learning"],
+            "Data Science": ["Python", "SQL", "Data Analysis", "Tableau"],
+            "Software Engineering": ["Full Stack", "Data Structures", "Algorithms", "Web Dev"],
+            "Cloud Computing": ["AWS", "Google Cloud", "DevOps", "Microservices"],
+            "Cybersecurity": ["Network Security", "Cryptography", "Ethical Hacking", "InfoSec"],
+            "Business & Management": ["Project Management", "Leadership", "Agile", "Strategy"],
+        }
+        active_presets = skill_presets.get(chosen_c_cat, ["Machine Learning", "Python", "Data Science", "Cloud Architecture"])
+
+        st.markdown("<div style='font-size:0.75rem; font-weight:800; font-family:\"Space Grotesk\"; color:#064E3B; text-transform:uppercase; letter-spacing:0.05em; margin:0.6rem 0 0.35rem 0;'>⚡ IN-DEMAND SKILLS</div>", unsafe_allow_html=True)
+        sc1, sc2 = st.columns(2)
+        for s_i, s_name in enumerate(active_presets[:4]):
+            target_col = sc1 if s_i % 2 == 0 else sc2
+            with target_col:
+                st.button(s_name, key=f"cchip_{s_i}_{s_name.replace(' ', '_')}", width="stretch", on_click=set_course_query_skill, args=(s_name,))
+
+        st.markdown("<div style='margin-bottom:0.75rem;'></div>", unsafe_allow_html=True)
         top_n_c = st.slider("Results", 3, 10, 5, key="c_s")
+
+        has_active_c_filters = (
+            chosen_c_cat != "All" or 
+            chosen_lvl != "All" or 
+            bool(target_skills and target_skills.strip()) or 
+            top_n_c != 5
+        )
+        if has_active_c_filters:
+            st.button("↺ Reset Career Filters", key="btn_reset_c_filters", width="stretch", on_click=reset_course_filters)
 
     with c_r_col:
         c_recs = course_engine.recommend(
@@ -2676,38 +4080,55 @@ with tabs[3]:
             top_n=top_n_c
         )
 
-        st.markdown(f"<div style='font-size:0.85rem; font-weight:700; text-transform:uppercase; color:#555555; margin-bottom:0.8rem;'>Showing Top {len(c_recs)} results</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='font-size:0.85rem; font-weight:700; text-transform:uppercase; color:#064E3B; margin-bottom:0.8rem;'>Showing Top {len(c_recs)} career pathways</div>", unsafe_allow_html=True)
 
         for c in c_recs:
-            skills_html = " ".join([f'<span class="tag-neutral">{s}</span>' for s in c["skills"][:4]])
+            # Highlight skills: matching query skills get Sunbeam Yellow highlighter .skill-highlighter;
+            # if no query skills matched, first 2 core skills get .skill-highlighter, rest get .skill-curriculum
+            target_tokens = [tok.lower().strip() for tok in (target_skills or "").split() if len(tok.strip()) > 1]
+            skill_badges = []
+            for s_idx, s in enumerate(c["skills"][:5]):
+                s_lower = s.lower()
+                is_match = any(t in s_lower for t in target_tokens) if target_tokens else (s_idx < 2)
+                badge_class = "skill-highlighter" if is_match else "skill-curriculum"
+                skill_badges.append(f'<span class="{badge_class}">{s}</span>')
+            skills_html = "".join(skill_badges)
+
             c_url = c.get("url") or "https://coursera.org"
             st.markdown(f"""
-            <div class="min-card">
-                <span class="tag-match">{c['match_score']}% MATCH</span>
-                <div class="item-title"><a href="{c_url}" target="_blank" style="color:#000000; text-decoration:underline;">{c['title']} ↗</a></div>
-                <div style="margin-top:0.4rem;">
-                    <span class="tag-accent">{c['organization']}</span>
-                    <span class="tag-neutral">{c['difficulty']}</span>
-                    <span class="tag-neutral">{c['duration_hours']} Hours</span>
-                    <span style="font-size:0.85rem; color:#000000; margin-left:0.4rem; font-weight:700;">★ {c['rating']:.1f}</span>
+            <div class="career-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                    <span class="tag-career-match">{c['match_score']}% MATCH</span>
+                    <span style="font-size:0.75rem; color:#064E3B; text-transform:uppercase; font-weight:800; letter-spacing:0.05em;">🎓 {c['category']}</span>
                 </div>
-                <div style="margin-top:0.35rem;">{skills_html}</div>
-                <p style="color:#333333; font-size:0.84rem; margin:0.4rem 0 0 0;">{c['description']}</p>
-                <div class="reason-box">{c['explanation']}</div>
+                <div class="item-title"><a href="{c_url}" target="_blank" style="color:#064E3B; text-decoration:underline;">{c['title']} ↗</a></div>
+                <div style="margin:0.45rem 0 0.5rem 0; display:flex; flex-wrap:wrap; align-items:center; gap:6px;">
+                    <span class="tag-career-org">{c['organization']}</span>
+                    <span class="tag-career-level">{c['difficulty']}</span>
+                    <span class="tag-career-duration">⏱️ {c['duration_hours']} Hours</span>
+                    <span style="font-size:0.85rem; color:#064E3B; margin-left:0.3rem; font-weight:800;">★ {c['rating']:.1f}</span>
+                </div>
+                <div style="margin-top:0.4rem; margin-bottom:0.3rem;">{skills_html}</div>
+                <div class="career-path-strip">
+                    <span class="career-path-label">⚡ LEARNING PATHWAY</span>
+                    <span class="career-path-step">01 Foundation</span>
+                    <span class="career-path-arrow">➔</span>
+                    <span class="career-path-step">02 Applied Labs</span>
+                    <span class="career-path-arrow">➔</span>
+                    <span class="career-path-step" style="background:#FDE047; color:#022C22; padding:1px 6px; border:1px solid #064E3B; font-weight:900;">03 Capstone & Credential</span>
+                </div>
+                <p style="color:#333333; font-size:0.84rem; margin:0.45rem 0 0 0; line-height:1.45;">{c['description']}</p>
+                <div class="career-reason-box" style="margin-top:0.6rem;">{c['explanation']}</div>
             </div>
             """, unsafe_allow_html=True)
 
-            cb1, cb2, cb3, _ = st.columns([1, 1, 1.8, 3.2])
+            cb1, cb2, _ = st.columns([1, 1.8, 4.2])
             with cb1:
                 if st.button("🔖 Save", key=f"s_c_{c['id']}"):
                     ok, msg = db.save_bookmark(st.session_state.user_id, "Course", c['id'], c['title'], extra_info={"url": c_url})
                     st.toast(msg)
             with cb2:
-                if st.button("👍 Like", key=f"l_c_{c['id']}"):
-                    db.save_feedback(st.session_state.user_id, "Course", c['id'], "like")
-                    st.toast(f"Liked {c['title']}!")
-            with cb3:
-                st.markdown(f'<a href="{c_url}" target="_blank" class="buy-btn">🎓 Enroll Now ↗</a>', unsafe_allow_html=True)
+                st.markdown(f'<a href="{c_url}" target="_blank" class="career-enroll-btn">🎓 Enroll Now ↗</a>', unsafe_allow_html=True)
 
 # -------------------------------------------------------------------------
 # TAB 4: BENCHMARKS

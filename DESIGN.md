@@ -19,7 +19,7 @@
 | :--- | :--- | :--- | :--- |
 | 🎬 **Movies & Cinema** | **Velvet Crimson** (`#7A0C24`) | **Antique Gold & Brass** (`#C5A059`) | Classic heritage theatre ambience, cinematic dignity |
 | 🛍️ **Products & Lifestyle** | **Charcoal Slate Gray** (`#1E293B` / `#0F172A`) | **Balancing Teal** (`#0D9488` / `#0F766E`) | Sophisticated slate charcoal delivers supreme contrast, rich depth, and luxury horology/tech aesthetic; Balancing Teal Buy CTA gives crisp, intentional focus |
-| 🎓 **Courses & Career** | **Electric Cobalt** (`#2563EB`) | **Amber Mint** (`#10B981`) | Academic focus, skill progression, clarity |
+| 🎓 **Courses & Career** | **Emerald Green** (`#064E3B`) | **Sunbeam Yellow** (`#FACC15` / `#FDE047`) | Growth, career progression, yellow highlighter accents |
 
 ### Typography & Component Layout
 

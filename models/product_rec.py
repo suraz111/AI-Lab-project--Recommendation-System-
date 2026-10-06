@@ -5,10 +5,113 @@ category filtering, budget constraints, and feature similarity ranking.
 """
 
 import os
+import base64
+import urllib.parse
+import re
 import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+
+_IMAGE_CACHE = {}
+
+
+def generate_svg_product_poster(name: str, brand: str, category: str, price_inr: int, rating: float = 4.5) -> str:
+    """Generates a stylish modern vector product poster for products lacking local artwork."""
+    clean_name = re.sub(r'\(.*?\)', '', name).strip()
+    words = clean_name.split()
+    lines = []
+    curr = []
+    for w in words:
+        if sum(len(x) for x in curr) + len(w) > 14 and curr:
+            lines.append(" ".join(curr))
+            curr = [w]
+        else:
+            curr.append(w)
+    if curr:
+        lines.append(" ".join(curr))
+    lines = lines[:3]
+
+    title_spans = []
+    y_start = 220 if len(lines) == 1 else (205 if len(lines) == 2 else 190)
+    for i, line in enumerate(lines):
+        safe_line = line.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        title_spans.append(f'<tspan x="150" y="{y_start + i * 24}">{safe_line.upper()}</tspan>')
+    title_svg = "".join(title_spans)
+
+    cat_icons = {
+        "Audio": "🎧", "Wearables": "⌚", "Watches": "⌚",
+        "Fragrance": "🌸", "Desk Setup": "🖥️", "Gaming": "🎮",
+        "Smart Home": "💡", "Computer Accessories": "⌨️"
+    }
+    icon = cat_icons.get(category, "🛍️")
+
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="slate_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="50%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="teal_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14B8A6" />
+      <stop offset="100%" stop-color="#0D9488" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#slate_grad)" />
+  <rect x="8" y="8" width="284" height="434" fill="none" stroke="url(#teal_grad)" stroke-width="2.5" />
+  <rect x="14" y="14" width="272" height="422" fill="none" stroke="#000000" stroke-width="1" opacity="0.6" />
+  
+  <rect x="25" y="24" width="250" height="26" fill="#000000" stroke="url(#teal_grad)" stroke-width="1" />
+  <text x="150" y="41" text-anchor="middle" fill="#2DD4BF" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="900" letter-spacing="2">{brand.upper()} &bull; {category.upper()}</text>
+
+  <circle cx="150" cy="120" r="42" fill="#020617" stroke="url(#teal_grad)" stroke-width="2" />
+  <text x="150" y="135" text-anchor="middle" font-size="34">{icon}</text>
+
+  <text text-anchor="middle" fill="#F8FAFC" font-family="'Space Grotesk', sans-serif" font-size="16" font-weight="900" letter-spacing="1">
+    {title_svg}
+  </text>
+  
+  <rect x="60" y="305" width="180" height="30" fill="#0D9488" stroke="#000000" stroke-width="1.5" />
+  <text x="150" y="325" text-anchor="middle" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="900">₹{price_inr:,} &bull; ★ {rating:.1f}</text>
+  
+  <text x="150" y="415" text-anchor="middle" fill="#14B8A6" font-family="'Space Grotesk', sans-serif" font-size="9" font-weight="800" letter-spacing="3">RECOM.AI PRODUCTS</text>
+</svg>'''
+    b64_svg = base64.b64encode(svg.encode('utf-8')).decode('utf-8')
+    return f"data:image/svg+xml;base64,{b64_svg}"
+
+
+def get_product_poster(product_id: int, name: str, brand: str, category: str, price_inr: int = 1999, rating: float = 4.5) -> tuple:
+    """Resolves local base64 product image or generated SVG fallback. Always returns self-contained Data URIs."""
+    img_dir = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "product_images"))
+    img_file = os.path.join(img_dir, f"{product_id}.jpg")
+    file_mtime = os.path.getmtime(img_file) if os.path.exists(img_file) else 0
+
+    cache_entry = _IMAGE_CACHE.get(product_id)
+    if cache_entry and cache_entry[2] == file_mtime:
+        return cache_entry[0], cache_entry[1]
+
+    fallback = generate_svg_product_poster(name, brand, category, price_inr, rating)
+
+    # 1. Local disk cached image
+    candidate_names = [f"{product_id}", f"p{product_id}"]
+    for c_name in candidate_names:
+        for ext in [".jpg", ".jpeg", ".png", ".webp"]:
+            local_path = os.path.join(img_dir, f"{c_name}{ext}")
+            if os.path.exists(local_path) and os.path.getsize(local_path) > 100:
+                try:
+                    with open(local_path, "rb") as f:
+                        b64 = base64.b64encode(f.read()).decode("utf-8")
+                    mime = "image/png" if ext == ".png" else "image/jpeg"
+                    url = f"data:{mime};base64,{b64}"
+                    _IMAGE_CACHE[product_id] = (url, fallback, file_mtime)
+                    return url, fallback
+                except Exception:
+                    pass
+
+    # 2. Instant vector SVG fallback poster
+    _IMAGE_CACHE[product_id] = (fallback, fallback, file_mtime)
+    return fallback, fallback
 
 
 class ProductRecommender:
@@ -28,6 +131,11 @@ class ProductRecommender:
         # Build TF-IDF vectorizer over content features
         self.tfidf = TfidfVectorizer(stop_words="english", max_features=3000)
         self.tfidf_matrix = self.tfidf.fit_transform(self.products_df["content_features"])
+
+    @staticmethod
+    def get_image(product_id: int, name: str, brand: str, category: str, price_inr: int = 1999, rating: float = 4.5) -> tuple:
+        """Resolves local base64 product image or generated SVG fallback. Always returns self-contained Data URIs."""
+        return get_product_poster(product_id, name, brand, category, price_inr, rating)
 
     def get_categories(self) -> list:
         """Returns sorted list of product categories."""
@@ -119,20 +227,31 @@ class ProductRecommender:
             p_price = int(row["price_inr"])
             p_rating = float(row["rating"])
             score = float(row["match_score"])
+            p_id = int(row["product_id"])
+            p_name = str(row["product_name"])
             
             raw_url = str(row.get("url", "")).strip()
             if not raw_url or raw_url.lower() == "nan":
                 import urllib.parse
-                raw_url = f"https://www.amazon.in/s?k={urllib.parse.quote_plus(str(row['product_name']))}"
+                raw_url = f"https://www.amazon.in/s?k={urllib.parse.quote_plus(p_name)}"
 
             if query_text and query_text.strip():
                 explanation = f"Matches '{query_text.strip()}' by {brand_name} in {cat_name} (₹{p_price:,}, {p_rating}★)."
             else:
                 explanation = f"Top-rated {cat_name} product from {brand_name} at ₹{p_price:,} ({p_rating}★ customer rating)."
 
+            img_url, fallback_img = self.get_image(
+                product_id=p_id,
+                name=p_name,
+                brand=brand_name,
+                category=cat_name,
+                price_inr=p_price,
+                rating=p_rating
+            )
+
             results.append({
-                "id": int(row["product_id"]),
-                "name": str(row["product_name"]),
+                "id": p_id,
+                "name": p_name,
                 "category": cat_name,
                 "brand": brand_name,
                 "price_inr": p_price,
@@ -141,7 +260,9 @@ class ProductRecommender:
                 "features": str(row.get("features", "")),
                 "url": raw_url,
                 "match_score": score,
-                "explanation": explanation
+                "explanation": explanation,
+                "image_url": img_url,
+                "fallback_image": fallback_img
             })
 
         return results
