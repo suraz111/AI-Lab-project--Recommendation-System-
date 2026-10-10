@@ -551,8 +551,8 @@ def test_imports():
 
     # Project module imports
     try:
-        from models import MovieRecommender, ProductRecommender, CourseRecommender
-        log_pass("from models import all recommenders")
+        from models import MovieRecommender, ProductRecommender, CourseRecommender, ChatbotEngine
+        log_pass("from models import all recommenders & ChatbotEngine")
     except Exception as e:
         log_fail("models import", str(e))
 
@@ -607,6 +607,66 @@ def test_app_syntax():
 
 
 # =========================================================================
+# 9. CONVERSATIONAL CHATBOT ENGINE TESTS
+# =========================================================================
+def test_chatbot_engine():
+    print("\n" + "=" * 60)
+    print("9. CONVERSATIONAL CHATBOT ENGINE TESTS")
+    print("=" * 60)
+    from models import MovieRecommender, ProductRecommender, CourseRecommender, ChatbotEngine
+
+    try:
+        me = MovieRecommender()
+        pe = ProductRecommender()
+        ce = CourseRecommender()
+        bot = ChatbotEngine(movie_engine=me, product_engine=pe, course_engine=ce)
+        log_pass("ChatbotEngine() initialized with multi-domain engines")
+    except Exception as e:
+        log_fail("ChatbotEngine() init", str(e))
+        return
+
+    # Movie search tool
+    try:
+        m_items = bot.search_movies("action", industry="Bollywood", count=2)
+        if len(m_items) > 0:
+            log_pass(f"bot.search_movies() returned {len(m_items)} items")
+        else:
+            log_fail("bot.search_movies()", "No items returned")
+    except Exception as e:
+        log_fail("bot.search_movies()", str(e))
+
+    # Product search tool
+    try:
+        p_items = bot.search_products("anc", category="Audio", count=2)
+        if len(p_items) > 0:
+            log_pass(f"bot.search_products() returned {len(p_items)} items")
+        else:
+            log_fail("bot.search_products()", "No items returned")
+    except Exception as e:
+        log_fail("bot.search_products()", str(e))
+
+    # Course search tool
+    try:
+        c_items = bot.search_courses("python", domain="Artificial Intelligence", count=2)
+        if len(c_items) > 0:
+            log_pass(f"bot.search_courses() returned {len(c_items)} items")
+        else:
+            log_fail("bot.search_courses()", "No items returned")
+    except Exception as e:
+        log_fail("bot.search_courses()", str(e))
+
+    # Local fallback generation
+    try:
+        resp = bot.generate_response("Recommend an action Bollywood movie")
+        if "text" in resp and "items" in resp and len(resp["items"]) > 0:
+            log_pass(f"bot.generate_response() local fallback works ({len(resp['items'])} items found)")
+        else:
+            log_fail("bot.generate_response()", f"Unexpected response structure: {resp}")
+    except Exception as e:
+        log_fail("bot.generate_response()", str(e))
+
+
+# =========================================================================
 # RUN ALL TESTS
 # =========================================================================
 if __name__ == "__main__":
@@ -622,6 +682,7 @@ if __name__ == "__main__":
     test_product_recommender()
     test_course_recommender()
     test_evaluation()
+    test_chatbot_engine()
 
     print("\n" + "=" * 60)
     print(f"  RESULTS: {PASS} PASSED | {FAIL} FAILED")

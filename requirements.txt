@@ -12,3 +12,6 @@ scikit-learn>=1.3.0    # TF-IDF Vectorization, Cosine Similarity, and Truncated 
 # Web Application UI Framework
 streamlit>=1.28.0       # Interactive web interface and dashboard components
 
+# Generative AI & Conversational Intelligence (Free Tier Gemini)
+google-generativeai>=0.8.0 # Google Gemini free tier API client
+

@@ -38,3 +38,9 @@ ehthumbs.db
 
 # Temporary scratch files
 scratch_*.py
+scratch/
+
+# Environment secrets
+.env
+.env.*
+*.env
