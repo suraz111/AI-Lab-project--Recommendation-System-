@@ -1,8 +1,19 @@
 # RECOM.ai — Multi-Domain Recommendation Portal & AI Concierge ⚡
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://recomai.streamlit.app/)
+[![GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/suraz111/AI-Lab-project--Recommendation-System-)
+![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
+![Live Deployment](https://img.shields.io/badge/Live%20Demo-recomai.streamlit.app-brightgreen.svg)
+
 > An intelligent, multi-domain recommendation platform and conversational advisor that delivers **personalized, explainable recommendations** across **Movies & Cinema**, **E-Commerce Products**, and **Career Pathways & Skills** — powered by hybrid ML ranking, 2025 live web grounding, and conversational LLM intelligence.
 
 ---
+
+### 🌐 Live Web Application
+🚀 **Try the deployed application directly in your browser:**  
+👉 **[https://recomai.streamlit.app/](https://recomai.streamlit.app/)**
+
+> **💡 Instant Access:** Click **"Demo User (Instant Access)"** on the landing screen to immediately explore the entire platform, curated 2025 releases, hybrid model leaderboards, and the conversational RECOM AI concierge!
 
 ## ✨ Features at a Glance
 
@@ -240,7 +251,17 @@ RECOM.ai implements a **Tiered Hybrid Storage Architecture** balancing rapid ana
 
 ## ⚡ Quick Start
 
-### Option A: Run in GitHub Codespaces (One-Click)
+### Option A: Launch Live Web Application (Zero Setup)
+
+Experience RECOM.ai instantly in the browser without installing any software:
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://recomai.streamlit.app/)
+
+👉 **Direct URL:** [https://recomai.streamlit.app/](https://recomai.streamlit.app/)
+
+---
+
+### Option B: Run in GitHub Codespaces (Cloud Development)
 
 Click the badge below to launch the environment with all dependencies pre-configured:
 
@@ -254,7 +275,7 @@ streamlit run app.py
 
 ---
 
-### Option B: Local Setup
+### Option C: Local Setup
 
 #### Prerequisites
 - **Python 3.9+** (tested on Python 3.11 & 3.14)
