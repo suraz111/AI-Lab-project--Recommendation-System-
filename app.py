@@ -3839,6 +3839,7 @@ def resolve_product_image(product_id: int, name: str, brand: str, category: str,
 def set_active_tab(tab_name, industry=None, category=None, domain=None):
     st.session_state["portal_tabs"] = tab_name
     st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
+    st.session_state["scroll_to_top"] = True
     if tab_name == "🏠 Overview":
         st.session_state.focused_saved_item = None
     if industry:
@@ -4518,11 +4519,15 @@ def render_ai_chat_popover(engine_instance):
                              var el = doc.getElementById('recom-current-qa-turn') || doc.getElementById('recom-latest-answer');
                              if (el) {{
                                  var p = el.parentElement;
-                                 while (p && p !== doc.body) {{
+                                 while (p && p !== doc.body && p !== doc.documentElement) {{
+                                     if (p.tagName === 'SECTION' || p.tagName === 'MAIN' || (p.getAttribute && p.getAttribute('data-testid') === 'stAppViewContainer')) {{
+                                         break;
+                                     }}
                                      var win = doc.defaultView || window;
                                      var cs = win.getComputedStyle(p);
                                      if (cs.overflowY === 'auto' || cs.overflowY === 'scroll') {{
                                          p.scrollTop = Math.max(0, el.offsetTop - 5);
+                                         break;
                                      }}
                                      p = p.parentElement;
                                  }}
@@ -4545,15 +4550,18 @@ def render_ai_chat_popover(engine_instance):
                             
                             var p = target.parentElement;
                             while (p && p !== doc.body && p !== doc.documentElement) {{
+                                if (p.tagName === 'SECTION' || p.tagName === 'MAIN' || (p.getAttribute && p.getAttribute('data-testid') === 'stAppViewContainer')) {{
+                                    break;
+                                }}
                                 var win = doc.defaultView || window;
                                 var cs = win.getComputedStyle(p);
                                 if (cs.overflowY === 'auto' || cs.overflowY === 'scroll') {{
                                     var topPos = Math.max(0, target.offsetTop - 5);
                                     p.scrollTop = topPos;
+                                    break;
                                 }}
                                 p = p.parentElement;
                             }}
-                            try {{ target.scrollIntoView({{ behavior: 'auto', block: 'start' }}); }} catch(err) {{}}
                         }} catch(e) {{}}
                     }}
                     
@@ -4576,6 +4584,90 @@ def render_ai_chat_popover(engine_instance):
         if user_input and st.session_state.get("_chat_last_processed") != str(user_input).strip():
             _process_chat_query(user_input, engine_instance)
             st.rerun()
+
+# Synchronous Page Scroll-to-Top Anchor & Controller for Category Tabs & Transitions
+current_active_tab = st.session_state.get("portal_tabs", "🏠 Overview")
+if "last_visited_tab" not in st.session_state:
+    st.session_state["last_visited_tab"] = current_active_tab
+elif st.session_state["last_visited_tab"] != current_active_tab:
+    st.session_state["scroll_to_top"] = True
+    st.session_state["last_visited_tab"] = current_active_tab
+
+should_scroll_top = bool(st.session_state.pop("scroll_to_top", False))
+
+scroll_anchor_js = f"""
+<div id="recom-top-anchor" style="position:relative; top:0; left:0; width:1px; height:1px; margin:0; padding:0; opacity:0; pointer-events:none;"></div>
+<script>
+(function() {{
+    function scrollToTop() {{
+        try {{
+            var docs = [document];
+            if (window.parent && window.parent.document && window.parent.document !== document) {{
+                docs.push(window.parent.document);
+            }}
+            docs.forEach(function(d) {{
+                var w = d.defaultView || window;
+                try {{ w.scrollTo({{ top: 0, left: 0, behavior: 'instant' }}); }} catch(e) {{
+                    try {{ w.scrollTo(0, 0); }} catch(e2) {{}}
+                }}
+                var scrollEls = [
+                    d.documentElement,
+                    d.body,
+                    d.querySelector('section.main'),
+                    d.querySelector('.stMain'),
+                    d.querySelector('[data-testid="stAppViewContainer"]'),
+                    d.querySelector('[data-testid="stMainBlockContainer"]'),
+                    d.querySelector('.main')
+                ];
+                scrollEls.forEach(function(el) {{
+                    if (el) {{
+                        el.scrollTop = 0;
+                        el.scrollLeft = 0;
+                    }}
+                }});
+                var anchor = d.getElementById('recom-top-anchor');
+                if (anchor) {{
+                    try {{ anchor.scrollIntoView({{ behavior: 'instant', block: 'start' }}); }} catch(e) {{}}
+                }}
+            }});
+        }} catch(err) {{}}
+    }}
+
+    var doc = (window.parent && window.parent.document) ? window.parent.document : document;
+    
+    // Attach single persistent click listener in capture phase on tab buttons
+    if (!doc.__recom_tab_listener_attached) {{
+        doc.__recom_tab_listener_attached = true;
+        doc.addEventListener('click', function(e) {{
+            var tabBtn = e.target.closest('[role="tab"], [data-baseweb="tab"], button[data-testid*="stTabs"]');
+            if (tabBtn) {{
+                scrollToTop();
+                [10, 30, 80, 150, 300, 500].forEach(function(ms) {{
+                    setTimeout(scrollToTop, ms);
+                }});
+            }}
+        }}, true);
+    }}
+
+    {'scrollToTop(); [10, 30, 80, 160, 320, 600].forEach(function(ms) { setTimeout(scrollToTop, ms); });' if should_scroll_top else ''}
+}})();
+</script>
+"""
+st.html(scroll_anchor_js, unsafe_allow_javascript=True)
+if should_scroll_top:
+    st.markdown('''
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>" 
+         onload="(function(){
+             try {
+                 var doc = (window.parent && window.parent.document) ? window.parent.document : document;
+                 var win = doc.defaultView || window;
+                 win.scrollTo(0,0);
+                 var c = doc.querySelector('[data-testid=\\'stAppViewContainer\\']') || doc.querySelector('section.main') || doc.documentElement;
+                 if (c) c.scrollTop = 0;
+             } catch(e) {}
+         })();" 
+         style="display:none; width:0; height:0;" />
+    ''', unsafe_allow_html=True)
 
 # Top Header Navigation Bar (Placed at the very top edge with vibrant color palette)
 header_col1, header_col2 = st.columns([1.8, 2.2], gap="small")
@@ -4650,6 +4742,7 @@ with st.sidebar:
             with nav_col:
                 if st.button(f"Go to {cat} ➔", key=f"nav_bm_{b_id}_{item_id}_{idx}", width="stretch"):
                     st.session_state["portal_tabs"] = target_tab
+                    st.session_state["scroll_to_top"] = True
                     st.session_state.focused_saved_item = {
                         "category": cat,
                         "id": item_id,
@@ -4685,10 +4778,12 @@ def on_overview_domain_select():
     if selected and selected != "🏠 Overview Hub — (Select a Domain below)":
         st.session_state["portal_tabs"] = selected
         st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
+        st.session_state["scroll_to_top"] = True
 
 # Tab Switch Callback (Runs before widgets are instantiated on rerun)
 def on_portal_tab_change():
     selected = st.session_state.get("portal_tabs")
+    st.session_state["scroll_to_top"] = True
     if selected == "🏠 Overview":
         st.session_state["overview_domain_selectbox"] = "🏠 Overview Hub — (Select a Domain below)"
         st.session_state.focused_saved_item = None
@@ -4702,6 +4797,7 @@ def set_cinema_industry(ind):
     st.session_state["selected_movie_industry"] = ind
     st.session_state["sb_movie_industry"] = ind
     st.session_state["input_movie_query"] = ""
+    st.session_state["scroll_to_top"] = True
 
 def on_cinema_industry_change():
     st.session_state["selected_movie_industry"] = st.session_state.get("sb_movie_industry", "All")
@@ -4716,6 +4812,7 @@ def reset_cinema_filters():
     st.session_state["input_movie_query"] = ""
     st.session_state["m_s"] = 5
     st.session_state["m_alpha"] = 0.6
+    st.session_state["scroll_to_top"] = True
 
 # Safe Callbacks for Products & Lifestyle Domain (Run before widgets instantiate)
 def clear_product_focus():
@@ -4726,6 +4823,7 @@ def set_product_category(cat):
     st.session_state["selected_product_category"] = cat
     st.session_state["sb_product_category"] = cat
     st.session_state["input_product_query"] = ""
+    st.session_state["scroll_to_top"] = True
 
 def on_product_category_change():
     st.session_state["selected_product_category"] = st.session_state.get("sb_product_category", "All")
@@ -4740,6 +4838,7 @@ def reset_product_filters(max_p):
     st.session_state["input_product_query"] = ""
     st.session_state["p_budget"] = max_p
     st.session_state["p_s"] = 5
+    st.session_state["scroll_to_top"] = True
 
 # Safe Callbacks for Career Pathways & Skills Domain (Run before widgets instantiate)
 def clear_course_focus():
@@ -4750,6 +4849,7 @@ def set_course_domain(dom):
     st.session_state["selected_course_domain"] = dom
     st.session_state["sb_course_domain"] = dom
     st.session_state["input_course_query"] = ""
+    st.session_state["scroll_to_top"] = True
 
 def on_course_domain_change():
     st.session_state["selected_course_domain"] = st.session_state.get("sb_course_domain", "All")
@@ -4763,6 +4863,7 @@ def reset_course_filters():
     st.session_state["sb_course_level"] = "All"
     st.session_state["input_course_query"] = ""
     st.session_state["c_s"] = 5
+    st.session_state["scroll_to_top"] = True
 
 # Always ensure overview selectbox is reset to the default Overview option when navigating away
 if st.session_state.get("portal_tabs") != "🏠 Overview":
