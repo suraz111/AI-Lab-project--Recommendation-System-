@@ -8,7 +8,7 @@ import hashlib
 import json
 import os
 
-DB_PATH = "portal_database.db"
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "portal_database.db")
 
 
 def init_db():
@@ -59,9 +59,9 @@ def init_db():
     conn.close()
 
 
-def _hash_password(password: str) -> str:
-    """Hashes a password with SHA-256 for secure local storage."""
-    return hashlib.sha256(password.encode("utf-8")).hexdigest()
+def _hash_password(password: str, salt: str = "recom_ai_salt_v1") -> str:
+    """Hashes a password with SHA-256 and salt for secure storage."""
+    return hashlib.sha256((salt + password).encode("utf-8")).hexdigest()
 
 
 def register_user(username: str, password: str):
@@ -106,8 +106,12 @@ def login_user(username: str, password: str):
     row = cursor.fetchone()
     conn.close()
 
-    if row and row[1] == _hash_password(password):
-        return row[0], f"Welcome back, {clean_user}!"
+    if row:
+        stored_hash = row[1]
+        salted_hash = _hash_password(password)
+        legacy_hash = hashlib.sha256(password.encode("utf-8")).hexdigest()
+        if stored_hash in (salted_hash, legacy_hash):
+            return row[0], f"Welcome back, {clean_user}!"
     return None, "Invalid username or password. Please try again."
 
 
