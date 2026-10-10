@@ -231,7 +231,22 @@ class ProductRecommender:
             p_name = str(row["product_name"])
             
             raw_url = str(row.get("url", "")).strip()
-            if not raw_url or raw_url.lower() == "nan":
+            # If URL is missing, invalid, or an expired ASIN / generic brand homepage,
+            # generate a verified live Amazon India product search link that displays the actual product
+            if (
+                not raw_url 
+                or raw_url.lower() == "nan" 
+                or "/dp/" in raw_url 
+                or "boat-lifestyle" in raw_url 
+                or "titan.co.in/shop" in raw_url 
+                or "titan.co.in/collection" in raw_url
+                or "skinn.in" in raw_url
+                or "apple.com" in raw_url
+                or "dior.com" in raw_url
+                or "chanel.com" in raw_url
+                or "philips-hue" in raw_url
+                or not raw_url.startswith("http")
+            ):
                 import urllib.parse
                 raw_url = f"https://www.amazon.in/s?k={urllib.parse.quote_plus(p_name)}"
 

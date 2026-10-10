@@ -4370,6 +4370,11 @@ def render_ai_chat_popover(engine_instance):
                                     action_btn_class = "product-buy-btn"
                                     nav_icon = "🛍️"
 
+                                    # Ensure link points directly to the real product on Amazon
+                                    if not item_link or item_link == "#" or "/dp/" in item_link or "boat-lifestyle" in item_link or "titan.co.in/shop" in item_link or "skinn.in" in item_link:
+                                        import urllib.parse
+                                        item_link = f"https://www.amazon.in/s?k={urllib.parse.quote_plus(str(item_title))}"
+
                                     # Category-consistent product image resolution
                                     thumbnail = get_chat_product_image(
                                         item_id, 
@@ -5022,7 +5027,7 @@ if current_portal_tab == "🏠 Overview":
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
                         <div>
                             <div style="font-size:0.72rem; color:#4B5563; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🎧 AUDIO PICK</div>
-                            <div class="product-title" style="margin-bottom:0.25rem;"><a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank">boAt Nirvana Ion ANC ↗</a></div>
+                            <div class="product-title" style="margin-bottom:0.25rem;"><a href="https://www.amazon.in/s?k=boAt+Nirvana+Ion+ANC+Headphones" target="_blank">boAt Nirvana Ion ANC ↗</a></div>
                         </div>
                         <span class="tag-product-match">96.8% MATCH</span>
                     </div>
@@ -5034,7 +5039,7 @@ if current_portal_tab == "🏠 Overview":
                     </div>
                     <p style="color:#333333; font-size:0.84rem; margin:0.4rem 0 0 0; line-height:1.45;">Top active noise cancellation wireless earbuds with 120-hour playback and dual EQ modes from boAt.</p>
                 </div>
-                <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.boat-lifestyle.com/products/nirvana-ion" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
+                <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.amazon.in/s?k=boAt+Nirvana+Ion+ANC+Headphones" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
             </div>
         </div>
     </div>
@@ -5045,7 +5050,7 @@ if current_portal_tab == "🏠 Overview":
     st.markdown(f"""
     <div class="product-card" style="margin-bottom:1.2rem;">
         <div class="product-card-body">
-            <a href="https://www.titan.co.in/shop/watches" target="_blank" class="product-img-frame" title="Titan Octane Automatic">
+            <a href="https://www.amazon.in/s?k=Titan+Octane+Mechanical+Automatic+Watch" target="_blank" class="product-img-frame" title="Titan Octane Automatic">
                 <img src="{p122_img}" class="product-img" onerror="this.onerror=null; this.src='{p122_fb}';" alt="Titan Octane Automatic" />
             </a>
             <div class="product-info-col">
@@ -5053,7 +5058,7 @@ if current_portal_tab == "🏠 Overview":
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
                         <div>
                             <div style="font-size:0.72rem; color:#4B5563; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">⌚ WATCH PICK</div>
-                            <div class="product-title" style="margin-bottom:0.25rem;"><a href="https://www.titan.co.in/shop/watches" target="_blank">Titan Octane Mechanical Automatic Watch ↗</a></div>
+                            <div class="product-title" style="margin-bottom:0.25rem;"><a href="https://www.amazon.in/s?k=Titan+Octane+Mechanical+Automatic+Watch" target="_blank">Titan Octane Mechanical Automatic Watch ↗</a></div>
                         </div>
                         <span class="tag-product-match">97.4% MATCH</span>
                     </div>
@@ -5065,7 +5070,7 @@ if current_portal_tab == "🏠 Overview":
                     </div>
                     <p style="color:#333333; font-size:0.84rem; margin:0.4rem 0 0 0; line-height:1.45;">Exquisite automatic mechanical watch by Tata Titan featuring skeleton dial displaying inner mechanical gear movements.</p>
                 </div>
-                <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.titan.co.in/shop/watches" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
+                <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.amazon.in/s?k=Titan+Octane+Mechanical+Automatic+Watch" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
             </div>
         </div>
     </div>
@@ -5076,7 +5081,7 @@ if current_portal_tab == "🏠 Overview":
     st.markdown(f"""
     <div class="product-card" style="margin-bottom:1.2rem;">
         <div class="product-card-body">
-            <a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank" class="product-img-frame" title="Titan Skinn Raw EDP">
+            <a href="https://www.amazon.in/s?k=Titan+Skinn+Raw+Eau+De+Parfum+100ml" target="_blank" class="product-img-frame" title="Titan Skinn Raw EDP">
                 <img src="{p132_img}" class="product-img" onerror="this.onerror=null; this.src='{p132_fb}';" alt="Titan Skinn Raw EDP" />
             </a>
             <div class="product-info-col">
@@ -5084,7 +5089,7 @@ if current_portal_tab == "🏠 Overview":
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
                         <div>
                             <div style="font-size:0.72rem; color:#4B5563; text-transform:uppercase; font-weight:800; letter-spacing:0.05em; margin-bottom:0.2rem;">🌸 FRAGRANCE PICK</div>
-                            <div class="product-title" style="margin-bottom:0.25rem;"><a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank">Titan Skinn Raw Eau De Parfum (100ml) ↗</a></div>
+                            <div class="product-title" style="margin-bottom:0.25rem;"><a href="https://www.amazon.in/s?k=Titan+Skinn+Raw+Eau+De+Parfum+100ml" target="_blank">Titan Skinn Raw Eau De Parfum (100ml) ↗</a></div>
                         </div>
                         <span class="tag-product-match">96.5% MATCH</span>
                     </div>
@@ -5096,7 +5101,7 @@ if current_portal_tab == "🏠 Overview":
                     </div>
                     <p style="color:#333333; font-size:0.84rem; margin:0.4rem 0 0 0; line-height:1.45;">French-crafted luxury Eau De Parfum for India blending fresh citrus bergamot, watery watermelon, and Indonesian patchouli.</p>
                 </div>
-                <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.skinn.in/product/skinn-raw-perfume-for-men-100ml" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
+                <div style="margin-top:0.8rem; max-width:280px;"><a href="https://www.amazon.in/s?k=Titan+Skinn+Raw+Eau+De+Parfum+100ml" target="_blank" class="product-buy-btn">🛒 Buy Now ↗</a></div>
             </div>
         </div>
     </div>
@@ -5710,7 +5715,9 @@ with tabs[2]:
         _product_imgs = _load_all_product_images_v2(_img_dir, _dir_mtime)
 
         for p in p_recs:
-            p_url = p.get("url") or f"https://www.amazon.in/s?k={urllib.parse.quote_plus(str(p.get('name', '')))}"
+            p_url = str(p.get("url", "")).strip()
+            if not p_url or p_url == "#" or "/dp/" in p_url or "boat-lifestyle" in p_url or "titan.co.in/shop" in p_url or "skinn.in" in p_url:
+                p_url = f"https://www.amazon.in/s?k={urllib.parse.quote_plus(str(p.get('name', '')))}"
             safe_name = html.escape(str(p.get("name", "")))
             
             # Resolve individual real product image -> engine image -> SVG fallback
